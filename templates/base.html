@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Site web de l'auto-entreprise Inspire Code : développement web et mobile">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Inspire Code{% endblock %}</title>
+  
+  <!-- Google Fonts (exemple) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header id="header">
+    <nav class="navbar">
+      <!-- Logo -->
+      <div class="logo">Inspire Code</div>
+      <!-- Menu -->
+      <ul class="nav-links" id="nav-links">
+        <!-- Utilisation de url_for pour les liens -->
+        <li><a href="{{ url_for('home') }}">Accueil</a></li>
+        <li><a href="{{ url_for('about') }}">À propos</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+      <!-- Icône burger pour menu mobile -->
+      <div class="burger" id="burger">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ CONTENU SPÉCIFIQUE DE CHAQUE PAGE ============ -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <p>© 2024 Inspire Code - Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript principal -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

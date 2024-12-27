@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Accueil - Inspire Code
+{% endblock %}
+
+{% block content %}
+  <!-- ============ SECTION HERO ============ -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Développement Web & Mobile</h1>
+      <p>Transformons vos idées en solutions digitales innovantes.</p>
+      <!-- On peut rediriger vers la page contact -->
+      <a href="{{ url_for('contact') }}" class="btn-hero">Contactez-nous</a>
+    </div>
+  </section>
+{% endblock %}

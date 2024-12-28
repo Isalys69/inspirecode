@@ -5,7 +5,7 @@ import subprocess
 # Vos informations
 USERNAME = "Isalys"  # Votre nom d'utilisateur PythonAnywhere
 APP_NAME = "www.inspirecode.fr"  # Le nom de votre application web
-PROJECT_PATH = "."  # Le chemin de votre projet sur PythonAnywhere
+PROJECT_PATH = os.getcwd() # Définir le chemin du projet comme le répertoire courant
 WSGI_FILE = "/var/www/www_inspirecode_fr_wsgi.py"  # Le chemin du fichier WSGI
 API_TOKEN = "2edf0ead08324cdea8930ee3af5e7750674ed46c"  # Remplacez par votre token d'API PythonAnywhere
 
@@ -13,7 +13,7 @@ API_TOKEN = "2edf0ead08324cdea8930ee3af5e7750674ed46c"  # Remplacez par votre to
 API_BASE_URL = f"https://www.pythonanywhere.com/api/v0/user/{USERNAME}/"
 
 def pull_latest_code():
-    """Télécharge le dernier code depuis GitHub."""
+    print(f"Chemin du projet : {PROJECT_PATH}")
     print("Téléchargement du dernier code depuis GitHub...")
     try:
         subprocess.run(["git", "pull", "origin", "main"], cwd=PROJECT_PATH, check=True)

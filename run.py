@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for
-import subprocess
 
 app = Flask(__name__)
 
@@ -44,27 +43,6 @@ def contact():
         # TODO: traiter les données (envoi d'email, stockage, etc.)
         return redirect(url_for("contact"))  # On peut rediriger vers la page contact ou home
     return render_template("contact.html")
-
-
-@app.route("/update", methods=["GET", "POST"])
-def webhook():
-    if request.method == "POST":
-        try:
-            # Exécuter le script pour les requêtes POST
-            result = subprocess.run(
-                ["/home/Isalys/inspirecode/update.sh"],
-                check=True,
-                capture_output=True,
-                text=True
-            )
-            return f"Updated successfully! Output:\n{result.stdout}", 200
-        except subprocess.CalledProcessError as e:
-            return f"Error during script execution: {e.stderr}", 500
-        except Exception as e:
-            return f"Unexpected error: {str(e)}", 500
-    elif request.method == "GET":
-        # Répondre aux requêtes GET
-        return "This route is designed for POST requests to trigger updates. Please use POST.", 200
 
 
 if __name__ == "__main__":

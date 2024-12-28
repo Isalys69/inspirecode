@@ -68,8 +68,8 @@ def webhook():
             # Capture toute autre erreur
             return f"Unexpected error: {str(e)}", 500
     elif request.method == "GET":
-        # Réponse en cas de requête GET
-        return "This route is for POST requests only. Use POST to trigger updates.", 405
+        # Réponse explicative pour les requêtes GET
+        return "This route is designed for POST requests to trigger updates. Please use POST.", 200
 
 
 if __name__ == "__main__":

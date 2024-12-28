@@ -27,4 +27,4 @@ jobs:
         env:
           API_TOKEN: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
         run: |
-          python upload.py
+          python ./upload.py

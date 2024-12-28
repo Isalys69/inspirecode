@@ -5,7 +5,7 @@ import subprocess
 # Vos informations
 USERNAME = "Isalys"  # Votre nom d'utilisateur PythonAnywhere
 APP_NAME = "www.inspirecode.fr"  # Le nom de votre application web
-PROJECT_PATH = "/home/Isalys/inspirecode"  # Le chemin de votre projet sur PythonAnywhere
+PROJECT_PATH = "."  # Le chemin de votre projet sur PythonAnywhere
 WSGI_FILE = "/var/www/www_inspirecode_fr_wsgi.py"  # Le chemin du fichier WSGI
 API_TOKEN = "2edf0ead08324cdea8930ee3af5e7750674ed46c"  # Remplacez par votre token d'API PythonAnywhere
 

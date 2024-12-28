@@ -46,26 +46,30 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/update", methods=["POST"])
+@app.route("/update", methods=["GET", "POST"])
 def webhook():
     """
     Route pour gérer les webhooks GitHub ou les mises à jour via Postman.
     """
-    try:
-        # Exécution du script de mise à jour
-        result = subprocess.run(
-            ["/home/Isalys/inspirecode/update.sh"], 
-            check=True, 
-            capture_output=True, 
-            text=True
-        )
-        return f"Updated successfully! Output:\n{result.stdout}", 200
-    except subprocess.CalledProcessError as e:
-        # Capture les erreurs liées à `subprocess.run`
-        return f"Error during script execution: {e.stderr}", 500
-    except Exception as e:
-        # Capture toute autre erreur
-        return f"Unexpected error: {str(e)}", 500
+    if request.method == "POST":
+        try:
+            # Exécution du script de mise à jour
+            result = subprocess.run(
+                ["/home/Isalys/inspirecode/update.sh"], 
+                check=True, 
+                capture_output=True, 
+                text=True
+            )
+            return f"Updated successfully! Output:\n{result.stdout}", 200
+        except subprocess.CalledProcessError as e:
+            # Capture les erreurs liées à `subprocess.run`
+            return f"Error during script execution: {e.stderr}", 500
+        except Exception as e:
+            # Capture toute autre erreur
+            return f"Unexpected error: {str(e)}", 500
+    elif request.method == "GET":
+        # Réponse en cas de requête GET
+        return "This route is for POST requests only. Use POST to trigger updates.", 405
 
 
 if __name__ == "__main__":

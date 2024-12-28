@@ -48,27 +48,22 @@ def contact():
 
 @app.route("/update", methods=["GET", "POST"])
 def webhook():
-    """
-    Route pour gérer les webhooks GitHub ou les mises à jour via Postman.
-    """
     if request.method == "POST":
         try:
-            # Exécution du script de mise à jour
+            # Exécuter le script pour les requêtes POST
             result = subprocess.run(
-                ["/home/Isalys/inspirecode/update.sh"], 
-                check=True, 
-                capture_output=True, 
+                ["/home/Isalys/inspirecode/update.sh"],
+                check=True,
+                capture_output=True,
                 text=True
             )
             return f"Updated successfully! Output:\n{result.stdout}", 200
         except subprocess.CalledProcessError as e:
-            # Capture les erreurs liées à `subprocess.run`
             return f"Error during script execution: {e.stderr}", 500
         except Exception as e:
-            # Capture toute autre erreur
             return f"Unexpected error: {str(e)}", 500
     elif request.method == "GET":
-        # Réponse explicative pour les requêtes GET
+        # Répondre aux requêtes GET
         return "This route is designed for POST requests to trigger updates. Please use POST.", 200
 
 

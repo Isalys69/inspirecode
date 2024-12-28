@@ -1,0 +1,8 @@
+{
+    "python.pythonPath": "/Users/isalys/my_project_env/bin/python",
+    "python.analysis.extraPaths": [
+        "/Users/isalys/my_project_env/lib/python3.13/site-packages"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true
+}

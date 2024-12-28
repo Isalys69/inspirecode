@@ -1,4 +1,5 @@
 #!/bin/bash
 cd /home/Isalys/inspirecode/
 git pull origin main
-touch /var/www/Isalys_pythonanywhere_com_wsgi.py
+touch /var/www/www_inspirecode_fr_wsgi.py
+

@@ -36,9 +36,10 @@ def contact():
     Page Contact - Gère aussi le formulaire
     """
     if request.method == "POST":
-        #nom = request.form.get("name")
-        #email = request.form.get("email")
-        #message = request.form.get("message")
+        # Exemple : traiter les données du formulaire (désactivé ici)
+        # nom = request.form.get("name")
+        # email = request.form.get("email")
+        # message = request.form.get("message")
         # TODO: traiter les données (envoi d'email, stockage, etc.)
         return redirect(url_for("contact"))  # On peut rediriger vers la page contact ou home
     return render_template("contact.html")

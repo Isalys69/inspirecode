@@ -1,6 +1,8 @@
 import os
 import requests
 import subprocess
+import getpass
+
 
 # Vos informations
 USERNAME = "Isalys"  # Votre nom d'utilisateur PythonAnywhere
@@ -22,8 +24,13 @@ else:
 
 print(f"Chemin du projet : {PROJECT_PATH}")
 
-print(f"Utilisateur actuel : {os.getlogin()}")
+# Tentative de récupération robuste de l'utilisateur
+try:
+    user = os.getlogin()
+except OSError:
+    user = os.getenv("USER") or os.getenv("LOGNAME") or getpass.getuser()
 
+print(f"Utilisateur actuel : {user}")
 
 
 

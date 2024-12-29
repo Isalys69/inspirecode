@@ -22,6 +22,8 @@ else:
 
 print(f"Chemin du projet : {PROJECT_PATH}")
 
+print(f"Utilisateur actuel : {os.getlogin()}")
+
 
 
 

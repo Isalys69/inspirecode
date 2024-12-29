@@ -44,5 +44,6 @@ def contact():
         return redirect(url_for("contact"))  # On peut rediriger vers la page contact ou home
     return render_template("contact.html")
 
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

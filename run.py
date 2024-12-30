@@ -18,9 +18,7 @@ def about():
 
 @app.route("/services")
 def services():
-    """
-    Page Services
-    """
+    #Page Services
     return render_template("services.html")
 
 @app.route("/portfolio")
@@ -32,9 +30,7 @@ def portfolio():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
-    """
-    Page Contact - Gère aussi le formulaire
-    """
+    #Page Contact - Gère aussi le formulaire
     if request.method == "POST":
         # Exemple : traiter les données du formulaire (désactivé ici)
         # nom = request.form.get("name")

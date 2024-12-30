@@ -58,14 +58,22 @@ def restart_application():
         exit(1)
 
 def touch_wsgi_file():
-    """Modifie le fichier WSGI pour forcer le redémarrage du serveur."""
-    print("Modification du fichier WSGI...")
-    try:
-        with open(WSGI_FILE, "a"):
-            os.utime(WSGI_FILE, None)
+    """Utilise l'API PythonAnywhere pour forcer la modification du fichier WSGI."""
+    print("Modification du fichier WSGI via l'API PythonAnywhere...")
+    url = f"{API_BASE_URL}files/path{WSGI_FILE}"
+    headers = {"Authorization": f"Token {API_TOKEN}"}
+    new_content = "# Modification via API\n"
+    
+    response = requests.post(
+        url,
+        headers=headers,
+        files={"content": new_content},
+    )
+
+    if response.status_code == 200:
         print("Fichier WSGI modifié avec succès.")
-    except Exception as e:
-        print(f"Erreur lors de la modification du fichier WSGI : {e}")
+    else:
+        print(f"Erreur lors de la modification du fichier WSGI : {response.status_code} - {response.text}")
         exit(1)
 
 def main():

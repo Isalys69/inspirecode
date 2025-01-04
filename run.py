@@ -12,7 +12,7 @@ def home():
 @app.route("/about")
 def about():
     """
-    Page À propos
+    Page À propose
     """
     return render_template("about.html")
 

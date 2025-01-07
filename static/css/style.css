@@ -29,10 +29,30 @@ header {
     align-items: center;
 }
 
-.logo {
-    font-family: 'Montserrat', sans-serif;
+/* Styles pour le titre avec l'icône */
+.logo a {
+    text-decoration: none; /* Pas de soulignement */
+    color: #333; /* Couleur principale du texte */
+    font-weight: bold;
     font-size: 1.5rem;
-    font-weight: 600;
+    display: flex; /* Aligner horizontalement l'icône et le texte */
+    align-items: center; /* Centrer verticalement */
+    gap: 0.5rem; /* Espacement entre l'icône et le texte */
+    transition: color 0.3s ease; /* Animation au survol */
+}
+
+.logo i {
+    color: #007bff; /* Bleu élégant pour l'icône */
+    font-size: 1.5rem; /* Même taille que le texte */
+    transition: color 0.3s ease; /* Douce animation pour l'icône */
+}
+
+.logo a:hover {
+    color: #0056b3; /* Changement de couleur du texte au survol */
+}
+
+.logo a:hover i {
+    color: #003f7f; /* Bleu légèrement plus foncé pour l'icône au survol */
 }
 
 .nav-links {
@@ -66,7 +86,6 @@ header {
     transition: all 0.3s;
 }
 
-/* Modification : changement de curseur sur la zone burger */
 .burger:hover {
     cursor: pointer;
 }
@@ -317,6 +336,8 @@ footer p {
     margin: 0;
 }
 
+
+
 /* ===================== MEDIA QUERIES ===================== */
 @media (max-width: 768px) {
     .nav-links {
@@ -377,4 +398,60 @@ footer p {
 
 .burger:hover .bar {
     background-color: #007bff;
+}
+
+
+
+/* ===================== ADDITIONAL STYLES FROM BASE.HTML ===================== */
+.logo-img {
+    max-width: 100px;
+    height: auto;
+    margin-top: 2px; /* Ajout de 2 pixels de blanc au-dessus du logo */
+}
+.logo-text {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2px;
+    color: #004aad; /* Couleur bleu associée au logo */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ajout d'une légère ombre */
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer; /* Forçage du curseur "main" */
+    user-select: none; /* Désactivation de la sélection de texte */
+    text-decoration: none; /* Suppression du soulignement */
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 100px; /* Hauteur fixe pour garantir le centrage */
+}
+.nav-links {
+    display: flex;
+    gap: 20px; /* Espacement entre les liens */
+}
+.nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #004aad; /* Harmonisation avec le logo */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 15px; /* Augmentation du padding pour plus de contraste */
+}
+.nav-links a:hover {
+    color: #004aad; /* Texte harmonisé avec "Inspire Code" */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Ombre légère pour le texte au survol */
+    transform: scale(1.2); /* Effet de loupe */
+}
+.nav-links a.active {
+    font-weight: bold;
+    background-color: transparent;
+    color: #004aad; /* Indicateur de lien actif */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }

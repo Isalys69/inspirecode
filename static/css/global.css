@@ -1,0 +1,12 @@
+/* === GLOBAL STYLES (Contient les styles globaux pour tout le site) === */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}

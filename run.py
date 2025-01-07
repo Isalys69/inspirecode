@@ -1,19 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask import send_from_directory
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    """
-    Page d'accueil
-    """
+    # Page d'accueil
     return render_template("index.html")
 
 @app.route("/about")
 def about():
-    """
-    Page À propose
-    """
+    # Page À propose
     return render_template("about.html")
 
 @app.route("/services")
@@ -23,10 +20,14 @@ def services():
 
 @app.route("/portfolio")
 def portfolio():
-    """
-    Page Portfolio
-    """
+    # Page Portfolio
     return render_template("portfolio.html")
+
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
@@ -39,6 +40,17 @@ def contact():
         # TODO: traiter les données (envoi d'email, stockage, etc.)
         return redirect(url_for("contact"))  # On peut rediriger vers la page contact ou home
     return render_template("contact.html")
+
+@app.route('/mentions-legales')
+def mentionslegales():
+    return render_template('mentions-legales.html')
+
+@app.route('/politique-confidentialite')
+def politiqueconfidentialite():
+    return render_template('politique-confidentialite.html')
+
+
+
 
 
 if __name__ == "__main__":

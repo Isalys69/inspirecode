@@ -1,0 +1,16 @@
+<!-- ================= SECTION CALL TO ACTION (générique) ================= -->
+<section id="cta-final" class="py-5 text-white text-center {{ bg_color|default('bg-primary') }}">
+  <div class="container">
+    <h2 class="fw-bold mb-3">
+      {{ cta_title|default("Prêt(e) à donner vie à votre projet digital ?") }}
+    </h2>
+
+    <p class="small mb-4">
+      {{ cta_support|default("Inspire Code ne s’arrête pas à la mise en ligne : nous assurons la maintenance, la sécurité et le suivi technique de vos outils.") }}
+    </p>
+
+    <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg px-4 fw-semibold shadow-sm">
+      {{ cta_button|default("Demandez votre devis gratuit") }}
+    </a>
+  </div>
+</section>

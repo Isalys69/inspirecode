@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Automatisations & outils métiers - Inspire Code
+{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center">
+  <div class="container">
+    <h1 class="fw-bold mb-4 text-primary">Automatisations & outils métiers</h1>
+    <p class="lead mb-5">
+      Gagnez du temps et concentrez-vous sur l’essentiel grâce à des outils personnalisés et intégrés à votre workflow.
+    </p>
+    <p>
+      Que ce soit pour connecter vos formulaires à Google Sheets, créer un tableau de bord interactif
+      ou automatiser vos emails, <strong>Inspire Code</strong> développe des solutions simples et efficaces,
+      parfaitement adaptées à vos besoins.
+    </p>
+  </div>
+</section>
+
+{% with realisations=[
+  {'image': 'images/real_eanettoyage_dashboard.jpg', 'titre': 'EA Nettoyage - Tableau de bord client', 'description': 'Automatisation de suivi de commandes et génération de devis PDF via scripts Python + Google Sheets.', 'lien': 'https://eanettoyage.fr'},
+  {'image': 'images/real_chanael_auto.jpg', 'titre': 'Chanaël Services', 'description': 'Outil d’automatisation des devis et export des factures pour micro-entreprise, relié à un back-office PythonAnywhere.', 'lien': ''},
+  {'image': 'images/real_mailparser.jpg', 'titre': 'MailParser API', 'description': 'Système sur mesure de lecture de mails entrants et envoi automatisé de réponses formatées, via API et scripts Flask.', 'lien': ''}
+] %}
+  {% include 'partials/realisations.html' %}
+{% endwith %}
+
+{% with 
+  bg_color='bg-secondary',
+  cta_title="Et si vos outils travaillaient pour vous ?",
+  cta_text="Inspire Code conçoit vos automatisations sur mesure pour simplifier votre quotidien et booster votre productivité.",
+  cta_button="Parlons de votre besoin"
+%}
+  {% include 'partials/cta.html' %}
+{% endwith %}
+{% endblock %}

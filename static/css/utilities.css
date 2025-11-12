@@ -1,0 +1,42 @@
+
+/*******************************************************************/
+/* Classes utilitaires pour des marges, alignements, ou animations */
+/*******************************************************************/
+
+/* ===================== UTILITIES ===================== */
+.hidden {
+    display: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+/* ===================== ANIMATIONS ===================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.interactive {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interactive.hovered {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

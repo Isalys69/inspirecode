@@ -1,40 +1,58 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask import send_from_directory
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    """
-    Page d'accueil
-    """
+    # Page d'accueil
     return render_template("index.html")
 
 @app.route("/about")
 def about():
-    """
-    Page À propos
-    """
+    # Page À propose
     return render_template("about.html")
 
 @app.route("/services")
 def services():
-    """
-    Page Services
-    """
+    #Page Services
     return render_template("services.html")
 
 @app.route("/portfolio")
 def portfolio():
-    """
-    Page Portfolio
-    """
+    # Page Portfolio
     return render_template("portfolio.html")
+
+@app.route("/vitrine")
+def vitrine():
+    # Page Portfolio
+    return render_template("vitrine.html")
+
+@app.route("/ecommerce")
+def ecommerce():
+    # Page Portfolio
+    return render_template("ecommerce.html")
+
+@app.route("/automatisations")
+def automatisations():
+    # Page Portfolio
+    return render_template("automatisations.html")
+
+@app.route("/appmobile")
+def appmobile():
+    # Page Portfolio
+    return render_template("appmobile.html")
+
+
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static', 'robots.txt')
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
-    """
-    Page Contact - Gère aussi le formulaire
-    """
+    #Page Contact - Gère aussi le formulaire
     if request.method == "POST":
         # Exemple : traiter les données du formulaire (désactivé ici)
         # nom = request.form.get("name")
@@ -43,6 +61,17 @@ def contact():
         # TODO: traiter les données (envoi d'email, stockage, etc.)
         return redirect(url_for("contact"))  # On peut rediriger vers la page contact ou home
     return render_template("contact.html")
+
+@app.route('/mentions-legales')
+def mentionslegales():
+    return render_template('mentions-legales.html')
+
+@app.route('/politique-confidentialite')
+def politiqueconfidentialite():
+    return render_template('politique-confidentialite.html')
+
+
+
 
 
 if __name__ == "__main__":

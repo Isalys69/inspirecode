@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Site vitrine sur mesure - Inspire Code
+{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center">
+  <div class="container">
+    <h1 class="fw-bold mb-4 text-primary">Votre site vitrine sur mesure</h1>
+    <p class="lead mb-5">
+      Présentez votre activité, vos services et votre savoir-faire avec un site rapide, clair et élégant.
+    </p>
+  </div>
+</section>
+
+{% with realisations=[
+  {'image': 'images/real_eanettoyage.jpg', 'titre': 'EA Nettoyage', 'description': 'Site vitrine professionnel pour une entreprise de nettoyage basée à Lyon.', 'lien': 'https://eanettoyage.fr'},
+  {'image': 'images/real_kenza.jpg', 'titre': 'Institut Kenza Beauty', 'description': 'Refonte complète du site beauté avec prise de rendez-vous intégrée.', 'lien': ''},
+  {'image': 'images/real_artisan.jpg', 'titre': 'Artisan Menuiserie', 'description': 'Site vitrine responsive pour artisan local, optimisé SEO.', 'lien': ''}
+] %}
+  {% include 'partials/realisations.html' %}
+{% endwith %}
+
+{% with 
+  bg_color='bg-primary',
+  cta_title="Prêt(e) à donner vie à votre projet digital ?",
+  cta_text="Donnez à votre activité la vitrine qu’elle mérite : claire, rapide et à votre image.",
+  cta_button="Demandez votre devis gratuit"
+%}
+  {% include 'partials/cta.html' %}
+{% endwith %}
+{% endblock %}

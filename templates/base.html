@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
   <!-- Métadonnées essentielles -->
   <meta charset="UTF-8" />
   <meta name="description" content="Site web de l'auto-entreprise Inspire Code : développement web et mobile">
@@ -17,30 +18,31 @@
   <!-- Font Awesome pour les icônes -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  <!-- Lien vers le fichier CSS principal (enrichi) -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Liens CSS structurés -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sections.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
 
   <!-- Favicon pour la page -->
   <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
+
 </head>
 <body>
   <!-- En-tête avec navigation principale -->
-  <header id="header">
+  <header>
     <nav class="navbar">
-      <!-- Section logo : image et nom cliquables redirigeant vers l'accueil -->
       <a href="{{ url_for('home') }}" class="logo">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Inspire Code Logo" class="logo-img">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Inspire Code Logo" class="logo-img"/>
         <span class="logo-text">Inspire Code</span>
       </a>
-
-      <!-- Liens de navigation -->
       <ul class="nav-links" id="nav-links">
-        <li><a href="{{ url_for('about') }}">À propos</a></li>
-        <li><a href="{{ url_for('services') }}">Services</a></li>
-        <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
+        <li><a href="{{ url_for('about') }}">Nos valeurs</a></li>
       </ul>
-
-      <!-- Icône burger pour le menu mobile -->
       <div class="burger" id="burger">
         <div class="bar"></div>
         <div class="bar"></div>

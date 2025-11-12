@@ -10,3 +10,72 @@ a {
     color: inherit;
     transition: color 0.3s ease;
 }
+
+/*****************************************************************/
+/* SECTION CTA (réutilisable sur toutes les pages)               */
+/*****************************************************************/
+
+#cta-final {
+  padding: 5rem 0;
+  text-align: center;
+  color: #fff;
+}
+
+#cta-final h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#cta-final p {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+#cta-final .btn {
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+#cta-final .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Harmonisation responsive */
+@media (max-width: 768px) {
+  #cta-final {
+    padding: 3rem 1.5rem;
+  }
+
+  #cta-final h2 {
+    font-size: 1.6rem;
+  }
+
+  #cta-final p {
+    font-size: 1rem;
+  }
+}
+
+
+/*****************************************************************/
+/* SECTION RÉALISATIONS                                          */
+/*****************************************************************/
+#realisations .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#realisations .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+#realisations img {
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  object-fit: cover;
+  height: 200px;
+}

@@ -1,0 +1,141 @@
+#about-hero {
+  background: linear-gradient(135deg, #0d6efd 0%, #1e88e5 100%);
+  color: #fff;
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;            /* marge intérieure réduite */
+
+}
+
+#about-hero h1 {
+  font-weight: 700;
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+
+#about-hero p {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  #about-hero {
+    min-height: auto;
+    padding: 3rem 1.5rem;
+  }
+
+  #about-hero h1 {
+    font-size: 2rem;
+  }
+
+  #about-hero p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+
+/*****************************************************************/
+/* SECTION MISSION - Page About                                  */
+/*****************************************************************/
+
+#mission {
+  background-color: #f8f9fa;
+  padding: 5rem 1.5rem;
+  text-align: center; /* ✅ centre par défaut tout ce qu’il contient */
+}
+
+#mission h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0d6efd;
+  letter-spacing: 0.5px;
+  text-align: center; /* ✅ force le centrage du titre */
+  margin-bottom: 1.5rem;
+}
+
+#mission .mission-lead,
+#mission .mission-text {
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.8;
+  text-align: justify; /* ✅ justifie uniquement le texte */
+}
+
+#mission .mission-lead {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+#mission .mission-text {
+  font-size: 1.05rem;
+  color: #6c757d;
+}
+
+@media (max-width: 768px) {
+  #mission {
+    padding: 3rem 1rem;
+  }
+
+  #mission h2 {
+    font-size: 1.7rem;
+  }
+}
+
+
+
+/*****************************************************************/
+/* SECTION VALEURS - Version épurée                              */
+/*****************************************************************/
+
+#valeurs {
+  background-color: #fff;
+  padding: 5rem 1rem;
+}
+
+#valeurs .row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* empêche de passer à la ligne */
+  gap: 4rem; /* espace entre les blocs */
+}
+
+
+
+#valeurs h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0d6efd;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+#valeurs h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#valeurs p {
+  font-size: 1rem;
+  color: #6c757d;
+  line-height: 1.8;
+  text-align: justify;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  #valeurs .row {
+    flex-wrap: wrap; /* autorise le retour à la ligne */
+  }
+}
+

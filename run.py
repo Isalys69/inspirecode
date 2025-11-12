@@ -23,6 +23,27 @@ def portfolio():
     # Page Portfolio
     return render_template("portfolio.html")
 
+@app.route("/vitrine")
+def vitrine():
+    # Page Portfolio
+    return render_template("vitrine.html")
+
+@app.route("/ecommerce")
+def ecommerce():
+    # Page Portfolio
+    return render_template("ecommerce.html")
+
+@app.route("/automatisations")
+def automatisations():
+    # Page Portfolio
+    return render_template("automatisations.html")
+
+@app.route("/appmobile")
+def appmobile():
+    # Page Portfolio
+    return render_template("appmobile.html")
+
+
 
 @app.route('/robots.txt')
 def robots():

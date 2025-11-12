@@ -122,12 +122,28 @@ header {
     height: 100vh;
     background: url('../images/hero-bg.jpg') center/cover no-repeat;
     display: flex;
+    flex-direction: column; /* permet d'empiler le contenu principal + les blocs */
     justify-content: center;
     align-items: center;
     text-align: center;
     color: #fff;
     padding: 2rem;
     margin-top: 80px;
+    position: relative;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
 }
 
 .hero-content h1 {
@@ -139,20 +155,70 @@ header {
 .hero-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    color: #f8f9fa;
 }
 
-.btn-hero {
+.btn-hero,
+.btn.btn-light {
     display: inline-block;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #fff;
+    color: #007bff;
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    font-weight: 600;
 }
 
-.btn-hero:hover {
-    background-color: #0056b3;
+.btn-hero:hover,
+.btn.btn-light:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+}
+
+/* ===== BLOCS CLIQUABLES DANS LA HERO ===== */
+#hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+#hero .card {
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#hero .card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+#hero .card-body {
+    padding: 1.5rem;
+}
+
+#hero .card h5 {
+    color: #212529;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+#hero .card p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    #hero .card {
+        margin-bottom: 1rem;
+    }
 }
 
 /* ===================== SECTION ABOUT ===================== */

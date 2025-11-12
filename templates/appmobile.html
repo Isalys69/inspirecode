@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Applications mobiles sur mesure - Inspire Code
+{% endblock %}
+
+{% block content %}
+<!-- SECTION INTRO -->
+<section class="py-5 text-center">
+  <div class="container">
+    <h1 class="fw-bold mb-4 text-primary">Applications mobiles sur mesure</h1>
+    <p class="lead mb-5">
+      Emmenez votre projet plus loin avec une application mobile performante, fluide et adaptée à vos besoins.
+    </p>
+    <p>
+      <strong>Inspire Code</strong> conçoit des applications mobiles connectées à vos outils web ou à vos bases de données existantes.  
+      Idéales pour les indépendants et petites entreprises souhaitant proposer une expérience intuitive à leurs clients — ou un outil interne à leur équipe.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION EXEMPLES DE RÉALISATIONS -->
+{% with realisations=[
+  {'image': 'images/real_lsdv_app.jpg', 'titre': 'Les Silences du Vin - Companion App', 'description': 'Application compagnon en développement : gestion de cave, notes de dégustation et synchronisation en ligne.', 'lien': 'https://lessilencesduvin.fr'},
+  {'image': 'images/real_clicrdv.jpg', 'titre': 'ClicRDV Mobile', 'description': 'Prototype d’application de prise de rendez-vous connecté à un back-end Flask et API Google Calendar.', 'lien': ''},
+  {'image': 'images/real_deliverytrack.jpg', 'titre': 'DeliveryTrack', 'description': 'Application interne pour le suivi de livraisons, notifications automatiques et mise à jour du statut client.', 'lien': ''}
+] %}
+  {% include 'partials/realisations.html' %}
+{% endwith %}
+
+<!-- SECTION AVANTAGES -->
+<section class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-4 text-primary">Pourquoi choisir Inspire Code&nbsp;?</h2>
+    <div class="row gy-4">
+      <div class="col-md-4">
+        <i class="bi bi-layers fs-1 text-primary mb-3"></i>
+        <h5 class="fw-semibold">Intégration fluide</h5>
+        <p class="text-muted small">
+          Vos applications mobiles communiquent directement avec votre site ou vos outils métiers grâce à des API sécurisées.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-speedometer2 fs-1 text-primary mb-3"></i>
+        <h5 class="fw-semibold">Performance native</h5>
+        <p class="text-muted small">
+          Développées avec des frameworks modernes, les apps sont rapides, légères et optimisées pour iOS et Android.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <i class="bi bi-people fs-1 text-primary mb-3"></i>
+        <h5 class="fw-semibold">Accompagnement humain</h5>
+        <p class="text-muted small">
+          Un contact direct avec la développeuse — de la conception à la mise en ligne, sans jargon ni intermédiaire.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+{% with 
+  bg_color='bg-info',
+  cta_title="Prêt(e) à créer votre application mobile ?",
+  cta_text="Inspire Code développe des applications légères, fiables et connectées à vos outils existants — sur mesure, sans dépendance.",
+  cta_button="Discutons de votre projet"
+%}
+  {% include 'partials/cta.html' %}
+{% endwith %}
+{% endblock %}

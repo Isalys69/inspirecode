@@ -1,18 +1,91 @@
-
 {% extends "base.html" %}
 
 {% block title %}
-  Développement Web et Mobile à Lyon - Inspire Code
+  Création de sites et applications sur mesure - Inspire Code
 {% endblock %}
-<meta name="description" content="Inspire Code propose des services de développement web et mobile à Saint-Genis-les-Ollières, dans l’ouest lyonnais. Transformez vos idées en solutions digitales performantes.">
+
+<meta name="description" content="Inspire Code crée des sites web, e-commerce et applications sur mesure à Saint-Genis-les-Ollières, dans l’ouest lyonnais. Solutions performantes et design épuré pour indépendants et petites entreprises.">
 
 {% block content %}
   <!-- ============ SECTION HERO ============ -->
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Développement Web & Mobile Innovants</h1>
-      <p>Basés dans l'ouest lyonnais, à Saint-Genis-les-Ollières, nous transformons vos idées en solutions digitales performantes.</p>
-      <a href="{{ url_for('contact') }}" class="btn-hero">Contactez-nous</a>
+  <section id="hero" class="text-center text-white d-flex align-items-center justify-content-center"
+           style="background: url('/static/images/hero-bg.jpg') center center/cover no-repeat; height: 100vh; position: relative;">
+    
+    <!-- Overlay pour contraste -->
+    <div style="position: absolute; inset: 0; background-color: rgba(0,0,0,0.45);"></div>
+
+    <!-- Contenu principal -->
+    <div class="hero-content container position-relative z-1">
+      <h1 class="fw-bold mb-3 display-4">Créons ensemble le site qui propulse votre activité</h1>
+      <p class="lead mb-4">
+        Chez <strong>Inspire Code</strong>, nous concevons des solutions web sur mesure, performantes, esthétiques et pensées pour faire grandir vos projets.
+      </p>
+      <p class="small text-light mb-5">
+        Basés à Saint-Genis-les-Ollières, nous accompagnons indépendants et petites entreprises de l’ouest lyonnais vers une présence digitale claire, rapide et élégante.
+      </p>
+      <!-- <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg px-4 shadow">Demandez votre devis gratuit</a> -->
     </div>
+
+    <!-- ==== GROS BOUTONS CLIQUABLES ==== -->
+    <div class="container mt-5 position-relative z-1">
+      <div class="row justify-content-center text-center gy-4">
+
+        <div class="col-md-3 col-sm-6">
+          <a href="{{ url_for('vitrine') }}" class="btn-offre d-block py-5 px-3">
+            <i class="bi bi-window fs-1 mb-3"></i>
+            <h4 class="fw-bold mb-2">Site vitrine</h4><br>
+            <p class="small mb-0">Présentez votre activité avec un design épuré et responsive. Idéal pour renforcer votre crédibilité et être visible sur Google.</p><br>
+            <p class="small mb-0">À partir de 490 €</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <a href="{{ url_for('ecommerce') }}" class="btn-offre d-block py-5 px-3">
+            <i class="bi bi-bag fs-1 mb-3"></i>
+            <h4 class="fw-bold mb-2">eCommerce</h4><br>
+            <p class="small mb-0">Vendez vos produits en ligne avec une boutique sécurisée, des paiements Stripe et une gestion simplifiée de vos commandes. </p><br>
+            <p class="small mb-0">À partir de 890 €</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+          <a href="{{ url_for('automatisations') }}" class="btn-offre d-block py-5 px-3">
+            <i class="bi bi-gear fs-1 mb-3"></i>
+            <h4 class="fw-bold mb-2 text-primary">Automatisations</h4><br>
+            <p class="small mb-0">Gagnez du temps grâce à des outils sur mesure : formulaires intelligents, intégration d’API et tableaux de bord simplifiés.</p><br>
+            <p class="small fw-semibold mt-2">Tarifs sur devis</p>
+          </a>
+        </div>
+
+        <div class="col-md-3 col-sm-6">
+        <a href="{{ url_for('appmobile') }}" class="btn-offre d-block py-5 px-3">
+        <i class="bi bi-phone fs-1 mb-3"></i>
+        <h4 class="fw-bold mb-2">Applications mobiles</h4><br>
+        <p class="small mb-0">
+          Développez votre application mobile.<br>
+          Simples, performantes et adaptées à vos besoins.
+        </p><br><br>
+        <p class="small mb-0">Tarifs sur devis</p>
+      </a>
+    </div>
+
+
+      </div>
+    </div>
+
+    <!-- ============ VALEURS ============ -->
+    <!--     
+    <div class="valeurs-wrapper text-center mt-5">
+      <h2 class="fw-bold mb-4">Pourquoi choisir <span class="text-primary">Inspire Code</span> ?</h2>
+      <p class="text-light mx-auto" style="max-width: 900px;">
+        Parce que votre présence en ligne mérite plus qu’un simple site : elle doit refléter votre identité, votre professionnalisme et votre singularité.<br><br>
+        Chaque projet est conçu à partir de votre univers, sans template générique.  
+        Des sites rapides, optimisés SEO et adaptés à tous les écrans — parce qu’un beau site doit aussi être efficace.<br><br>
+        Et surtout, un accompagnement humain : un contact direct avec la développeuse, de la première idée jusqu’à la mise en ligne.  
+        Pas d’intermédiaire, pas de jargon inutile.
+      </p>
+    </div>
+
   </section>
-{% endblock %}
+  -->
+ {% endblock %}

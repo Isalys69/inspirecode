@@ -1,0 +1,13 @@
+<!-- ================= SECTION CALL TO ACTION (réutilisable) ================= -->
+<section id="cta-final" class="py-5 bg-primary text-white text-center">
+  <div class="container">
+    <h2 class="fw-bold mb-3">Prêt(e) à donner vie à votre projet digital ?</h2>
+    <p class="lead mb-4">
+      Que vous souhaitiez un site vitrine, une boutique en ligne ou une automatisation métier, 
+      Inspire Code crée une solution à votre image, sans jargon ni stress.
+    </p>
+    <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg px-4 fw-semibold shadow-sm">
+      Demandez votre devis gratuit
+    </a>
+  </div>
+</section>

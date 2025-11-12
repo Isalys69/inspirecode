@@ -5,4 +5,4 @@ static/.DS_Store
 .DS_Store
 
 
-*wsgi.py
+www_inspirecode_fr_wsgi.py

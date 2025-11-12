@@ -4,15 +4,24 @@
 
 #hero {
   position: relative;
-  height: 100vh;
+  min-height: 100dvh;      /* hauteur minimale sur desktop */
+  height: auto;            /* autorise la section à grandir selon le contenu */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centrage vertical naturel */
+  justify-content: center;
   align-items: center;
   text-align: center;
   color: #fff;
   background: url('../images/hero-bg.jpg') center center / cover no-repeat;
-  overflow: hidden;
+  overflow: visible;       /* ne coupe plus les blocs */
+}
+
+@media (max-width: 768px) {
+  #hero {
+    min-height: auto;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
 }
 
 /* Overlay pour le contraste */
@@ -20,7 +29,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: rgba(0, 0, 0, 0);
   z-index: 0;
 }
 

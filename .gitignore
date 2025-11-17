@@ -1,14 +1,30 @@
-# Fichiers sensibles
+# ============================
+#  FICHIERS SENSIBLES
+# ============================
 .env
 config/.env
 
-# Autres fichiers à ignorer
+# ============================
+#  VIRTUAL ENVIRONMENTS
+# ============================
+venv/
+env/
+
+# ============================
+#  PYTHON CACHE
+# ============================
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# macOS
+# ============================
+#  macOS FILES
+# ============================
 .DS_Store
 static/.DS_Store
 
-# PythonAnywhere
+# ============================
+#  PYTHONANYWHERE
+# ============================
 www_inspirecode_fr_wsgi.py

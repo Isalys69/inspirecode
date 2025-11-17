@@ -1,0 +1,133 @@
+/* -------------------------------------------------------
+   Page Devis – Inspire Code
+   Version corrigée : meilleurs espacements + centrage
+-------------------------------------------------------- */
+
+/* HERO */
+.devis-hero {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    text-align: center;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.devis-hero h1 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.devis-hero p {
+    max-width: 650px;
+    margin: 0.5rem auto 1.5rem auto;
+    color: #555;
+}
+
+/* FORMULAIRE */
+#formulaire-devis {
+    padding-top: 4rem;
+}
+
+#formulaire-devis form {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 14px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+}
+
+#formulaire-devis h4 {
+    font-size: 1.35rem;
+    margin: 1rem 0 .8rem 0;
+    color: #222;
+}
+
+/* Labels */
+#formulaire-devis label.form-label {
+    font-weight: 600;
+    margin-bottom: .3rem;
+}
+
+/* Inputs */
+#formulaire-devis .form-control,
+#formulaire-devis .form-select {
+    border-radius: 8px;
+    padding: .55rem .75rem;
+}
+
+/* RGPD */
+#formulaire-devis .form-check-label {
+    font-size: 0.9rem;
+}
+
+/* Bouton */
+#formulaire-devis button {
+    border-radius: 50px;
+    font-weight: 600;
+    padding: .7rem 2.5rem;
+}
+
+/* TARIFS */
+
+.tarifs-box {
+    position: sticky;
+    top: 120px;
+}
+
+
+.list-group {
+    max-width: 900px;
+    margin: 3rem auto;
+}
+
+.list-group-item {
+    font-size: 1rem;
+    padding: 1.1rem 1.4rem;
+}
+
+.list-group-item strong {
+    color: var(--primary-color, #0d6efd);
+}
+
+/* CTA Final */
+.container.text-center {
+    padding: 4rem 0;
+}
+
+.container.text-center .btn-primary {
+    border-r
+
+/* Restaurer Bootstrap pour la page devis */
+#formulaire-devis.container,
+#formulaire-devis .container {
+    max-width: 1140px !important;
+    padding: 0 1rem !important;
+}
+
+#formulaire-devis .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+#formulaire-devis .col-lg-7 {
+    flex: 0 0 58.333% !important;
+    max-width: 58.333% !important;
+}
+
+#formulaire-devis .col-lg-5 {
+    flex: 0 0 41.666% !important;
+    max-width: 41.666% !important;
+}
+
+.devis-hero {
+    margin-top: 120px !important;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #e5e5e5;
+    width: 100%;
+}
+

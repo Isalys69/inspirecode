@@ -1,66 +1,125 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask import send_from_directory
+from flask_mail import Mail, Message
+from dotenv import load_dotenv
+import os
+
+load_dotenv("config/.env")
 
 app = Flask(__name__)
 
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
+
+
+# Configuration de Flask-Mail
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+
+
+def str_to_bool(value):
+    return value.lower() in ("true", "1", "yes", "y")
+
+app.config['MAIL_USE_TLS'] = str_to_bool(os.getenv('MAIL_USE_TLS', 'true'))
+app.config['MAIL_USE_SSL'] = str_to_bool(os.getenv('MAIL_USE_SSL', 'false'))
+
+
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
+
+
+# Destinataires
+app.config['RECIPIENTS'] = [os.getenv('MAIL_RECIPIENT')]
+#app.config['RECIPIENTS'] = [os.getenv('MAIL_RECIPIENT')].split(',')  # Convertir la chaîne en liste
+
+mail = Mail(app)
+
+print("SMTP =", app.config['MAIL_SERVER'], app.config['MAIL_PORT'])
+print("EMAIL =", app.config['MAIL_USERNAME'])
+print("PASSWORD =", app.config['MAIL_PASSWORD'])
+print("DEFAULT SENDER =", app.config['MAIL_DEFAULT_SENDER'])
+
+
+
+
+@app.route("/devis", methods=["GET", "POST"])
+def devis():
+    if request.method == "POST":
+
+        print("📩 FORM DATA REÇU PAR FLASK :", request.form)
+
+
+        nom = request.form['nom']
+        email = request.form['email']
+        telephone = request.form.get('telephone', 'Non précisé')
+        type_projet = request.form['type_projet']
+        budget = request.form['budget']
+        delais = request.form['delais']
+        message = request.form['message']
+
+        subject = f"[Inspire Code] Demande de devis – {nom}"
+        body = f"""
+Nouvelle demande de devis Inspire Code :
+
+Nom : {nom}
+Email : {email}
+Téléphone : {telephone}
+
+Type de projet : {type_projet}
+Budget souhaité : {budget}
+Délais : {delais}
+
+Message :
+{message}
+"""
+
+        msg = Message(
+            subject=subject,
+            sender=app.config['MAIL_DEFAULT_SENDER'],
+            recipients=app.config['RECIPIENTS'],
+            body=body
+        )
+
+        try:
+            mail.send(msg)
+            print("📨 TENTATIVE D'ENVOI D'EMAIL VIA FLASK-MAIL...")
+            flash("Votre demande de devis a bien été envoyée. Je reviens vers vous sous 24h.", "success")
+        except Exception as e:
+            print("❌ ERREUR FLASK-MAIL :", e)
+            flash(f"Erreur lors de l'envoi : {e}", "danger")
+
+        return redirect(url_for("devis"))
+
+    return render_template("devis.html")
+
+
 @app.route("/")
 def home():
-    # Page d'accueil
     return render_template("index.html")
 
 @app.route("/about")
 def about():
-    # Page À propose
     return render_template("about.html")
-
-@app.route("/services")
-def services():
-    #Page Services
-    return render_template("services.html")
-
-@app.route("/portfolio")
-def portfolio():
-    # Page Portfolio
-    return render_template("portfolio.html")
 
 @app.route("/vitrine")
 def vitrine():
-    # Page Portfolio
     return render_template("vitrine.html")
 
 @app.route("/ecommerce")
 def ecommerce():
-    # Page Portfolio
     return render_template("ecommerce.html")
 
 @app.route("/automatisations")
 def automatisations():
-    # Page Portfolio
     return render_template("automatisations.html")
 
 @app.route("/appmobile")
 def appmobile():
-    # Page Portfolio
     return render_template("appmobile.html")
-
-
 
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('static', 'robots.txt')
-
-
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    #Page Contact - Gère aussi le formulaire
-    if request.method == "POST":
-        # Exemple : traiter les données du formulaire (désactivé ici)
-        # nom = request.form.get("name")
-        # email = request.form.get("email")
-        # message = request.form.get("message")
-        # TODO: traiter les données (envoi d'email, stockage, etc.)
-        return redirect(url_for("contact"))  # On peut rediriger vers la page contact ou home
-    return render_template("contact.html")
 
 @app.route('/mentions-legales')
 def mentionslegales():
@@ -69,10 +128,6 @@ def mentionslegales():
 @app.route('/politique-confidentialite')
 def politiqueconfidentialite():
     return render_template('politique-confidentialite.html')
-
-
-
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

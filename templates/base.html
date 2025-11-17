@@ -10,30 +10,37 @@
   <!-- Titre de la page, dynamique grâce à Flask -->
   <title>{% block title %}Inspire Code{% endblock %}</title>
   
-  <!-- Liens pour les polices Google Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome pour les icônes -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  <!-- Liens CSS structurés -->
+  <!-- 🔥 BOOTSTRAP (CSS) — MANQUAIT COMPLETEMENT -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- CSS Personnels -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/hero.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/devis.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/sections.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
 
-  <!-- Favicon pour la page -->
+  <!-- Favicon -->
   <link rel="icon" href="https://via.placeholder.com/32" type="image/png">
 
 </head>
 <body>
-  <!-- En-tête avec navigation principale -->
+  <!-- Header -->
   <header>
     <nav class="navbar">
       <a href="{{ url_for('home') }}" class="logo">
@@ -51,19 +58,22 @@
     </nav>
   </header>
 
-  <!-- Section principale où le contenu spécifique sera injecté -->
+  <!-- Contenu -->
   <main>
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Pied de page avec mention de droits -->
+  <!-- Footer -->
   <footer>
     <div class="container">
       <p>© 2024 Inspire Code - Tous droits réservés.</p>
     </div>
   </footer>
 
-  <!-- Lien vers le fichier JavaScript principal -->
+  <!-- BOOTSTRAP JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS personnalisé -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

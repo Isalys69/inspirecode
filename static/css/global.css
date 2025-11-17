@@ -3,6 +3,9 @@ body {
     font-family: 'Roboto', sans-serif;
     color: #333;
     background-color: #f8f9fa;
+    padding-top: 90px; /* pour laisser la place au header fixe */
+}
+
 }
 
 a {

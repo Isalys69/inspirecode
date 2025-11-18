@@ -1,5 +1,5 @@
 # 🌐 Inspire Code  
-**Développement Web & Automatisations – Saint-Genis-les-Ollières**
+** Développement Web, App. mobile & Automatisations **
 
 ![Logo Inspire Code](static/images/logo.png)
 

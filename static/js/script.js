@@ -1,19 +1,29 @@
 /*****************************************************************/
-/* SCRIPT GLOBAL - VERSION STABLE                                */
+/* SCRIPT GLOBAL - VERSION OPTIMISÉE POUR NOUVEAU HEADER        */
 /*****************************************************************/
 
-// Gestion du menu burger
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('nav-links');
+/* ---- MENU MOBILE ---- */
 
-burger.addEventListener('click', (event) => {
-  event.stopPropagation();
-  navLinks.classList.toggle('nav-active');
-});
+const burgerBtn = document.getElementById("burgerBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
-// Ferme le menu si on clique ailleurs
-document.addEventListener('click', () => {
-  if (navLinks.classList.contains('nav-active')) {
-    navLinks.classList.remove('nav-active');
-  }
-});
+if (burgerBtn && mobileMenu) {
+
+  // Toggle ouverture/fermeture du menu mobile
+  burgerBtn.addEventListener("click", (event) => {
+    event.stopPropagation(); // empêche la fermeture immédiate
+    mobileMenu.classList.toggle("ic-mobile-open");
+  });
+
+  // Fermer le menu si clic hors menu
+  document.addEventListener("click", () => {
+    if (mobileMenu.classList.contains("ic-mobile-open")) {
+      mobileMenu.classList.remove("ic-mobile-open");
+    }
+  });
+
+  // Empêcher fermeture si clic à l'intérieur du menu
+  mobileMenu.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
+}

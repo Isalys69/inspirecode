@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Réalisations – Inspire Code
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="text-center text-white py-5" style="background: linear-gradient(120deg, #0A1A2F, #0E5191);">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Mes Réalisations</h1>
+    <p class="lead mt-3">
+      Quelques projets développés pour des entreprises, indépendants et associations.
+    </p>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="container py-5">
+  <div class="row gy-5">
+
+    <!-- PROJET 1 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{{ url_for('static', filename='projects/projet1.jpg') }}" class="card-img-top" alt="Projet 1">
+        <div class="card-body">
+          <h3 class="h5 fw-bold">Site vitrine – E Conpont</h3>
+          <p class="text-muted small">
+            Développement d’un site professionnel pour une entreprise de conseil, avec optimisation SEO et design minimaliste.
+          </p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Voir le projet</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJET 2 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{{ url_for('static', filename='projects/projet2.jpg') }}" class="card-img-top" alt="Projet 2">
+        <div class="card-body">
+          <h3 class="h5 fw-bold">E-commerce – Boutique Artisanale</h3>
+          <p class="text-muted small">
+            Création d'une boutique complète avec gestion des produits, paiements sécurisés et automatisations.
+          </p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Voir le projet</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJET 3 -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{{ url_for('static', filename='projects/projet3.jpg') }}" class="card-img-top" alt="Projet 3">
+        <div class="card-body">
+          <h3 class="h5 fw-bold">Application mobile – Association locale</h3>
+          <p class="text-muted small">
+            Application simple et efficace pour faciliter la communication interne et les inscriptions aux événements.
+          </p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Voir le projet</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="text-center text-white py-5" style="background: #0E5191;">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Et si votre projet était le prochain ?</h2>
+    <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Me contacter</a>
+  </div>
+</section>
+
+{% endblock %}

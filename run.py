@@ -116,6 +116,31 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route("/offres")
+def offres():
+    return render_template("offres.html")
+
+@app.route("/realisations")
+def realisations():
+    return render_template("realisations.html")
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        nom = request.form.get("nom")
+        email = request.form.get("email")
+        sujet = request.form.get("sujet")
+        message = request.form.get("message")
+
+        # Exemple : traitement, envoi email, stockage, etc.
+        print("NOUVEAU MESSAGE :", nom, email, sujet, message)
+
+        # Futur : flash message de confirmation, redirection, etc.
+        return render_template("contact.html", success=True)
+
+    return render_template("contact.html")
+
+
 @app.route("/vitrine")
 def vitrine():
     return render_template("vitrine.html")

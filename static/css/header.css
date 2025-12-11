@@ -1,105 +1,131 @@
-/*****************************************************************/
-/* HEADER - VERSION STABLE & PROFESSIONNELLE                     */
-/*****************************************************************/
+/* -------------------------------------------------------- */
+/* STRUCTURE GLOBALE */
+/* -------------------------------------------------------- */
 
-header {
+.ic-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  z-index: 10;
-  padding: 1rem 2rem;
+  background-color: #FFF;
+  z-index: 9999;
+  border-bottom: 1px solid #E6E9EE;
+  height: 80px;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+/* -------------------------------------------------------- */
+/* LOGO */
+/* -------------------------------------------------------- */
+
+.ic-logo {
+  height: 40px; /* conforme aux recommandations 32–40px */
+  width: auto;
 }
 
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.logo-img {
-  width: 55px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.logo-text {
-  color: #212529;
+.ic-logo-text {
   font-weight: 600;
-  font-size: 1.2rem;
-  font-family: 'Montserrat', sans-serif;
+  color: #0A1A2F;
+  font-size: 18px;
 }
 
-/* Liens */
-.nav-links {
+/* -------------------------------------------------------- */
+/* MENU DESKTOP */
+/* -------------------------------------------------------- */
+
+.ic-nav {
   list-style: none;
-  display: flex;
-  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  gap: 40px; /* préco : 32–48px */
 }
 
-.nav-links li a {
-  color: #212529;
+.ic-nav li a {
   text-decoration: none;
+  font-size: 16px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  color: #0A1A2F;
+  transition: 0.25s ease;
 }
 
-.nav-links li a:hover {
-  color: #0d6efd;
+/* Hover */
+.ic-nav li a:hover {
+  color: #4DA3FF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-/*****************************************************************/
-/* Responsive mobile                                              */
-/*****************************************************************/
+/* -------------------------------------------------------- */
+/* CTA SECONDAIRE */
+/* -------------------------------------------------------- */
 
-.burger {
-  display: none;
+.ic-cta-secondary {
+  border: 1px solid #4DA3FF;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: #4DA3FF;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.ic-cta-secondary:hover {
+  background-color: rgba(77, 163, 255, 0.15);
+  color: #0A1A2F;
+}
+
+/* -------------------------------------------------------- */
+/* BURGER MENU */
+/* -------------------------------------------------------- */
+
+.ic-burger {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  cursor: pointer;
-  width: 25px;
-  height: 20px;
+  gap: 5px;
 }
 
-.burger .bar {
-  height: 3px;
-  width: 100%;
-  background-color: #212529;
-  margin: 3px 0;
-  transition: all 0.3s ease;
+.ic-burger span {
+  width: 24px;
+  height: 2px;
+  background-color: #0A1A2F;
+  display: block;
+  transition: 0.25s ease;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fff;
-    flex-direction: column;
-    align-items: center;
-    width: 220px;
-    padding: 1rem 0;
-    border-radius: 8px;
-    display: none;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
+/* -------------------------------------------------------- */
+/* MENU MOBILE */
+/* -------------------------------------------------------- */
 
-  .nav-links.nav-active {
-    display: flex !important;
-  }
+.ic-mobile-menu {
+  display: none;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E6E9EE;
+  padding: 20px;
+}
 
-  .burger {
-    display: flex;
-  }
+.ic-mobile-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ic-mobile-menu ul li {
+  margin-bottom: 18px;
+}
+
+.ic-mobile-menu a {
+  color: #0A1A2F;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ic-mobile-menu a:hover {
+  color: #4DA3FF;
+}
+
+.ic-mobile-open {
+  display: block;
 }

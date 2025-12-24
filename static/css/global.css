@@ -1,0 +1,108 @@
+/* === GLOBAL STYLES (Contient les styles globaux pour tout le site) === */
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/**************** SCROLL INDICATOR (réutilisable) ****************/
+
+.scroll-indicator {
+  margin-bottom: 1.75rem; /* environ 28px */
+}
+
+.scroll-indicator a {
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.scroll-indicator a:hover {
+  color: #0d6efd;
+}
+
+.scroll-indicator span {
+  display: inline-block;
+  animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/*****************************************************************/
+/* SECTION CTA (réutilisable sur toutes les pages)               */
+/*****************************************************************/
+
+#cta-final {
+  padding: 5rem 0;
+  text-align: center;
+  color: #fff;
+}
+
+#cta-final h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#cta-final p {
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+#cta-final .btn {
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+#cta-final .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Harmonisation responsive */
+@media (max-width: 768px) {
+  #cta-final {
+    padding: 3rem 1.5rem;
+  }
+
+  #cta-final h2 {
+    font-size: 1.6rem;
+  }
+
+  #cta-final p {
+    font-size: 1rem;
+  }
+}
+
+
+/*****************************************************************/
+/* SECTION RÉALISATIONS                                          */
+/*****************************************************************/
+#realisations .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#realisations .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+#realisations img {
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  object-fit: cover;
+  height: 200px;
+}

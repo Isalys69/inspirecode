@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Contact – Inspire Code
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="text-center text-white py-5" style="background: linear-gradient(120deg, #0A1A2F, #0E5191);">
+  <div class="container">
+    <h1 class="display-5 fw-bold">Me contacter</h1>
+    <p class="lead mt-3">
+      Un projet web, une question, une idée à développer ? Je vous réponds rapidement.
+    </p>
+  </div>
+</section>
+
+<!-- FORMULAIRE -->
+<section class="container py-5" style="max-width: 780px;">
+  <div class="card shadow-sm p-4 border-0">
+
+    <h2 class="fw-bold mb-4 text-center">Formulaire de contact</h2>
+
+    <form action="{{ url_for('contact') }}" method="POST" class="needs-validation" novalidate>
+
+      <!-- NOM -->
+      <div class="mb-3">
+        <label for="nom" class="form-label fw-semibold">Nom</label>
+        <input type="text" name="nom" id="nom" class="form-control" required>
+        <div class="invalid-feedback">Merci d’indiquer votre nom.</div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Email</label>
+        <input type="email" name="email" id="email" class="form-control" required>
+        <div class="invalid-feedback">Veuillez entrer un email valide.</div>
+      </div>
+
+      <!-- SUJET -->
+      <div class="mb-3">
+        <label for="sujet" class="form-label fw-semibold">Sujet</label>
+        <input type="text" name="sujet" id="sujet" class="form-control" required>
+        <div class="invalid-feedback">Merci d’indiquer le sujet de votre demande.</div>
+      </div>
+
+      <!-- MESSAGE -->
+      <div class="mb-3">
+        <label for="message" class="form-label fw-semibold">Message</label>
+        <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+        <div class="invalid-feedback">Merci d’écrire un message.</div>
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary btn-lg px-4">
+          Envoyer le message
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="text-center text-white py-5" style="background: #0E5191;">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Je réponds en général sous 24h.</h2>
+    <p class="small">En cas d’urgence, vous pouvez préciser “URGENT” dans le message.</p>
+  </div>
+</section>
+
+{% endblock %}

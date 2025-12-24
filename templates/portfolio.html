@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Portfolio - Inspire Code
+{% endblock %}
+
+{% block content %}
+<section id="portfolio">
+  <div class="container">
+    <h2>Portfolio</h2>
+    <p>Découvrez quelques-unes de nos réalisations :</p>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="{{ url_for('static', filename='images/portfolio1.jpg') }}" alt="Projet 1">
+        <h3>Projet 1</h3>
+        <p>Site e-commerce pour un client spécialisé dans les produits artisanaux.</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="{{ url_for('static', filename='images/portfolio2.jpg') }}" alt="Projet 2">
+        <h3>Projet 2</h3>
+        <p>Refonte d’une application mobile pour la gestion de tâches collaboratives.</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="{{ url_for('static', filename='images/portfolio3.jpg') }}" alt="Projet 3">
+        <h3>Projet 3</h3>
+        <p>Développement d’une plateforme de réservation en ligne pour une agence de voyage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

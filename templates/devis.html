@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Demande de devis – Inspire Code{% endblock %}
+
+{% block content %}
+
+<section class="devis-hero container py-3">
+    <div class="text-center">
+        <h1 class="fw-bold mb-3">Demandez votre devis personnalisé</h1>
+        <p class="lead mb-4">Réponse sous 24h. Une estimation claire, rapide et adaptée à votre projet.</p>
+    </div>
+</section>
+
+<section class="container py-5" id="formulaire-devis">
+    <div class="row g-5 align-items-start">
+
+        <!-- FORMULAIRE (gauche) -->
+        <div class="col-md-7">
+            <form method="POST" action="{{ url_for('devis') }}" class="p-4 shadow-sm bg-white rounded-4">
+                <input type="hidden" name="form_type" value="devis">
+
+                <h4 class="fw-semibold border-bottom pb-2 mb-4">Vos informations</h4>
+
+                <div class="row g-3">
+
+                    <!-- Vos infos -->
+                    <div class="col-md-4">
+                        <label class="form-label">Nom et prénom</label>
+                        <input type="text" name="nom" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Téléphone (optionnel)</label>
+                        <input type="text" name="telephone" class="form-control">
+                    </div>
+
+                    <!-- ESPACEMENT + titre section projet -->
+                    <div class="col-12 mt-4">
+                        <h4 class="fw-semibold border-bottom pb-2 mb-3">Votre projet</h4>
+                    </div>
+
+                    <!-- Champs projet -->
+                    <div class="col-md-4">
+                        <label class="form-label">Type de projet</label>
+                        <select name="type_projet" class="form-select" required>
+                            <option value="">Sélectionner…</option>
+                            <option>Site vitrine</option>
+                            <option>E-commerce</option>
+                            <option>Application mobile</option>
+                            <option>Automatisation / scripts</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Budget souhaité</label>
+                        <select name="budget" class="form-select" required>
+                            <option value="">Sélectionner…</option>
+                            <option>< 800 €</option>
+                            <option>800 – 1500 €</option>
+                            <option>1500 – 3000 €</option>
+                            <option>> 3000 €</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Délais</label>
+                        <select name="delais" class="form-select" required>
+                            <option value="">Sélectionner…</option>
+                            <option>Urgent</option>
+                            <option>Standard</option>
+                            <option>Flexible</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" rows="5" class="form-control" required></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" name="rgpd" required>
+                            <label class="form-check-label">J’accepte que mes informations soient utilisées pour traiter ma demande de devis.</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center mt-4">
+                        <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">Envoyer</button>
+                    </div>
+
+                </div>
+            </form>
+        </div> <!-- FIN COL-MD-7 -->
+
+
+        <!-- TARIFS (droite) -->
+        <div class="col-md-5">
+            <div class="tarifs-box p-4 bg-white shadow-sm rounded-4">
+                <h4 class="fw-semibold mb-4">Tarifs indicatifs</h4>
+                <ul class="list-group shadow-sm rounded-4">
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Site vitrine</span>
+                        <strong>À partir de 990 €</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Site e-commerce</span>
+                        <strong>À partir de 1490 €</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Automatisations & scripts</span>
+                        <strong>À partir de 250 €</strong>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Maintenance</span>
+                        <strong>25 €/mois</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div> <!-- FIN ROW -->
+</section>
+
+{% endblock %}

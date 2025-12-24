@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Offres & Tarifs – Inspire Code
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO PAGE OFFRES -->
+<section id="about-hero" class="d-flex align-items-center text-white text-center" style="background: linear-gradient(120deg, #0a2342, #0e5191);">
+  <div class="container py-5">
+
+    <h1 class="display-5 fw-bold">Mes Offres & Tarifs</h1>
+      Des solutions web adaptées à chaque besoin, avec un accompagnement personnalisé.
+    </p>
+  </div>
+</section>
+
+<!-- SECTION OFFRES (PARTIAL) -->
+{% include "partials/_offres_detail.html" %}
+
+<!-- CTA FINAL -->
+<section class="text-center text-white py-5" style="background: #0e5191;">
+  <div class="container">
+    <h2 class="fw-bold mb-4">Un projet ? ... Je vous accompagne</h2>
+    <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">
+      Me contacter
+    </a>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+/* -------------------------------------------------------- */
+/* STRUCTURE GLOBALE */
+/* -------------------------------------------------------- */
+
+.ic-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFF;
+  z-index: 9999;
+  border-bottom: 1px solid #E6E9EE;
+  height: 80px;
+}
+
+/* -------------------------------------------------------- */
+/* LOGO */
+/* -------------------------------------------------------- */
+
+.ic-logo {
+  height: 40px; /* conforme aux recommandations 32–40px */
+  width: auto;
+}
+
+.ic-logo-text {
+  font-weight: 600;
+  color: #0A1A2F;
+  font-size: 18px;
+}
+
+/* -------------------------------------------------------- */
+/* MENU DESKTOP */
+/* -------------------------------------------------------- */
+
+.ic-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 40px; /* préco : 32–48px */
+}
+
+.ic-nav li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0A1A2F;
+  transition: 0.25s ease;
+}
+
+/* Hover */
+.ic-nav li a:hover {
+  color: #4DA3FF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* -------------------------------------------------------- */
+/* CTA SECONDAIRE */
+/* -------------------------------------------------------- */
+
+.ic-cta-secondary {
+  border: 1px solid #4DA3FF;
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: #4DA3FF;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.ic-cta-secondary:hover {
+  background-color: rgba(77, 163, 255, 0.15);
+  color: #0A1A2F;
+}
+
+/* -------------------------------------------------------- */
+/* BURGER MENU */
+/* -------------------------------------------------------- */
+
+.ic-burger {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ic-burger span {
+  width: 24px;
+  height: 2px;
+  background-color: #0A1A2F;
+  display: block;
+  transition: 0.25s ease;
+}
+
+/* -------------------------------------------------------- */
+/* MENU MOBILE */
+/* -------------------------------------------------------- */
+
+.ic-mobile-menu {
+  display: none;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E6E9EE;
+  padding: 20px;
+}
+
+.ic-mobile-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.ic-mobile-menu ul li {
+  margin-bottom: 18px;
+}
+
+.ic-mobile-menu a {
+  color: #0A1A2F;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.ic-mobile-menu a:hover {
+  color: #4DA3FF;
+}
+
+.ic-mobile-open {
+  display: block;
+}

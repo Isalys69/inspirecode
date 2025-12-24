@@ -1,0 +1,93 @@
+<section class="container py-5">
+  <h2 class="text-center fw-bold mb-5">Des offres adaptées à chaque besoin</h2>
+
+  <div class="row text-center gy-4">
+
+    <!-- =================== SITE VITRINE =================== -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-4">
+          <img src="{{ url_for('static', filename='images/vitrine.jpg') }}" height="80"/>
+          <i class="bi bi-window fs-1 mb-3 text-primary"></i>
+          <h3 class="fw-bold h5">Site vitrine</h3>
+
+          <p class="text-muted small mt-3">
+            Présentez votre activité avec un site clair, moderne et responsive.
+            Idéal pour renforcer vos services et votre identité visuelle.
+          </p>
+
+          <p class="fw-semibold mt-3">À partir de 490 €</p>
+
+          <a href="{{ url_for('vitrine') }}" class="btn btn-outline-primary btn-sm mt-3">
+            Découvrir l’offre
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== ECOMMERCE =================== -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-4">
+          <img src="{{ url_for('static', filename='images/commerce.jpg') }}" height="80"/>
+          <i class="bi bi-bag fs-1 mb-3 text-primary"></i>
+          <h3 class="fw-bold h5">eCommerce</h3>
+
+          <p class="text-muted small mt-3">
+            Vendez vos produits en ligne via une boutique sécurisée, des paiements modernes et une gestion simplifiée.
+          </p>
+
+          <p class="fw-semibold mt-3">À partir de 890 €</p>
+
+          <a href="{{ url_for('ecommerce') }}" class="btn btn-outline-primary btn-sm mt-3">
+            Découvrir l’offre
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== AUTOMATISATIONS =================== -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-4">
+          <img src="{{ url_for('static', filename='images/automatisation.jpg') }}" height="80"/>
+          <i class="bi bi-gear fs-1 mb-3 text-primary"></i>
+          <h3 class="fw-bold h5">Automatisations</h3>
+
+          <p class="text-muted small mt-3">
+            Gagnez du temps au quotidien grâce à des outils sur mesure (Formulaires intelligents, intégration automatisés).
+          </p>
+
+          <p class="fw-semibold mt-3">Sur devis</p>
+
+          <a href="{{ url_for('automatisations') }}" class="btn btn-outline-primary btn-sm mt-3">
+            Découvrir l’offre
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =================== APPLICATIONS MOBILES =================== -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 h-100">
+        <div class="card-body text-center p-4">
+          <img src="{{ url_for('static', filename='images/mobile.jpg') }}" height="80"/>
+          <i class="bi bi-phone fs-1 mb-3 text-primary"></i>
+          <h3 class="fw-bold h5">Applications mobiles</h3>
+
+          <p class="text-muted small mt-3">
+            Développez une application mobile performante et évolutive,
+            adaptée à vos besoins et pensée pour vos utilisateurs.
+          </p>
+
+          <p class="fw-semibold mt-3">Sur devis</p>
+
+          <a href="{{ url_for('appmobile') }}" class="btn btn-outline-primary btn-sm mt-3">
+            Découvrir l’offre
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

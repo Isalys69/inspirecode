@@ -1,0 +1,34 @@
+/* =========================
+   PAGES OFFRES
+========================= */
+
+.ic-section {
+  padding-top: 2rem;
+  padding-bottom: 0rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.ic-section > .container > :last-child {
+  margin-bottom: 0;
+}
+
+
+.ic-accompagnements {
+  padding-bottom: 4rem;
+}
+
+
+.ic-offre-section {
+  padding: 5rem 0;
+}
+
+/* Sections plus respirantes */
+.ic-offre-section--large {
+  padding: 6rem 0;
+}
+
+/* Sections plus compactes */
+.ic-offre-section--compact {
+  padding: 1rem 0;
+}

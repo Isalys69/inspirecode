@@ -4,6 +4,14 @@ from flask_mail import Mail, Message
 from dotenv import load_dotenv
 import os
 
+from datetime import date
+from dateutil.relativedelta import relativedelta
+import locale
+
+locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+
+
+
 load_dotenv("config/.env")
 
 app = Flask(__name__)
@@ -141,9 +149,33 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/vitrine")
-def vitrine():
-    return render_template("vitrine.html")
+@app.route("/offres/site-vitrine")
+def offre_site_vitrine():
+    try:
+        locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+    except locale.Error:
+        pass
+
+    mois_disponible = (date.today() + relativedelta(months=1)).strftime("%B").capitalize()
+    return render_template(
+        "offres/site-vitrine.html",
+
+        hero_title="Site vitrine professionnel",
+        hero_subtitle="Une présence en ligne claire, crédible et alignée avec votre activité.",
+
+        cta_title="Besoin d'aide pour choisir ?",
+        cta_button="📅 Réserver un appel conseil de 15 min - Sans engagement",
+        mois_disponible=mois_disponible
+
+    )
+
+
+
+
+
+@app.route("/commander/site-vitrine-essentielle")
+def commander_vitrine_essentielle():
+    return render_template("offres/vitrine-essentielle.html")
 
 @app.route("/ecommerce")
 def ecommerce():

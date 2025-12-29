@@ -1,0 +1,23 @@
+/*****************************************************************/
+/* CTA - INSPIRE CODE                                            */
+/*****************************************************************/
+
+/* CTA générique (déjà utilisé sur l’accueil) */
+#cta-final {
+  background: linear-gradient(120deg, #0a2342, #0e5191);
+}
+
+/* CTA offres (si tu veux une classe dédiée plus tard) */
+.cta-offre {
+  background: linear-gradient(120deg, #0a2342, #0e5191);
+}
+
+/* Bouton CTA */
+#cta-final .btn {
+  transition: all 0.25s ease;
+}
+
+#cta-final .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}

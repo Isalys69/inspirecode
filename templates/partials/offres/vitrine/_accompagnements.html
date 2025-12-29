@@ -1,0 +1,106 @@
+<!-- ================= ACCOMPAGNEMENTS ================= -->
+<section class="ic-section ic-accompagnements">
+  <div class="container">
+
+    <h2 class="text-center fw-bold mb-3">
+      Choisissez votre accompagnement
+    </h2>
+
+    <p class="section-intro text-center mb-5">
+      Des options adaptées à chaque étape de votre projet, selon votre niveau de maturité et vos objectifs.
+    </p>
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- ================= ESSENTIELLE ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm p-4 text-center">
+
+          <h3 class="fw-bold mb-2">Essentielle</h3>
+          <p class="text-muted mb-3">
+            L’essentiel pour être visible rapidement.
+          </p>
+
+          <p class="display-6 fw-bold mb-3">490 €</p>
+
+          <ul class="list-unstyled mb-4">
+            <li>Modèle</li>
+            <li>Site vitrine 3 pages</li>
+            <li>Mise en ligne</li>
+            <li>7 jours garantis</li>
+          </ul>
+
+          <a href="{{ url_for('commander_vitrine_essentielle') }}"
+             class="btn btn-outline-primary fw-semibold">
+            Commander
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ================= ATELIER LIBÉRATION ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow p-4 text-center border-primary">
+
+          <div class="mb-2">
+            <span class="badge bg-primary">Offre signature</span>
+          </div>
+
+          <h3 class="fw-bold mb-2">Atelier Libération</h3>
+          <p class="text-muted mb-3">
+            Un accompagnement stratégique pour poser des bases solides et durables.
+          </p>
+
+          <p class="display-6 fw-bold mb-3">2490 €</p>
+
+          <ul class="list-unstyled mb-4">
+            <li>✓ Audit & positionnement</li>
+            <li>✓ Site sur mesure</li>
+            <li>✓ Accompagnement personnalisé</li>
+            <li>✓ 1 projet tous les 2 mois</li>
+          </ul>
+
+          <p class="small text-muted mb-3">
+            Prochaine disponibilité : <strong>à partir de {{ mois_disponible }}</strong>
+            <br>
+            <span class="small text-muted">
+              J’accompagne volontairement un nombre limité de projets pour préserver la qualité du suivi.
+            </span>
+          </p>
+          <a href="{{ url_for('contact') }}"
+             class="btn btn-primary fw-semibold">
+            Entretien d’éligibilité
+          </a>
+
+        </div>
+      </div>
+
+      <!-- ================= ÉVOLUTION ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm p-4 text-center">
+
+          <h3 class="fw-bold mb-2">Évolution</h3>
+          <p class="text-muted mb-3">
+            Pour les projets spécifiques nécessitant une réflexion sur mesure.
+          </p>
+
+          <p class="display-6 fw-bold mb-3">Sur devis</p>
+
+          <ul class="list-unstyled mb-4">
+            <li>Fonctionnalités avancées</li>
+            <li>Besoin spécifique</li>
+            <li>Accompagnement adapté</li>
+          </ul>
+
+          <a href="{{ url_for('contact') }}"
+             class="btn btn-outline-primary fw-semibold">
+            Diagnostic gratuit
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

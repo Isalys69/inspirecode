@@ -50,6 +50,30 @@
   margin-bottom: 1rem;
 }
 
+
+/*****************************************************************/
+/* HERO PAGES OFFRES                                             */
+/*****************************************************************/
+
+.ic-hero-offre {
+  padding-top: 5rem;   /* compense le header fixe */
+  padding-bottom: 1rem;
+
+  background: linear-gradient(120deg, #0a2342, #0e5191);
+}
+
+.ic-hero-offre h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.ic-hero-offre p {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+
+
 /*****************************************************************/
 /* RESPONSIVE                                                    */
 /*****************************************************************/

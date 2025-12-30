@@ -58,10 +58,9 @@
 }
 
 /* ======================================================== */
-/* DROPDOWN – RÈGLE DE BASE                                 */
+/* DROPDOWN – SOURCE DE VÉRITÉ UNIQUE                       */
 /* ======================================================== */
 
-/* Le sous-menu est TOUJOURS contrôlé par la classe .open */
 .ic-dropdown-menu {
   display: none;
   position: absolute;
@@ -77,8 +76,8 @@
   z-index: 1000;
 }
 
-/* Ouverture explicite */
-.ic-dropdown-menu.open {
+/* OUVERTURE UNIQUEMENT VIA LE PARENT */
+.ic-dropdown.is-open > .ic-dropdown-menu {
   display: block;
 }
 
@@ -93,11 +92,11 @@
 }
 
 /* ======================================================== */
-/* HOVER DESKTOP (UNIQUEMENT SI SOURIS FIABLE)              */
+/* HOVER DESKTOP (CONFORT UNIQUEMENT)                       */
 /* ======================================================== */
 
 @media (hover: hover) and (pointer: fine) {
-  .ic-dropdown:hover .ic-dropdown-menu {
+  .ic-dropdown:hover > .ic-dropdown-menu {
     display: block;
   }
 }
@@ -139,7 +138,6 @@
   width: 24px;
   height: 2px;
   background-color: #0A1A2F;
-  transition: 0.25s ease;
 }
 
 /* ======================================================== */
@@ -153,53 +151,28 @@
   padding: 20px;
 }
 
-.ic-mobile-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.ic-mobile-menu li {
-  margin-bottom: 18px;
-}
-
-.ic-mobile-menu a {
-  font-size: 18px;
-  font-weight: 500;
-  color: #0A1A2F;
-  text-decoration: none;
-}
-
-.ic-mobile-menu a:hover {
-  color: #4DA3FF;
-}
-
-/* Menu mobile ouvert (via JS) */
 .ic-mobile-open {
   display: block;
 }
 
 /* ======================================================== */
-/* SOUS-MENU MOBILE (CLIC JS)                               */
+/* SOUS-MENU MOBILE                                         */
 /* ======================================================== */
 
 @media (max-width: 768px) {
 
-  /* Le sous-menu devient vertical et intégré */
   .ic-mobile-menu .ic-dropdown-menu {
     position: static;
-    display: none;
     box-shadow: none;
     padding-left: 12px;
     margin-top: 8px;
     border-radius: 0;
   }
 
-  .ic-mobile-menu .ic-dropdown-menu.open {
+  .ic-mobile-menu .ic-dropdown.is-open > .ic-dropdown-menu {
     display: block;
   }
 
-  /* Indicateur visuel */
   .ic-dropdown-toggle::after {
     content: "▾";
     margin-left: 6px;
@@ -208,22 +181,13 @@
 }
 
 /* ======================================================== */
-/* ÉCRANS TACTILES (MOBILE PAYSAGE, TABLETTES)              */
+/* TACTILE (iOS / ANDROID – PORTRAIT & PAYSAGE)             */
 /* ======================================================== */
 
 @media (hover: none) and (pointer: coarse) {
 
-  /* Aucun hover implicite sur tactile */
-  .ic-dropdown:hover .ic-dropdown-menu {
+  /* aucun hover implicite */
+  .ic-dropdown:hover > .ic-dropdown-menu {
     display: none;
-  }
-
-  /* Le JS décide via .open */
-  .ic-dropdown-menu {
-    display: none;
-  }
-
-  .ic-dropdown-menu.open {
-    display: block;
   }
 }

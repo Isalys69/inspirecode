@@ -1,102 +1,55 @@
-/*****************************************************************/
-/* SCRIPT GLOBAL – HEADER & NAVIGATION                           */
-/* VERSION STABLE – DESKTOP / MOBILE / TACTILE                  */
-/*****************************************************************/
-
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ============================================================= */
-  /* MENU MOBILE (BURGER)                                          */
-  /* ============================================================= */
+  /* ===================================================== */
+  /* MENU MOBILE (BURGER)                                  */
+  /* ===================================================== */
 
   const burgerBtn = document.getElementById("burgerBtn");
   const mobileMenu = document.getElementById("mobileMenu");
 
   if (burgerBtn && mobileMenu) {
-
-    /* ------------------------------------------------------------- */
-    /* OUVERTURE / FERMETURE DU MENU MOBILE                           */
-    /* ------------------------------------------------------------- */
-
-    burgerBtn.addEventListener("click", (event) => {
-      // Empêche le clic de remonter au document
-      event.stopPropagation();
-
-      // Toggle ouverture / fermeture
+    burgerBtn.addEventListener("click", e => {
+      e.stopPropagation();
       mobileMenu.classList.toggle("ic-mobile-open");
     });
 
-    /* ------------------------------------------------------------- */
-    /* FERMETURE DU MENU SI CLIC EN DEHORS                            */
-    /* ------------------------------------------------------------- */
-
     document.addEventListener("click", () => {
-      if (mobileMenu.classList.contains("ic-mobile-open")) {
-        mobileMenu.classList.remove("ic-mobile-open");
-      }
+      mobileMenu.classList.remove("ic-mobile-open");
     });
 
-    /* ------------------------------------------------------------- */
-    /* EMPÊCHER LA FERMETURE SI CLIC DANS LE MENU                     */
-    /* ------------------------------------------------------------- */
-
-    mobileMenu.addEventListener("click", (event) => {
-      event.stopPropagation();
-    });
-
-    /* ------------------------------------------------------------- */
-    /* SOUS-MENU "OFFRES" – MENU MOBILE                               */
-    /* ------------------------------------------------------------- */
-
-    const mobileDropdownToggles =
-      mobileMenu.querySelectorAll(".ic-dropdown-toggle");
-
-    mobileDropdownToggles.forEach(toggle => {
-      toggle.addEventListener("click", (event) => {
-
-        // Empêche le lien "#" de provoquer un scroll
-        event.preventDefault();
-
-        // Empêche la fermeture du menu mobile
-        event.stopPropagation();
-
-        // Le sous-menu est juste après le lien
-        const submenu = toggle.nextElementSibling;
-        if (!submenu) return;
-
-        // Ouvre / ferme le sous-menu
-        submenu.classList.toggle("open");
-      });
-    });
+    mobileMenu.addEventListener("click", e => e.stopPropagation());
   }
 
-  /* ============================================================= */
-  /* MENU DESKTOP – ÉCRANS TACTILES (PAYSAGE, TABLETTE)            */
-  /* ============================================================= */
+  /* ===================================================== */
+  /* DROPDOWN "OFFRES" – OUVERTURE / FERMETURE PROPRE      */
+  /* ===================================================== */
 
-  // Cible le lien "Offres" du menu desktop
-  const desktopDropdownLinks =
-    document.querySelectorAll(".ic-nav .ic-dropdown > a");
+  const dropdowns = document.querySelectorAll(".ic-dropdown");
+  const dropdownToggles = document.querySelectorAll(".ic-dropdown-toggle");
 
-  desktopDropdownLinks.forEach(link => {
-    link.addEventListener("click", (event) => {
+  dropdownToggles.forEach(button => {
+    button.addEventListener("click", e => {
+      e.stopPropagation();
 
-      // On détecte un écran tactile (pas de hover fiable)
-      const isTouchDevice = window.matchMedia(
-        "(hover: none) and (pointer: coarse)"
-      ).matches;
+      const currentDropdown = button.closest(".ic-dropdown");
+      if (!currentDropdown) return;
 
-      if (!isTouchDevice) return;
+      // Ferme tous les autres dropdowns
+      dropdowns.forEach(dropdown => {
+        if (dropdown !== currentDropdown) {
+          dropdown.classList.remove("is-open");
+        }
+      });
 
-      // Empêche la navigation immédiate
-      event.preventDefault();
+      // Toggle du dropdown courant
+      currentDropdown.classList.toggle("is-open");
+    });
+  });
 
-      // Le sous-menu est juste après le lien
-      const submenu = link.nextElementSibling;
-      if (!submenu) return;
-
-      // Ouvre / ferme le sous-menu
-      submenu.classList.toggle("open");
+  // Clic ailleurs → fermeture de tous les dropdowns
+  document.addEventListener("click", () => {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.remove("is-open");
     });
   });
 

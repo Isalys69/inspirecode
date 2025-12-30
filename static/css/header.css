@@ -29,13 +29,14 @@
 }
 
 /* ======================================================== */
-/* MENU DESKTOP                                             */
+/* NAV DESKTOP                                              */
 /* ======================================================== */
 
 .ic-nav {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
   gap: 40px;
 }
 
@@ -43,22 +44,27 @@
   position: relative;
 }
 
-.ic-nav a {
-  text-decoration: none;
+.ic-nav a,
+.ic-dropdown-toggle {
   font-size: 16px;
   font-weight: 500;
   color: #0A1A2F;
-  transition: color 0.25s ease;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
-.ic-nav a:hover {
+.ic-nav a:hover,
+.ic-dropdown-toggle:hover {
   color: #4DA3FF;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 /* ======================================================== */
-/* DROPDOWN – SOURCE DE VÉRITÉ UNIQUE                       */
+/* DROPDOWN (SOURCE DE VÉRITÉ : .is-open)                   */
 /* ======================================================== */
 
 .ic-dropdown-menu {
@@ -66,17 +72,14 @@
   position: absolute;
   top: 100%;
   left: 0;
-
-  background-color: #ffffff;
   min-width: 200px;
-  padding: 0.75rem 0;
-
+  padding: 12px 0;
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   z-index: 1000;
 }
 
-/* OUVERTURE UNIQUEMENT VIA LE PARENT */
 .ic-dropdown.is-open > .ic-dropdown-menu {
   display: block;
 }
@@ -87,38 +90,8 @@
 
 .ic-dropdown-menu a {
   display: block;
-  padding: 0.5rem 1.25rem;
+  padding: 8px 20px;
   white-space: nowrap;
-}
-
-/* ======================================================== */
-/* HOVER DESKTOP (CONFORT UNIQUEMENT)                       */
-/* ======================================================== */
-
-@media (hover: hover) and (pointer: fine) {
-  .ic-dropdown:hover > .ic-dropdown-menu {
-    display: block;
-  }
-}
-
-/* ======================================================== */
-/* CTA SECONDAIRE                                           */
-/* ======================================================== */
-
-.ic-cta-secondary {
-  border: 1px solid #4DA3FF;
-  padding: 10px 20px;
-  border-radius: 6px;
-  color: #4DA3FF;
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.25s ease;
-}
-
-.ic-cta-secondary:hover {
-  background-color: rgba(77, 163, 255, 0.15);
-  color: #0A1A2F;
 }
 
 /* ======================================================== */
@@ -132,12 +105,15 @@
   display: flex;
   flex-direction: column;
   gap: 5px;
+  cursor: pointer;
 }
 
 .ic-burger span {
   width: 24px;
   height: 2px;
   background-color: #0A1A2F;
+  display: block;
+  border-radius: 1px;
 }
 
 /* ======================================================== */
@@ -155,8 +131,30 @@
   display: block;
 }
 
+.ic-mobile-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ic-mobile-menu li {
+  margin-bottom: 18px;
+}
+
+.ic-mobile-menu a,
+.ic-mobile-menu .ic-dropdown-toggle {
+  font-size: 18px;
+  font-weight: 500;
+  color: #0A1A2F;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 /* ======================================================== */
-/* SOUS-MENU MOBILE                                         */
+/* DROPDOWN MOBILE                                          */
 /* ======================================================== */
 
 @media (max-width: 768px) {
@@ -164,7 +162,7 @@
   .ic-mobile-menu .ic-dropdown-menu {
     position: static;
     box-shadow: none;
-    padding-left: 12px;
+    padding-left: 16px;
     margin-top: 8px;
     border-radius: 0;
   }
@@ -177,17 +175,5 @@
     content: "▾";
     margin-left: 6px;
     font-size: 12px;
-  }
-}
-
-/* ======================================================== */
-/* TACTILE (iOS / ANDROID – PORTRAIT & PAYSAGE)             */
-/* ======================================================== */
-
-@media (hover: none) and (pointer: coarse) {
-
-  /* aucun hover implicite */
-  .ic-dropdown:hover > .ic-dropdown-menu {
-    display: none;
   }
 }

@@ -88,7 +88,14 @@
     <!-- MENU MOBILE -->
     <div class="ic-mobile-menu d-md-none" id="mobileMenu">
       <ul>
-        <li><a href="{{ url_for('offres') }}">Offres</a></li>
+        <li class="ic-dropdown">
+          <a href="#" class="ic-dropdown-toggle">Offres</a>
+          <ul class="ic-dropdown-menu">
+            <li>
+              <a href="{{ url_for('offre_site_vitrine') }}">Site vitrine</a>
+            </li>
+          </ul>
+        </li>
         <li><a href="{{ url_for('realisations') }}">Réalisations</a></li>
         <li><a href="{{ url_for('about') }}">Valeurs</a></li>
         <li><a href="{{ url_for('contact') }}">Contact</a></li>

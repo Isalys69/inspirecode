@@ -1,81 +1,84 @@
-/* -------------------------------------------------------- */
-/* STRUCTURE GLOBALE */
-/* -------------------------------------------------------- */
+/* ======================================================== */
+/* HEADER GLOBAL                                            */
+/* ======================================================== */
 
 .ic-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #FFF;
-  z-index: 9999;
-  border-bottom: 1px solid #E6E9EE;
   height: 80px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #E6E9EE;
+  z-index: 9999;
 }
 
-/* -------------------------------------------------------- */
-/* LOGO */
-/* -------------------------------------------------------- */
+/* ======================================================== */
+/* LOGO                                                     */
+/* ======================================================== */
 
 .ic-logo {
-  height: 40px; /* conforme aux recommandations 32–40px */
+  height: 40px;
   width: auto;
 }
 
 .ic-logo-text {
   font-weight: 600;
-  color: #0A1A2F;
   font-size: 18px;
+  color: #0A1A2F;
 }
 
-/* -------------------------------------------------------- */
-/* MENU DESKTOP */
-/* -------------------------------------------------------- */
+/* ======================================================== */
+/* MENU DESKTOP                                             */
+/* ======================================================== */
 
 .ic-nav {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 40px; /* préco : 32–48px */
+  gap: 40px;
 }
 
-.ic-nav li a {
+.ic-nav li {
+  position: relative;
+}
+
+.ic-nav a {
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
   color: #0A1A2F;
-  transition: 0.25s ease;
+  transition: color 0.25s ease;
 }
 
-/* Hover */
-.ic-nav li a:hover {
+.ic-nav a:hover {
   color: #4DA3FF;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
-.ic-dropdown {
-  position: relative;
-}
+/* ======================================================== */
+/* DROPDOWN – RÈGLE DE BASE                                 */
+/* ======================================================== */
 
-/* Sous-menu caché par défaut */
+/* Le sous-menu est TOUJOURS contrôlé par la classe .open */
 .ic-dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
 
-  background: #ffffff;
-  padding: 0.75rem 0;
+  background-color: #ffffff;
   min-width: 200px;
+  padding: 0.75rem 0;
 
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   z-index: 1000;
 }
 
-/* Affichage au survol */
-.ic-dropdown:hover .ic-dropdown-menu {
+/* Ouverture explicite */
+.ic-dropdown-menu.open {
   display: block;
 }
 
@@ -89,11 +92,19 @@
   white-space: nowrap;
 }
 
+/* ======================================================== */
+/* HOVER DESKTOP (UNIQUEMENT SI SOURIS FIABLE)              */
+/* ======================================================== */
 
+@media (hover: hover) and (pointer: fine) {
+  .ic-dropdown:hover .ic-dropdown-menu {
+    display: block;
+  }
+}
 
-/* -------------------------------------------------------- */
-/* CTA SECONDAIRE */
-/* -------------------------------------------------------- */
+/* ======================================================== */
+/* CTA SECONDAIRE                                           */
+/* ======================================================== */
 
 .ic-cta-secondary {
   border: 1px solid #4DA3FF;
@@ -111,13 +122,13 @@
   color: #0A1A2F;
 }
 
-/* -------------------------------------------------------- */
-/* BURGER MENU */
-/* -------------------------------------------------------- */
+/* ======================================================== */
+/* BURGER MENU (MOBILE)                                     */
+/* ======================================================== */
 
 .ic-burger {
-  border: none;
   background: transparent;
+  border: none;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -128,17 +139,16 @@
   width: 24px;
   height: 2px;
   background-color: #0A1A2F;
-  display: block;
   transition: 0.25s ease;
 }
 
-/* -------------------------------------------------------- */
-/* MENU MOBILE */
-/* -------------------------------------------------------- */
+/* ======================================================== */
+/* MENU MOBILE                                              */
+/* ======================================================== */
 
 .ic-mobile-menu {
   display: none;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-top: 1px solid #E6E9EE;
   padding: 20px;
 }
@@ -146,16 +156,17 @@
 .ic-mobile-menu ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
-.ic-mobile-menu ul li {
+.ic-mobile-menu li {
   margin-bottom: 18px;
 }
 
 .ic-mobile-menu a {
-  color: #0A1A2F;
   font-size: 18px;
   font-weight: 500;
+  color: #0A1A2F;
   text-decoration: none;
 }
 
@@ -163,6 +174,56 @@
   color: #4DA3FF;
 }
 
+/* Menu mobile ouvert (via JS) */
 .ic-mobile-open {
   display: block;
+}
+
+/* ======================================================== */
+/* SOUS-MENU MOBILE (CLIC JS)                               */
+/* ======================================================== */
+
+@media (max-width: 768px) {
+
+  /* Le sous-menu devient vertical et intégré */
+  .ic-mobile-menu .ic-dropdown-menu {
+    position: static;
+    display: none;
+    box-shadow: none;
+    padding-left: 12px;
+    margin-top: 8px;
+    border-radius: 0;
+  }
+
+  .ic-mobile-menu .ic-dropdown-menu.open {
+    display: block;
+  }
+
+  /* Indicateur visuel */
+  .ic-dropdown-toggle::after {
+    content: "▾";
+    margin-left: 6px;
+    font-size: 12px;
+  }
+}
+
+/* ======================================================== */
+/* ÉCRANS TACTILES (MOBILE PAYSAGE, TABLETTES)              */
+/* ======================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+
+  /* Aucun hover implicite sur tactile */
+  .ic-dropdown:hover .ic-dropdown-menu {
+    display: none;
+  }
+
+  /* Le JS décide via .open */
+  .ic-dropdown-menu {
+    display: none;
+  }
+
+  .ic-dropdown-menu.open {
+    display: block;
+  }
 }

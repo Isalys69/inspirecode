@@ -1,41 +1,49 @@
 /*****************************************************************/
-/* SECTION HERO - VERSION OPTIMISÉE INSPIRE CODE                */
+/* SECTION HERO – ACCUEIL                                        */
+/* VERSION OPTIMISÉE INSPIRE CODE                                */
 /*****************************************************************/
 
 #hero {
   position: relative;
-  min-height: 85vh; /* Hero très confortable sur grands écrans */
+
+  /* Hero confortable sur desktop et mobile portrait */
+  min-height: 85vh;
+
   padding: 0 2rem;
 
   display: flex;
-  flex-direction: column; /* Texte centré verticalement */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  color: #fff;
+  color: #ffffff;
 
-  background: 
-      linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.35)),
-      url('../images/hero-bg.jpg') center center / cover no-repeat;
+  background:
+    linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.35)),
+    url('../images/hero-bg.jpg') center center / cover no-repeat;
 }
 
-/* Overlay unique */
+/* Overlay de lisibilité */
 #hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35); /* lisibilité parfaite */
+  background: rgba(0,0,0,0.35);
   z-index: 0;
 }
 
+/* Contenu du hero */
 .hero-content {
   position: relative;
   z-index: 1;
+
   max-width: 900px;
-  text-align: center;
   padding: 2rem;
+
+  text-align: center;
 }
 
+/* Titre principal */
 .hero-content h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 3.2rem;
@@ -43,6 +51,7 @@
   margin-bottom: 1.5rem;
 }
 
+/* Texte descriptif */
 .hero-content p {
   font-size: 1.2rem;
   color: #f8f9fa;
@@ -50,16 +59,16 @@
   margin-bottom: 1rem;
 }
 
-
 /*****************************************************************/
-/* HERO PAGES OFFRES                                             */
+/* HERO – PAGES OFFRES                                           */
 /*****************************************************************/
 
 .ic-hero-offre {
-  padding-top: 5rem;   /* compense le header fixe */
-  padding-bottom: 1rem;
+  padding-top: 5rem;      /* compense le header fixe */
+  padding-bottom: 1.5rem;
 
   background: linear-gradient(120deg, #0a2342, #0e5191);
+  color: #ffffff;
 }
 
 .ic-hero-offre h1 {
@@ -72,23 +81,76 @@
   margin: 0 auto;
 }
 
-
-
 /*****************************************************************/
-/* RESPONSIVE                                                    */
+/* RESPONSIVE – TABLETTE & MOBILE PORTRAIT                       */
 /*****************************************************************/
 
 @media (max-width: 992px) {
+
   #hero {
     min-height: 70vh;
   }
+
   .hero-content h1 {
     font-size: 2.4rem;
   }
+
   .hero-content p {
     font-size: 1rem;
   }
 }
 
+/*****************************************************************/
+/* RESPONSIVE – MOBILE PORTRAIT                                  */
+/*****************************************************************/
+
 @media (max-width: 576px) {
-  .hero-content h1
+
+  #hero {
+    padding: 0 1.25rem;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+  }
+}
+
+/*****************************************************************/
+/* AJUSTEMENT MOBILE PAYSAGE (LANDSCAPE)                         */
+/* iPhone 12 Pro Max ≈ 928x426                                   */
+/*****************************************************************/
+
+@media (max-width: 928px) and (orientation: landscape) {
+
+  #hero {
+    /* On enlève la contrainte de hauteur */
+    min-height: auto;
+
+    /* On respire sous le header fixe */
+    padding-top: 100px;   /* 80px header + marge */
+    padding-bottom: 20px;
+  }
+
+  .hero-content {
+    padding: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}

@@ -21,3 +21,30 @@
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+
+/*****************************************************************/
+/* CTA – PAGES OFFRES                                           */
+/*****************************************************************/
+
+.ic-cta-offre {
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+
+/*  min-height: 30vh;   /* clé ici */
+
+  background: linear-gradient(120deg, #0a2342, #0e5191);
+  color: #ffffff;
+}
+
+.ic-cta-offre h3 {
+  font-family: 'Montserrat', sans-serif;
+  /*font-weight: 700;*/
+}
+
+/*
+.ic-cta-offre p {
+  max-width: 720px;
+  margin: 0 auto;
+*/
+}

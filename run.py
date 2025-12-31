@@ -8,6 +8,8 @@ from datetime import date
 from dateutil.relativedelta import relativedelta
 import locale
 
+from calendly import register_calendly_routes
+
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 
@@ -17,6 +19,8 @@ load_dotenv("config/.env")
 app = Flask(__name__)
 
 app.secret_key = os.getenv('FLASK_SECRET_KEY')
+
+
 
 
 # Configuration de Flask-Mail
@@ -62,8 +66,8 @@ print("EMAIL =", app.config['MAIL_USERNAME'])
 print("PASSWORD =", app.config['MAIL_PASSWORD'])
 print("DEFAULT SENDER =", app.config['MAIL_DEFAULT_SENDER'])
 
-
-
+# injection des routes Calendly
+register_calendly_routes(app)
 
 @app.route("/devis", methods=["GET", "POST"])
 def devis():
@@ -164,7 +168,8 @@ def offre_site_vitrine():
         hero_subtitle="Une présence en ligne claire, crédible et alignée avec votre activité.",
 
         cta_title="Besoin d'aide pour choisir ?",
-        cta_button="📅 Réserver un appel conseil de 15 min - Sans engagement",
+        cta_url="book",
+        cta_button="📅 Réserver un appel conseil de 15 min",
         mois_disponible=mois_disponible
 
     )
@@ -175,6 +180,7 @@ def offre_site_vitrine():
 
 @app.route("/commander/site-vitrine-essentielle")
 def commander_vitrine_essentielle():
+    
     return render_template("offres/vitrine-essentielle.html")
 
 @app.route("/ecommerce")

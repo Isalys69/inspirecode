@@ -7,14 +7,42 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="text-center text-white py-5" style="background: linear-gradient(120deg, #0A1A2F, #0E5191);">
-  <div class="container">
+<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
     <h1 class="display-5 fw-bold">Me contacter</h1>
     <p class="lead mt-3">
-      Un projet web, une question, une idée à développer ? Je vous réponds rapidement.
+      Un projet, une question, une idée à développer ? 
     </p>
   </div>
 </section>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    
+    <script>
+      const redirectTimeout = setTimeout(function () {
+        window.location.href = "{{ session.get('previous_page', url_for('home')) }}";
+      }, 3500);
+
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('.btn-close')) {
+          clearTimeout(redirectTimeout);
+        }
+      });
+    </script>
+
+    <div class="container mt-4">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
 
 <!-- FORMULAIRE -->
 <section class="container py-5" style="max-width: 780px;">
@@ -24,32 +52,71 @@
 
     <form action="{{ url_for('contact') }}" method="POST" class="needs-validation" novalidate>
 
-      <!-- NOM -->
-      <div class="mb-3">
-        <label for="nom" class="form-label fw-semibold">Nom</label>
-        <input type="text" name="nom" id="nom" class="form-control" required>
-        <div class="invalid-feedback">Merci d’indiquer votre nom.</div>
+      <!-- PRENOM + NOM -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="prenom" class="form-label fw-semibold">Prénom</label>
+
+          <input
+            type="text"
+            name="prenom"
+            class="form-control {% if 'prenom' in invalid_fields %}is-invalid{% endif %}"
+            value="{{ form_data.get('prenom','') if form_data else ''  }}"
+          />
+          <div class="invalid-feedback">Merci d’indiquer votre prénom.</div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="nom" class="form-label fw-semibold">Nom</label>
+          <input
+            type="text"
+            name="nom"
+            class="form-control {% if 'nom' in invalid_fields %}is-invalid{% endif %}"
+            value="{{ form_data.get('nom','') if form_data else '' }}"
+          />
+          <div class="invalid-feedback">Merci d’indiquer votre nom.</div>
+        </div>
       </div>
 
       <!-- EMAIL -->
       <div class="mb-3">
         <label for="email" class="form-label fw-semibold">Email</label>
-        <input type="email" name="email" id="email" class="form-control" required>
+          <input
+            type="text"
+            name="email"
+            class="form-control {% if 'email' in invalid_fields %}is-invalid{% endif %}"
+            value="{{ form_data.get('email','') if form_data else '' }}"
+          />
         <div class="invalid-feedback">Veuillez entrer un email valide.</div>
       </div>
 
       <!-- SUJET -->
       <div class="mb-3">
         <label for="sujet" class="form-label fw-semibold">Sujet</label>
-        <input type="text" name="sujet" id="sujet" class="form-control" required>
+          <input
+            type="text"
+            name="sujet"
+            class="form-control {% if 'sujet' in invalid_fields %}is-invalid{% endif %}"
+            value="{{ form_data.get('sujet','') if form_data else '' }}"
+          />
         <div class="invalid-feedback">Merci d’indiquer le sujet de votre demande.</div>
       </div>
 
       <!-- MESSAGE -->
       <div class="mb-3">
         <label for="message" class="form-label fw-semibold">Message</label>
-        <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
-        <div class="invalid-feedback">Merci d’écrire un message.</div>
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          class="form-control {% if invalid_fields and 'message' in invalid_fields %}is-invalid{% endif %}"
+          required
+          >{{ form_data.get('message', '') if form_data else '' }}
+        </textarea>
+
+        <div class="invalid-feedback">
+          Merci d’écrire un message.
+        </div>
       </div>
 
       <!-- CTA -->
@@ -65,8 +132,8 @@
 </section>
 
 <!-- CTA FINAL -->
-<section class="text-center text-white py-5" style="background: #0E5191;">
-  <div class="container">
+<section class="ic-cta-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
     <h2 class="fw-bold mb-4">Je réponds en général sous 24h.</h2>
     <p class="small">En cas d’urgence, vous pouvez préciser “URGENT” dans le message.</p>
   </div>

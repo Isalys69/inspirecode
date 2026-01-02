@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask import send_from_directory
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
@@ -10,6 +10,9 @@ import locale
 
 from calendly import register_calendly_routes
 
+import re
+
+
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 
@@ -18,23 +21,27 @@ load_dotenv("config/.env")
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv('FLASK_SECRET_KEY')
+app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
 
 
 
 
 # Configuration de Flask-Mail
+# Chargement SMTP depuis les variables d’environnement
 app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
-app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT'))
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))
 
-
+# Gestion propre de TLS / SSL
 def str_to_bool(value):
     return value.lower() in ("true", "1", "yes", "y")
 
 app.config['MAIL_USE_TLS'] = str_to_bool(os.getenv('MAIL_USE_TLS', 'true'))
 app.config['MAIL_USE_SSL'] = str_to_bool(os.getenv('MAIL_USE_SSL', 'false'))
 
+if app.config['MAIL_USE_TLS'] and app.config['MAIL_USE_SSL']:
+    raise ValueError("MAIL_USE_TLS et MAIL_USE_SSL ne peuvent pas être activés simultanément.")
 
+# Authentification SMTP
 app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
@@ -61,10 +68,9 @@ app.logger.info("Destinataires configurés : %s", ", ".join(recipients))
 app.config['RECIPIENTS'] = recipients
 mail = Mail(app)
 
-print("SMTP =", app.config['MAIL_SERVER'], app.config['MAIL_PORT'])
-print("EMAIL =", app.config['MAIL_USERNAME'])
-print("PASSWORD =", app.config['MAIL_PASSWORD'])
-print("DEFAULT SENDER =", app.config['MAIL_DEFAULT_SENDER'])
+
+
+
 
 # injection des routes Calendly
 register_calendly_routes(app)
@@ -136,19 +142,63 @@ def offres():
 def realisations():
     return render_template("realisations.html")
 
+
+from flask import session  # assurez-vous d'avoir cet import
+
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    erreurs = []
+
     if request.method == "POST":
-        nom = request.form.get("nom")
-        email = request.form.get("email")
-        sujet = request.form.get("sujet")
-        message = request.form.get("message")
+        prenom = request.form.get("prenom", "").strip()
+        nom = request.form.get("nom", "").strip()
+        email = request.form.get("email", "").strip()
+        sujet = request.form.get("sujet", "").strip()
+        message = request.form.get("message", "").strip()
 
-        # Exemple : traitement, envoi email, stockage, etc.
-        print("NOUVEAU MESSAGE :", nom, email, sujet, message)
+        if not prenom:
+            erreurs.append("prenom")
+        if not nom:
+            erreurs.append("nom")
+        if not email:
+            erreurs.append("email")
+        if not sujet:
+            erreurs.append("sujet")
+        if not message:
+            erreurs.append("message")
 
-        # Futur : flash message de confirmation, redirection, etc.
-        return render_template("contact.html", success=True)
+        if erreurs:
+            return render_template(
+                "contact.html",
+                invalid_fields=erreurs,
+                form_data=request.form
+            )
+
+        msg = Message(
+            subject=f"[Contact Inspire Code] {sujet}",
+            recipients=app.config['RECIPIENTS'],
+            reply_to=email
+        )
+
+        msg.body = f"""
+Nouveau message via le site Inspire Code
+
+Prénom : {prenom}
+Nom : {nom}
+Email : {email}
+
+Message :
+{message}
+"""
+        mail.send(msg)
+
+        flash("Votre message a bien été envoyé. Je vous répondrai rapidement.", "success")
+        return redirect(url_for("contact"))
+
+    # GET
+    referrer = request.referrer
+    if referrer and not referrer.endswith("/contact"):
+        session["previous_page"] = referrer
 
     return render_template("contact.html")
 

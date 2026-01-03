@@ -1,129 +1,287 @@
 {% extends "base.html" %}
-{% block title %}Demande de devis – Inspire Code{% endblock %}
+
+{% block title %}
+Demande de devis – Inspire Code
+{% endblock %}
 
 {% block content %}
 
-<section class="devis-hero container py-3">
-    <div class="text-center">
-        <h1 class="fw-bold mb-3">Demandez votre devis personnalisé</h1>
-        <p class="lead mb-4">Réponse sous 24h. Une estimation claire, rapide et adaptée à votre projet.</p>
+<!-- HERO -->
+<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+    <div class="container py-4">
+        <h1 class="display-5 fw-bold">Votre devis personnalisé</h1>
+        <p class="lead mt-3">
+            Une estimation claire, rapide et adaptée à votre projet.
+        </p>
     </div>
 </section>
 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    
+    <script>
+      const redirectTimeout = setTimeout(function () {
+        window.location.href = "{{ session.get('previous_page', url_for('home')) }}";
+      }, 3500);
+
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('.btn-close')) {
+          clearTimeout(redirectTimeout);
+        }
+      });
+    </script>
+
+    <div class="container mt-4">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+<!-- FORMULAIRE + TARIFS -->
 <section class="container py-5" id="formulaire-devis">
     <div class="row g-5 align-items-start">
 
         <!-- FORMULAIRE (gauche) -->
-        <div class="col-md-7">
-            <form method="POST" action="{{ url_for('devis') }}" class="p-4 shadow-sm bg-white rounded-4">
-                <input type="hidden" name="form_type" value="devis">
+        <div class="col-12 col-md-7">
+            <form action="{{ url_for('devis') }}" method="POST"
+                  class="p-4 shadow-sm bg-white rounded-4" novalidate>
 
-                <h4 class="fw-semibold border-bottom pb-2 mb-4">Vos informations</h4>
+                <input type="hidden" name="form_type" value="devis">
 
                 <div class="row g-3">
 
-                    <!-- Vos infos -->
-                    <div class="col-md-4">
-                        <label class="form-label">Nom et prénom</label>
-                        <input type="text" name="nom" class="form-control" required>
+                    <!-- Vos informations -->
+                    <div class="col-12">
+                        <h4 class="fw-semibold border-bottom pb-2 mb-3">Vos informations</h4>
                     </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" required>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Prénom</label>
+                        <input
+                            type="text"
+                            name="prenom"
+                            class="form-control {% if 'prenom' in invalid_fields %}is-invalid{% endif %}"
+                            value="{{ form_data.get('prenom','') if form_data else ''  }}"
+                        />
+                        <div class="invalid-feedback">Merci d’indiquer votre prénom.</div>
                     </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label">Téléphone (optionnel)</label>
-                        <input type="text" name="telephone" class="form-control">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Nom</label>
+                        <input
+                            type="text"
+                            name="nom"
+                            class="form-control {% if 'nom' in invalid_fields %}is-invalid{% endif %}"
+                            value="{{ form_data.get('nom','') if form_data else ''  }}"
+                        />
+                        <div class="invalid-feedback">Merci d’indiquer votre nom.</div>
                     </div>
 
-                    <!-- ESPACEMENT + titre section projet -->
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input
+                            type="text"
+                            name="email"
+                            class="form-control {% if 'email' in invalid_fields %}is-invalid{% endif %}"
+                            value="{{ form_data.get('email','') if form_data else ''  }}"
+                        />
+                        <div class="invalid-feedback">Merci d’indiquer votre email.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">
+                            Téléphone <span class="text-muted">(optionnel)</span>
+                        </label>
+                        <input
+                            type="tel"
+                            name="telephone"
+                            class="form-control"
+                            value="{{ form_data.get('telephone','') if form_data else '' }}"
+                        />
+                    </div>
+
+                    <!-- Votre projet -->
                     <div class="col-12 mt-4">
                         <h4 class="fw-semibold border-bottom pb-2 mb-3">Votre projet</h4>
                     </div>
 
-                    <!-- Champs projet -->
                     <div class="col-md-4">
-                        <label class="form-label">Type de projet</label>
-                        <select name="type_projet" class="form-select" required>
+                        <label for="type_projet" class="form-label">Type de projet</label>
+                        <select
+                            id="type_projet"
+                            name="type_projet"
+                            class="form-select {% if 'type_projet' in invalid_fields %}is-invalid{% endif %}">
                             <option value="">Sélectionner…</option>
-                            <option>Site vitrine</option>
-                            <option>E-commerce</option>
-                            <option>Application mobile</option>
-                            <option>Automatisation / scripts</option>
-                            <option>Autre</option>
+                            <option value="vitrine"
+                                {% if form_data and form_data.get('type_projet') == 'vitrine' %}selected{% endif %}
+                                >Site vitrine
+                            </option>
+
+                            <option value="ecommerce"
+                                {% if form_data and form_data.get('type_projet') == 'ecommerce' %}selected{% endif %}
+                                >E-commerce
+                            </option>
+
+                            <option value="mobile"
+                                {% if form_data and form_data.get('type_projet') == 'mobile' %}selected{% endif %}
+                                >Application mobile
+                            </option>
+
+                            <option value="automation"
+                                {% if form_data and form_data.get('type_projet') == 'automation' %}selected{% endif %}
+                                >Automatisation / scripts
+                            </option>
+
+                            <option value="autre"
+                                {% if form_data and form_data.get('type_projet') == 'autre' %}selected{% endif %}
+                                >Je ne sais pas encore
+                            </option>
                         </select>
+
+                        <div class="invalid-feedback">Merci de sélectionner un type de projet.</div>
                     </div>
 
                     <div class="col-md-4">
-                        <label class="form-label">Budget souhaité</label>
-                        <select name="budget" class="form-select" required>
+                        <label for="budget" class="form-label">Budget souhaité</label>
+                        <select name="budget" class="form-select {% if 'budget' in invalid_fields %}is-invalid{% endif %}">
                             <option value="">Sélectionner…</option>
-                            <option>< 800 €</option>
-                            <option>800 – 1500 €</option>
-                            <option>1500 – 3000 €</option>
-                            <option>> 3000 €</option>
+                            <option value="lt_800"
+                                {% if form_data and form_data.get('budget') == 'lt_800' %}selected{% endif %}
+                                >&lt; 800 €
+                            </option>
+                            
+                            <option value="800_1500"
+                                {% if form_data and form_data.get('budget') == '800_1500' %}selected{% endif %}
+                                >800 – 1500 €
+                            </option>
+                            <option value="1500_3000"
+                                {% if form_data and form_data.get('budget') == '1500_3000' %}selected{% endif %}
+                                >1500 – 3000 €
+                            </option>
+                            <option value="gt_3000"
+                                {% if form_data and form_data.get('budget') == 'gt_3000' %}selected{% endif %}
+                                >&gt; 3000 €
+                            </option>
                         </select>
+                        <div class="invalid-feedback">Merci de sélectionner un budget.</div>
+
                     </div>
 
                     <div class="col-md-4">
-                        <label class="form-label">Délais</label>
-                        <select name="delais" class="form-select" required>
+                        <label for="delais" class="form-label">Délais</label>
+                        <select name="delais" class="form-select {% if 'delais' in invalid_fields %}is-invalid{% endif %}">
                             <option value="">Sélectionner…</option>
-                            <option>Urgent</option>
-                            <option>Standard</option>
-                            <option>Flexible</option>
+                            <option value="urgent"
+                                {% if form_data and form_data.get('delais') == 'urgent' %}selected{% endif %}
+                                >Urgent
+                            </option>
+                            <option value="standard"
+                                {% if form_data and form_data.get('delais') == 'standard' %}selected{% endif %}
+                                >Standard
+                            </option>
+                            <option value="fexible"
+                                {% if form_data and form_data.get('delais') == 'flexible' %}selected{% endif %}
+                                >Flexible
+                            </option>
                         </select>
+                        <div class="invalid-feedback">Merci de sélectionner un délais.</div>
                     </div>
 
                     <div class="col-12">
-                        <label class="form-label">Message</label>
-                        <textarea name="message" rows="5" class="form-control" required></textarea>
+                        <label for="message" class="form-label fw-semibold">Message (Décrivez brièvement votre besoin).</label>
+                        <textarea
+                            name="message"
+                            id="message"
+                            rows="5"
+                            class="form-control {% if invalid_fields and 'message' in invalid_fields %}is-invalid{% endif %}"
+                            required
+                            >{{ form_data.get('message', '') if form_data else '' }}
+                        </textarea>
+                        <div class="invalid-feedback">Merci d’écrire un message.</div>
                     </div>
 
                     <div class="col-12">
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" name="rgpd" required>
-                            <label class="form-check-label">J’accepte que mes informations soient utilisées pour traiter ma demande de devis.</label>
+                        <div class="form-check mt-3">
+                            <input
+                                class="form-check-input {% if 'rgpd' in invalid_fields %}is-invalid{% endif %}"
+                                type="checkbox"
+                                name="rgpd"
+                                id="rgpd"
+                                {% if form_data and form_data.get('rgpd') %}checked{% endif %}
+                            >
+                            <label class="form-check-label" for="rgpd">
+                                J’accepte que mes informations soient utilisées pour ma demande de devis.
+                            </label>
+
+                            <div class="invalid-feedback">Vous devez accepter l’utilisation de vos informations.</div>
                         </div>
                     </div>
 
                     <div class="col-12 text-center mt-4">
-                        <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">Envoyer</button>
+                        <button type="submit" class="btn btn-primary px-5 py-2 fw-semibold">
+                            Envoyer
+                        </button>
                     </div>
 
                 </div>
             </form>
-        </div> <!-- FIN COL-MD-7 -->
-
+        </div>
 
         <!-- TARIFS (droite) -->
-        <div class="col-md-5">
+        <div class="col-12 col-md-5">
             <div class="tarifs-box p-4 bg-white shadow-sm rounded-4">
-                <h4 class="fw-semibold mb-4">Tarifs indicatifs</h4>
+                <h4 class="fw-semibold mb-4">Tarifs indicatifs de base</h4>
                 <ul class="list-group shadow-sm rounded-4">
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Site vitrine</span>
-                        <strong>À partir de 990 €</strong>
+                        <strong>À partir de 490€</strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Site e-commerce</span>
-                        <strong>À partir de 1490 €</strong>
+                        <strong>À partir de 890€</strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Automatisations & scripts</span>
-                        <strong>À partir de 250 €</strong>
+                        <strong>À partir de 190€</strong>
                     </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Maintenance</span>
-                        <strong>25 €/mois</strong>
+                        <strong>25€/mois</strong>
                     </li>
                 </ul>
+                <p class="small text-muted mt-3">
+                    Ces tarifs seront ajustés selon la complexité du projet.
+                </p>
+
             </div>
         </div>
 
-    </div> <!-- FIN ROW -->
+    </div>
 </section>
+
+<!-- CTA FINAL -->
+<section class="ic-cta-offre d-flex align-items-center text-white text-center">
+    <div class="container py-4">
+        <h2 class="fw-bold mb-4">Je réponds en général sous 24h.</h2>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.is-invalid').forEach(function (field) {
+    field.addEventListener('change', function () {
+      field.classList.remove('is-invalid');
+    });
+  });
+});
+</script>
+
+
 
 {% endblock %}

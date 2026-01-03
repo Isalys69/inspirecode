@@ -135,8 +135,18 @@
 <section class="ic-cta-offre d-flex align-items-center text-white text-center">
   <div class="container py-4">
     <h2 class="fw-bold mb-4">Je réponds en général sous 24h.</h2>
-    <p class="small">En cas d’urgence, vous pouvez préciser “URGENT” dans le message.</p>
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.is-invalid').forEach(function (field) {
+    field.addEventListener('change', function () {
+      field.classList.remove('is-invalid');
+    });
+  });
+});
+</script>
+
 
 {% endblock %}

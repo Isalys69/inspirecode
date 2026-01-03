@@ -77,26 +77,68 @@ register_calendly_routes(app)
 
 @app.route("/devis", methods=["GET", "POST"])
 def devis():
+    invalid_fields = []
+    form_data = {}
+
     if request.method == "POST":
+        form_data = request.form
 
-        print("📩 FORM DATA REÇU PAR FLASK :", request.form)
+        # Récupération sécurisée
+        prenom = form_data.get("prenom", "").strip()
+        nom = form_data.get("nom", "").strip()
+        email = form_data.get("email", "").strip()
+        telephone = form_data.get("telephone", "").strip()
+        type_projet = form_data.get("type_projet", "")
+        budget = form_data.get("budget", "")
+        delais = form_data.get("delais", "")
+        message = form_data.get("message", "").strip()
+        rgpd = form_data.get("rgpd")
 
+        # VALIDATION (clé du comportement visuel)
+        if not prenom:
+            invalid_fields.append("prenom")
 
-        nom = request.form['nom']
-        email = request.form['email']
-        telephone = request.form.get('telephone', 'Non précisé')
-        type_projet = request.form['type_projet']
-        budget = request.form['budget']
-        delais = request.form['delais']
-        message = request.form['message']
+        if not nom:
+            invalid_fields.append("nom")
+
+        if not email:
+            invalid_fields.append("email")
+
+        if not type_projet:
+            invalid_fields.append("type_projet")
+
+        if not budget:
+            invalid_fields.append("budget")
+
+        if not delais:
+            invalid_fields.append("delais")
+
+        if not message:
+            invalid_fields.append("message")
+
+        if not rgpd:
+            invalid_fields.append("rgpd")
+
+        # S'il y a des erreurs → on réaffiche le formulaire
+        if invalid_fields:
+            return render_template(
+                "devis.html",
+                invalid_fields=invalid_fields,
+                form_data=form_data
+            )
+
+        # =====================
+        # ENVOI EMAIL (OK)
+        # =====================
 
         subject = f"[Inspire Code] Demande de devis – {nom}"
         body = f"""
 Nouvelle demande de devis Inspire Code :
 
+Prénom : {prenom}
 Nom : {nom}
 Email : {email}
-Téléphone : {telephone}
+Téléphone : {telephone or 'Non précisé'}
 
 Type de projet : {type_projet}
 Budget souhaité : {budget}
@@ -115,15 +157,20 @@ Message :
 
         try:
             mail.send(msg)
-            print("📨 TENTATIVE D'ENVOI D'EMAIL VIA FLASK-MAIL...")
-            flash("Votre demande de devis a bien été envoyée. Je reviens vers vous sous 24h.", "success")
-        except Exception as e:
-            print("❌ ERREUR FLASK-MAIL :", e)
-            flash(f"Erreur lors de l'envoi : {e}", "danger")
 
-        return redirect(url_for("devis"))
+            flash("Votre demande de devis a bien été envoyée. Je reviens vers vous sous 24h.", "success")
+            return redirect(url_for("devis"))
+        except Exception as e:
+            flash(f"Erreur lors de l'envoi : {e}", "danger")
+            return redirect(url_for("devis"))
+
+    # GET
+    referrer = request.referrer
+    if referrer and not referrer.endswith("/devis"):
+        session["previous_page"] = referrer
 
     return render_template("devis.html")
+
 
 
 @app.route("/")
@@ -190,10 +237,15 @@ Email : {email}
 Message :
 {message}
 """
-        mail.send(msg)
+        try:
+            mail.send(msg)
 
-        flash("Votre message a bien été envoyé. Je vous répondrai rapidement.", "success")
-        return redirect(url_for("contact"))
+            flash("Votre message a bien été envoyé. Je vous répondrai rapidement.", "success")
+            return redirect(url_for("contact"))
+
+        except Exception as e:
+            flash(f"Erreur lors de l'envoi : {e}", "danger")
+            return redirect(url_for("contact"))
 
     # GET
     referrer = request.referrer

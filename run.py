@@ -189,8 +189,12 @@ def offres():
 def realisations():
     return render_template("realisations.html")
 
+@app.route("/realisations_sites_vitrines")
+def realisations_sites_vitrines():
+    return render_template("realisations/realisations_sites_vitrines.html")
 
-from flask import session  # assurez-vous d'avoir cet import
+
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():

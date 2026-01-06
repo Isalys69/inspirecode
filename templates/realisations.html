@@ -7,70 +7,100 @@
 {% block content %}
 
 <!-- HERO -->
-<section class="text-center text-white py-5" style="background: linear-gradient(120deg, #0A1A2F, #0E5191);">
-  <div class="container">
-    <h1 class="display-5 fw-bold">Mes Réalisations</h1>
-    <p class="lead mt-3">
-      Quelques projets développés pour des entreprises, indépendants et associations.
-    </p>
+<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+    <h1 class="display-5 fw-bold">Réalisations</h1>
+      <p class="lead mt-3">Cette page présente des exemples de projets réalisés, afin de vous permettre d’évaluer concrètement l’approche et le niveau d’exigence proposés.</p>
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section class="container py-5">
-  <div class="row gy-5">
 
+<!-- PORTFOLIO -->
+<section class="container-fluid py-5">
+  <div class="row gy-4 px-4">
+  
     <!-- PROJET 1 -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card shadow-sm h-100 border-0">
-        <img src="{{ url_for('static', filename='projects/projet1.jpg') }}" class="card-img-top" alt="Projet 1">
+        <img src="{{ url_for('static', filename='projects/projet1.jpg') }}" class="card-img-top" alt="Thème 1">
         <div class="card-body">
-          <h3 class="h5 fw-bold">Site vitrine – E Conpont</h3>
+          <h3 class="h5 fw-bold">Sites vitrines</h3>
           <p class="text-muted small">
-            Développement d’un site professionnel pour une entreprise de conseil, avec optimisation SEO et design minimaliste.
+            Réalisations de sites vitrines professionnels, conçus pour présenter une activité,
+            structurer l’information et faciliter la prise de contact avec les prospects.
           </p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Voir le projet</a>
+          <a 
+            href="{{ url_for('realisations_sites_vitrines') }}"
+            class="btn btn-outline-primary btn-sm">
+            Consulter les réalisations détaillées
+          </a>
         </div>
       </div>
     </div>
 
     <!-- PROJET 2 -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card shadow-sm h-100 border-0">
-        <img src="{{ url_for('static', filename='projects/projet2.jpg') }}" class="card-img-top" alt="Projet 2">
+        <img src="{{ url_for('static', filename='projects/projet2.jpg') }}" class="card-img-top" alt="Thème 2">
         <div class="card-body">
-          <h3 class="h5 fw-bold">E-commerce – Boutique Artisanale</h3>
+          <h3 class="h5 fw-bold">eCommerce</h3>
           <p class="text-muted small">
-            Création d'une boutique complète avec gestion des produits, paiements sécurisés et automatisations.
+            Certains projets incluent des fonctionnalités de vente en ligne,
+            avec une attention portée à la clarté du parcours et à la gestion des contenus.
           </p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Voir le projet</a>
+          <span class="badge bg-secondary">Présenté ultérieurement</span>
         </div>
       </div>
     </div>
 
     <!-- PROJET 3 -->
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="card shadow-sm h-100 border-0">
-        <img src="{{ url_for('static', filename='projects/projet3.jpg') }}" class="card-img-top" alt="Projet 3">
+        <img src="{{ url_for('static', filename='projects/projet3.jpg') }}" class="card-img-top" alt="Thème 3">
         <div class="card-body">
-          <h3 class="h5 fw-bold">Application mobile – Association locale</h3>
+          <h3 class="h5 fw-bold">Automatisations</h3>
           <p class="text-muted small">
-            Application simple et efficace pour faciliter la communication interne et les inscriptions aux événements.
+            Mise en place de traitements automatisés visant à simplifier certains processus,
+            réduire les tâches répétitives et fiabiliser les échanges de données.
           </p>
-          <a href="#" class="btn btn-outline-primary btn-sm">Voir le projet</a>
+          <span class="badge bg-secondary">Études de cas à venir</span>
         </div>
       </div>
     </div>
 
-  </div>
+
+    <!-- PROJET 4 -->
+    <div class="col-md-3">
+      <div class="card shadow-sm h-100 border-0">
+        <img src="{{ url_for('static', filename='projects/projet2.jpg') }}" class="card-img-top" alt="Thème 4">
+        <div class="card-body">
+          <h3 class="h5 fw-bold">Applications mobiles</h3>
+            <p class="text-muted small">
+              Projets applicatifs ponctuels, développés pour des usages ciblés
+              et des contextes spécifiques.
+            </p>
+          <span class="badge bg-secondary">Présentation progressive</span>
+        </div>
+      </div>
+    </div>
 </section>
 
 <!-- CTA FINAL -->
-<section class="text-center text-white py-5" style="background: #0E5191;">
-  <div class="container">
-    <h2 class="fw-bold mb-4">Et si votre projet était le prochain ?</h2>
-    <a href="{{ url_for('contact') }}" class="btn btn-light btn-lg">Me contacter</a>
+<section class="ic-cta-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+    <h2 class="fw-bold mb-4">
+      Si cette approche vous parle, d’autres offres sont présentées dans la section « Offres ».
+    </h2>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a 
+        href="{{ url_for('contact') }}" 
+        class="btn btn-light btn-lg">
+        Me contacter
+      </a>
+    </div>
   </div>
 </section>
+
+
 
 {% endblock %}

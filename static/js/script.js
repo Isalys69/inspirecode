@@ -53,4 +53,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+  /* ===================================================== */
+  /* AFFICHAGE DE LA BULLE INFORMATIVE                     */
+  /* ===================================================== */
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el))
+
+
+
 });

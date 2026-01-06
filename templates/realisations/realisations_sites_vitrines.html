@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<!-- HERO -->
+	<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+  	<div class="container py-4">
+
+    	<h1 class="display-5 fw-bold">Réalisations site vitrine</h1>
+      	<p 
+      		class="lead mt-3">
+      		Cette page présente des exemples de sites vitrines réalisés, afin de vous permettre d’évaluer concrètement l’approche et le niveau d’exigence proposés.
+      	</p>
+  </div>
+</section>
+
+
+  {% include "partials/realisations/sites_vitrines/_intro.html" %}
+  {% include "partials/realisations/sites_vitrines/_eanettoyage.html" %}
+  {% include "partials/realisations/sites_vitrines/_inspirecode.html" %}
+
+
+<!-- CTA FINAL -->
+<section class="ic-cta-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+    <h2 
+    	class="fw-bold mb-4">
+    	Cette approche vous parle, découvrez les offres proposées.    
+    </h2>
+    <div 
+    	class="d-flex justify-content-center gap-3 flex-wrap">
+		<a 
+			href="{{ url_for('offre_site_vitrine') }}" 
+			class="btn btn-outline-light me-4">
+  			Nos propositions
+		</a>
+
+		<a 
+			href="{{ url_for('offres') }}" 
+			class="text-light small text-decoration-underline">
+  			Nos autres offres
+		</a>
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

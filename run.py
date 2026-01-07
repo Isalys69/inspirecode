@@ -281,6 +281,26 @@ def offre_site_vitrine():
     )
 
 
+@app.route("/offres/site-ecommerce")
+def offre_site_ecommerce():
+    try:
+        locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+    except locale.Error:
+        pass
+
+    mois_disponible = (date.today() + relativedelta(months=1)).strftime("%B").capitalize()
+    return render_template(
+        "offres/site-ecommerce.html",
+
+        hero_title="Site eCommmerce professionnel",
+        hero_subtitle="Une boutique en ligne claire et fiable pour vendre vos produits.",
+
+        cta_title="Besoin d'aide pour choisir ?",
+        cta_url="book",
+        cta_button="📅 Réserver un appel conseil de 15 min",
+        mois_disponible=mois_disponible
+
+    )
 
 
 
@@ -289,9 +309,6 @@ def commander_vitrine_essentielle():
     
     return render_template("offres/vitrine-essentielle.html")
 
-@app.route("/ecommerce")
-def ecommerce():
-    return render_template("ecommerce.html")
 
 @app.route("/automatisations")
 def automatisations():

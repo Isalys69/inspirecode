@@ -1,0 +1,143 @@
+<!-- ================= ACCOMPAGNEMENTS ================= -->
+<section class="ic-section ic-accompagnements">
+  <div class="container">
+
+    <h2 class="text-center fw-bold mb-3">
+      Choisissez votre accompagnement
+    </h2>
+
+    <p class="section-intro text-center mb-5">
+      Des offres adaptées à chaque étape de votre projet eCommerce, selon votre niveau d’ambition et vos objectifs.
+    </p>
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- ================= ESSENTIELLE ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm p-4">
+
+          <h3 class="fw-bold mb-4 text-center">
+            Essentielle
+          </h3>
+
+          <p class="text-muted mb-5 text-center">
+            L’essentiel pour lancer votre boutique rapidement.
+          </p>
+
+          <p class="display-6 fw-bold mb-3 text-center">
+            890 €
+          </p>
+
+          <ul class="list-styled mb-offer">
+            <li>Boutique prête à vendre</li>
+            <li>Design responsive</li>
+            <li>Pages du parcours client</li>
+            <li>Jusqu’à 20 produits</li>
+            <li>Paiement sécurisé</li>
+            <li>Livraison simple</li>
+            <li>Interface administrable</li>
+            <li>Mise en ligne</li>
+          </ul>
+
+          <div class="text-center mt-4">
+            <a href="{{ url_for('commander_vitrine_essentielle') }}"
+               class="btn btn-outline-primary fw-semibold">
+              Commander
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= ATELIER CONVERSION ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow p-4 border-primary">
+
+          <div class="mb-2 text-center">
+            <span class="badge bg-primary">
+              Offre signature
+            </span>
+          </div>
+
+          <h3 class="fw-bold mb-2 text-center">
+            Atelier Conversion
+          </h3>
+
+          <p class="text-muted mb-3 text-center">
+            Une boutique pensée pour vendre et évoluer.
+          </p>
+
+          <p class="display-6 fw-bold mb-3 text-center">
+            2490 €
+          </p>
+
+          <ul class="list-unstyled mb-4">
+            <li>✓ L’offre Essentielle</li>
+            <li>✓ Atelier de cadrage stratégique</li>
+            <li>✓ Catalogue structuré et optimisé</li>
+            <li>✓ Tunnel de conversion travaillé</li>
+            <li>✓ Produits variables</li>
+            <li>✓ Expérience mobile optimisée</li>
+            <li>✓ Bases SEO eCommerce</li>
+            <li>✓ Accompagnement personnalisé</li>
+            <li>✓ 1 projet tous les 2 mois</li>
+          </ul>
+
+          <p class="small text-muted mb-3">
+            Prochaine disponibilité :
+            <strong>Dès {{ mois_disponible }}</strong>
+            <br>
+            <span class="small text-muted">
+              * J’accompagne volontairement un nombre limité de projets afin de préserver la qualité du suivi.
+            </span>
+          </p>
+
+          <div class="text-center">
+            <a href="{{ url_for('contact') }}"
+               class="btn btn-primary fw-semibold">
+              Entretien d’éligibilité
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= ÉVOLUTION ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm p-4">
+
+          <h3 class="fw-bold mb-2 text-center">
+            Évolution
+          </h3>
+
+          <p class="text-muted mb-3 text-center">
+            Pour les projets eCommerce spécifiques ou ambitieux.
+          </p>
+
+          <p class="display-6 fw-bold mb-3 text-center">
+            Sur devis
+          </p>
+
+          <ul class="list-styled mb-4">
+            <li>Fonctionnalités sur mesure</li>
+            <li>Catalogue conséquent</li>
+            <li>Intégrations automatisées</li>
+            <li>Fonctionnalités avancées</li>
+            <li>Architecture évolutive</li>
+            <li>Accompagnement long terme</li>
+          </ul>
+
+          <div class="text-center mt-4">
+            <a href="{{ url_for('contact') }}"
+               class="btn btn-outline-primary fw-semibold">
+              Diagnostic gratuit
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

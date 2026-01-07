@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Site eCommerce | Inspire Code
+{% endblock %}
+
+{% block content %}
+
+	{# 1. CONTEXTE & PROMESSE #}
+	{% include "partials/offres/_hero_offres.html" %}
+
+	{# 2. IDENTIFICATION (pour qui) #}
+	{% include "partials/offres/ecommerce/_cible.html" %}
+
+	{# 3. PROBLÉMATIQUES (validation mentale) #}
+	{% include "partials/offres/ecommerce/_problemes.html" %}
+
+	{# 
+		4. MÉTHODE & POSTURE (confiance)
+		{% include "partials/offres/ecommerce/_approche.html" %}
+	#}
+
+	{# 5. CHOIX D’ACCOMPAGNEMENT (décision) #}
+	{% include "partials/offres/ecommerce/_accompagnements.html" %}
+
+	{# 6. PREUVES (rassurance finale) #}
+	{% include "partials/offres/ecommerce/_realisations.html" %}
+
+	{# 7. ACTION (engagement) #}
+	{% include "partials/offres/_cta_offres.html" %}
+
+{% endblock %}

@@ -309,8 +309,13 @@ def offre_site_ecommerce():
 
 @app.route("/commander/site-vitrine-essentielle")
 def commander_vitrine_essentielle():
-    
     return render_template("offres/vitrine-essentielle.html")
+
+
+@app.route("/commander/site-ecommerce-essentielle")
+def commander_ecommerce_essentielle():
+    return render_template("offres/ecommerce-essentielle.html")
+
 
 
 @app.route("/automatisations")

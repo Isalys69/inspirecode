@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}Commander - Site eCommerce Essentielle | Inspire Code{% endblock %}
+
+{% block content %}
+
+<!-- ================= HERO ================= -->
+<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+    <h1 class="display-6 fw-bold mb-2">Commander : Site eCommerce Essentielle</h1>
+    <p class="lead mt-2 mb-0">
+      Base à partir de <strong>890 €</strong>. Ajoutez uniquement les options utiles à votre boutique.
+    </p>
+  </div>
+</section>
+
+<!-- ================= CONFIGURATEUR ================= -->
+<section class="py-5">
+  <div class="container">
+
+    <div class="row g-4">
+
+      <!-- CONFIG OPTIONS -->
+      <div class="col-lg-7">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+
+            <h2 class="h4 fw-bold mb-3">1) Configurez votre boutique</h2>
+            <p class="text-muted mb-4">
+              Ce parcours est conçu pour les projets simples et bien définis.
+              Vous sélectionnez vos options, visualisez le prix final, puis validez votre commande.
+            </p>
+
+            <!-- BASE -->
+            <div class="d-flex align-items-start justify-content-between border rounded p-3 mb-3">
+              <div>
+                <div class="fw-semibold">Pack eCommerce Essentielle</div>
+                <div class="small text-muted">
+                  Boutique en ligne fonctionnelle avec catalogue simple, paiement et livraison.
+                </div>
+              </div>
+              <div class="fw-bold">890 €</div>
+            </div>
+
+            <!-- OPTIONS -->
+            <h3 class="h5 fw-bold mt-4 mb-3">Options</h3>
+
+            <!-- Produits supplémentaires -->
+            <div class="form-check border rounded p-3 mb-3">
+              <input class="form-check-input js-option" type="checkbox" value="120" id="opt-produits">
+              <label class="form-check-label w-100" for="opt-produits">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="fw-semibold">Produits supplémentaires (jusqu’à 40)</div>
+                    <div class="small text-muted">
+                      Extension du catalogue au-delà des 20 produits inclus.
+                    </div>
+                  </div>
+                  <div class="fw-bold">+120 €</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Produits variables -->
+            <div class="form-check border rounded p-3 mb-3">
+              <input class="form-check-input js-option" type="checkbox" value="180" id="opt-variantes">
+              <label class="form-check-label w-100" for="opt-variantes">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="fw-semibold">Produits variables</div>
+                    <div class="small text-muted">
+                      Déclinaisons simples (taille, format, contenance, couleur…).
+                    </div>
+                  </div>
+                  <div class="fw-bold">+180 €</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Livraison avancée -->
+            <div class="form-check border rounded p-3 mb-3">
+              <input class="form-check-input js-option" type="checkbox" value="150" id="opt-livraison">
+              <label class="form-check-label w-100" for="opt-livraison">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="fw-semibold">Livraison avancée</div>
+                    <div class="small text-muted">
+                      Plusieurs modes de livraison, seuil de gratuité ou zones définies.
+                    </div>
+                  </div>
+                  <div class="fw-bold">+150 €</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Emails transactionnels -->
+            <div class="form-check border rounded p-3 mb-3">
+              <input class="form-check-input js-option" type="checkbox" value="120" id="opt-emails">
+              <label class="form-check-label w-100" for="opt-emails">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="fw-semibold">Emails transactionnels personnalisés</div>
+                    <div class="small text-muted">
+                      Emails de commande et de confirmation adaptés à votre image.
+                    </div>
+                  </div>
+                  <div class="fw-bold">+120 €</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- SEO de base -->
+            <div class="form-check border rounded p-3 mb-3">
+              <input class="form-check-input js-option" type="checkbox" value="150" id="opt-seo">
+              <label class="form-check-label w-100" for="opt-seo">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="fw-semibold">SEO eCommerce de base</div>
+                    <div class="small text-muted">
+                      Structure propre des pages boutique et produits (balises, URLs).
+                    </div>
+                  </div>
+                  <div class="fw-bold">+150 €</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Conformité -->
+            <div class="form-check border rounded p-3 mb-3">
+              <input class="form-check-input js-option" type="checkbox" value="90" id="opt-legal">
+              <label class="form-check-label w-100" for="opt-legal">
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <div class="fw-semibold">Pages légales eCommerce</div>
+                    <div class="small text-muted">
+                      CGV, mentions légales et politique de confidentialité (textes fournis).
+                    </div>
+                  </div>
+                  <div class="fw-bold">+90 €</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- NOTE -->
+            <div class="alert alert-light border mt-4 mb-0">
+              <div class="fw-semibold mb-1">Bon à savoir</div>
+              <div class="small text-muted">
+                Si votre catalogue est complexe, votre positionnement encore flou
+                ou votre objectif est d’optimiser la conversion,
+                l’offre <strong>Atelier Conversion</strong> est généralement plus adaptée.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RECAP -->
+      <div class="col-lg-5">
+        <div class="card shadow-sm position-sticky" style="top: 110px;">
+          <div class="card-body p-4">
+
+            <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Base eCommerce Essentielle</span>
+              <span class="fw-semibold">890 €</span>
+            </div>
+
+            <div id="recapOptions" class="mb-3"></div>
+
+            <hr class="my-3">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fw-bold">Total</span>
+              <span class="fw-bold fs-4"><span id="totalPrice">890</span> €</span>
+            </div>
+
+            <div class="small text-muted mb-4">
+              Paiement sécurisé via Stripe. Confirmation envoyée par email.
+            </div>
+
+            <!-- CTA -->
+            <a id="payBtn"
+               href="{{ url_for('devis') }}"
+               class="btn btn-primary btn-lg w-100 fw-semibold">
+              Payer <span id="payBtnPrice">890</span> €
+            </a>
+
+            <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100 mt-3">
+              J’ai une question avant de payer
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+(function () {
+  const BASE_PRICE = 890;
+
+  const optionInputs = Array.from(document.querySelectorAll(".js-option"));
+  const recapOptions = document.getElementById("recapOptions");
+  const totalPriceEl = document.getElementById("totalPrice");
+  const payBtnPriceEl = document.getElementById("payBtnPrice");
+
+  function updateRecap() {
+    let total = BASE_PRICE;
+    recapOptions.innerHTML = "";
+
+    const selected = optionInputs.filter(i => i.checked);
+
+    if (selected.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "text-muted small";
+      empty.textContent = "Aucune option sélectionnée.";
+      recapOptions.appendChild(empty);
+    } else {
+      selected.forEach(input => {
+        const price = parseInt(input.value, 10) || 0;
+        total += price;
+
+        const label = document.querySelector(`label[for="${input.id}"]`);
+        const title = label.querySelector(".fw-semibold").textContent;
+
+        const row = document.createElement("div");
+        row.className = "d-flex justify-content-between mb-2";
+        row.innerHTML = `
+          <span class="text-muted">${title}</span>
+          <span class="fw-semibold">+${price} €</span>
+        `;
+        recapOptions.appendChild(row);
+      });
+    }
+
+    totalPriceEl.textContent = total;
+    payBtnPriceEl.textContent = total;
+  }
+
+  optionInputs.forEach(i => i.addEventListener("change", updateRecap));
+  updateRecap();
+})();
+</script>
+
+{% endblock %}

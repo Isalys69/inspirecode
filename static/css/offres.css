@@ -33,3 +33,6 @@
   padding: 1rem 0;
 }
 
+#accompagnements {
+  scroll-margin-top: var(--header-height, 80px);
+}

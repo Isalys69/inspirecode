@@ -1,3 +1,10 @@
+/**************** DECLARATION DES VARIABLES ****************/
+:root {
+  --header-height: 80px;
+}
+
+
+
 /* === GLOBAL STYLES (Contient les styles globaux pour tout le site) === */
 body {
     font-family: 'Roboto', sans-serif;

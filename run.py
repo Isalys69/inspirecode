@@ -193,6 +193,9 @@ def realisations():
 def realisations_sites_vitrines():
     return render_template("realisations/realisations_sites_vitrines.html")
 
+@app.route("/realisations_sites_ecommerce")
+def realisations_sites_ecommerce():
+    return render_template("realisations/realisations_sites_ecommerce.html")
 
 
 

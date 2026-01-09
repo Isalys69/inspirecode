@@ -318,9 +318,27 @@ def commander_ecommerce_essentielle():
 
 
 
-@app.route("/automatisations")
-def automatisations():
-    return render_template("automatisations.html")
+@app.route("/offres/automatisations")
+def offre_automatisations():
+    try:
+        locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+    except locale.Error:
+        pass
+
+    mois_disponible = (date.today() + relativedelta(months=1)).strftime("%B").capitalize()
+
+
+    return render_template("offres/automatisations.html",
+
+        hero_title="Automatisations professionnelles",
+        hero_subtitle="Des automatisations claires et fiables pour simplifier votre quotidien.",
+
+        cta_title="Besoin d'aide pour choisir ?",
+        cta_url="book",
+        cta_button="📅 Réserver un appel conseil de 15 min",
+        mois_disponible=mois_disponible
+
+    )
 
 @app.route("/appmobile")
 def appmobile():

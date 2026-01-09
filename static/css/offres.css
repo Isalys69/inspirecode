@@ -36,3 +36,27 @@
 #accompagnements {
   scroll-margin-top: var(--header-height, 80px);
 }
+
+.ic-section-auto {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-intro {
+  margin-bottom: 3rem;
+}
+
+
+.section-title-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  width: 1em;
+  height: 1em;
+  color: var(--primary-color);
+  opacity: 0.85;
+  flex-shrink: 0;
+}

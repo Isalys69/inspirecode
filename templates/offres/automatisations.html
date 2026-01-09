@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Automatisations | Inspire Code{% endblock %}
+
+{% block content %}
+
+{# 1. CONTEXTE & PROMESSE #}
+{% include "partials/offres/_hero_offres.html" %}
+
+{# 2. IDENTIFICATION (pour qui / dans quels contextes) #}
+{% include "partials/offres/automatisations/_cible.html" %}
+
+{# 3. PROBLÉMATIQUES (où se perd le temps) #}
+{% include "partials/offres/automatisations/_problemes.html" %}
+
+{# 4. MÉTHODE & POSTURE (fondamentale ici) #}
+{% include "partials/offres/automatisations/_approche.html" %}
+
+{# 5. TYPES D’ACCOMPAGNEMENT (repères, pas packs) #}
+{% include "partials/offres/automatisations/_accompagnements.html" %}
+
+{# 6. EXEMPLES / CAS D’USAGE (pas “réalisations clients”) #}
+{% include "partials/offres/automatisations/_cas_usage.html" %}
+
+{# 7. ACTION (diagnostic / échange) #}
+{% include "partials/offres/_cta_offres.html" %}
+
+{% endblock %}

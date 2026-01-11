@@ -20,3 +20,42 @@
   text-align: center;
   margin-bottom: 0.75rem;
 }
+
+/* ==============================
+   Réalisations – règles globales
+   ============================== */
+
+/* Conteneur figure */
+.ic-realisation-figure {
+  width: 100%;
+  aspect-ratio: 9 / 16;       /* format mobile */
+  background-color: #000;
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+/* Image */
+.ic-realisation-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* remplit sans déformation */
+  display: block;
+}
+
+/* Mobile : un peu plus respirant */
+@media (max-width: 768px) {
+  .ic-realisation-figure {
+    aspect-ratio: 10 / 16;
+  }
+}
+
+/* Optionnel : légère respiration entre les images */
+.ic-realisation-figure {
+  padding: 6px;
+}
+
+/* Optionnel : hover très discret (désactivable si tu veux) */
+.ic-realisation-figure:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s ease-in-out;
+}

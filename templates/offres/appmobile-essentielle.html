@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Commander - Site vitrine Essentielle | Inspire Code{% endblock %}
+{% block title %}Commander - Application mobile Essentielle | Inspire Code{% endblock %}
 
 {% block content %}
 
-
-
 <section class="ic-hero-offre d-flex align-items-center text-white text-center">
   <div class="container py-4">
-    <h1 class="display-6 fw-bold mb-2">Commander : Site vitrine Essentielle</h1>
+    <h1 class="display-6 fw-bold mb-2">Commander : Application mobile Essentielle</h1>
     <p class="lead mt-2 mb-0">
-      Base à partir de <strong>690 €</strong>. Ajoutez uniquement les options utiles à votre activité.
+      Base à partir de <strong>490 €</strong>. Ajoutez uniquement les options utiles à votre usage.
     </p>
   </div>
 </section>
@@ -24,7 +22,7 @@
         <div class="card shadow-sm">
           <div class="card-body p-4">
 
-            <h2 class="h4 fw-bold mb-3">1) Configurez votre site</h2>
+            <h2 class="h4 fw-bold mb-3">1) Configurez votre application</h2>
             <p class="text-muted mb-4">
               Ce parcours est conçu pour les prospects autonomes : vous sélectionnez vos options, vous voyez le prix final, puis vous validez.
             </p>
@@ -34,71 +32,79 @@
               <div>
                 <div class="fw-semibold">Pack Essentielle</div>
                 <div class="small text-muted">
-                  Site vitrine simple, propre et responsive (structure essentielle).
+                  Web app mobile simple, pensée pour un usage précis (mobile-first).
                 </div>
               </div>
-              <div class="fw-bold">690 €</div>
+              <div class="fw-bold">490 €</div>
             </div>
 
             <!-- Options -->
             <h3 class="h5 fw-bold mt-4 mb-3">Options</h3>
 
+            <!-- Desktop (outil) -->
             <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="150" id="opt-devis">
-              <label class="form-check-label w-100" for="opt-devis">
+              <input class="form-check-input js-option" type="checkbox" value="400" id="opt-desktop">
+              <label class="form-check-label w-100" for="opt-desktop">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <div class="fw-semibold">Formulaire de devis avancé</div>
+                    <div class="fw-semibold">Adaptation pour usage desktop (outil)</div>
                     <div class="small text-muted">
-                      Champs structurés (budget, délais, type de projet…), envoi email propre, meilleure qualification.
+                      Permet d’utiliser l’application sur ordinateur avec une interface adaptée à l’écran.
+                      <strong>Ce n’est pas un site vitrine</strong> : pas de pages publiques, pas de SEO, pas de contenu “présence web”.
                     </div>
                   </div>
-                  <div class="fw-bold">+150 €</div>
+                  <div class="fw-bold">+400 €</div>
                 </div>
               </label>
             </div>
 
+            <!-- Google Play -->
             <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="100" id="opt-carte">
-              <label class="form-check-label w-100" for="opt-carte">
+              <input class="form-check-input js-option" type="checkbox" value="250" id="opt-google">
+              <label class="form-check-label w-100" for="opt-google">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <div class="fw-semibold">Carte + zone d’intervention</div>
+                    <div class="fw-semibold">Publication sur Google Play</div>
                     <div class="small text-muted">
-                      Carte intégrée + zone desservie clairement présentée (rassure et augmente les demandes).
+                      Préparation des éléments et accompagnement à la publication.
+                      <strong>Frais Google non inclus</strong> (compte développeur requis).
                     </div>
                   </div>
-                  <div class="fw-bold">+100 €</div>
+                  <div class="fw-bold">+250 €</div>
                 </div>
               </label>
             </div>
 
+            <!-- Apple App Store -->
             <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="90" id="opt-page">
-              <label class="form-check-label w-100" for="opt-page">
+              <input class="form-check-input js-option" type="checkbox" value="350" id="opt-apple">
+              <label class="form-check-label w-100" for="opt-apple">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <div class="fw-semibold">Page supplémentaire</div>
+                    <div class="fw-semibold">Publication sur l’Apple App Store</div>
                     <div class="small text-muted">
-                      Ajout d’une page (ex: Services détaillés, Tarifs, Réalisations…).
+                      Préparation des éléments et accompagnement à la publication.
+                      <strong>Frais Apple non inclus</strong> (abonnement développeur annuel requis).
                     </div>
                   </div>
-                  <div class="fw-bold">+90 €</div>
+                  <div class="fw-bold">+350 €</div>
                 </div>
               </label>
             </div>
 
+            <!-- Two stores -->
             <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="120" id="opt-seo">
-              <label class="form-check-label w-100" for="opt-seo">
+              <input class="form-check-input js-option" type="checkbox" value="500" id="opt-stores">
+              <label class="form-check-label w-100" for="opt-stores">
                 <div class="d-flex justify-content-between">
                   <div>
-                    <div class="fw-semibold">SEO de base</div>
+                    <div class="fw-semibold">Publication sur deux stores (Google + Apple)</div>
                     <div class="small text-muted">
-                      Balises essentielles, titres, description, bonnes pratiques, structure propre.
+                      Préparation complète pour iOS et Android.
+                      <strong>Frais Apple/Google non inclus</strong> (comptes développeur requis).
                     </div>
                   </div>
-                  <div class="fw-bold">+120 €</div>
+                  <div class="fw-bold">+500 €</div>
                 </div>
               </label>
             </div>
@@ -107,8 +113,9 @@
             <div class="alert alert-light border mt-4 mb-0">
               <div class="fw-semibold mb-1">Bon à savoir</div>
               <div class="small text-muted">
-                Après paiement, je vous contacte pour récupérer les contenus (logo, textes, photos) et valider les détails.
-                Si vous n’avez pas vos textes, l’Atelier Libération est souvent plus adapté.
+                Après paiement, je vous contacte pour confirmer l’usage principal, récupérer les contenus nécessaires (logo, textes, éléments) et valider les options choisies.
+                <br>
+                Cette offre couvre exclusivement les éléments décrits ci-dessus. Toute extension du périmètre initial pourra entraîner un ajustement tarifaire.
               </div>
             </div>
 
@@ -125,7 +132,7 @@
 
             <div class="d-flex justify-content-between mb-2">
               <span class="text-muted">Base Essentielle</span>
-              <span class="fw-semibold">690 €</span>
+              <span class="fw-semibold">490 €</span>
             </div>
 
             <div id="recapOptions" class="mb-3"></div>
@@ -134,7 +141,7 @@
 
             <div class="d-flex justify-content-between align-items-center mb-3">
               <span class="fw-bold">Total</span>
-              <span class="fw-bold fs-4"><span id="totalPrice">690</span> €</span>
+              <span class="fw-bold fs-4"><span id="totalPrice">490</span> €</span>
             </div>
 
             <div class="small text-muted mb-4">
@@ -145,7 +152,7 @@
             <a id="payBtn"
                href="{{ url_for('devis') }}"
                class="btn btn-primary btn-lg w-100 fw-semibold">
-              Payer <span id="payBtnPrice">690</span> €
+              Payer <span id="payBtnPrice">490</span> €
             </a>
 
             <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100 mt-3">
@@ -153,8 +160,8 @@
             </a>
 
             <div class="small text-muted mt-4">
-              <strong>Astuce :</strong> si votre besoin est flou (textes, positionnement, structure),
-              l’Atelier Libération est l’option la plus confortable.
+              <strong>Astuce :</strong> si vous hésitez sur le périmètre, les priorités ou la suite (stores, évolutions),
+              l’Atelier Mobile est l’option la plus confortable.
             </div>
 
           </div>
@@ -167,7 +174,7 @@
 
 <script>
   (function () {
-    const BASE_PRICE = 690;
+    const BASE_PRICE = 490;
 
     const optionInputs = Array.from(document.querySelectorAll(".js-option"));
     const recapOptions = document.getElementById("recapOptions");

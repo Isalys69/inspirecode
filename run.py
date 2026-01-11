@@ -187,7 +187,10 @@ def offres():
 
 @app.route("/realisations")
 def realisations():
-    return render_template("realisations.html")
+    return render_template(
+        "realisations.html",
+        show_automatisations=False
+    )
 
 @app.route("/realisations_sites_vitrines")
 def realisations_sites_vitrines():
@@ -316,6 +319,9 @@ def commander_vitrine_essentielle():
 def commander_ecommerce_essentielle():
     return render_template("offres/ecommerce-essentielle.html")
 
+@app.route("/commander/appmobile-essentielle")
+def commander_appmobile_essentielle():
+    return render_template("offres/appmobile-essentielle.html")
 
 
 @app.route("/offres/automatisations")
@@ -341,8 +347,26 @@ def offre_automatisations():
     )
 
 @app.route("/appmobile")
-def appmobile():
-    return render_template("appmobile.html")
+def offre_appmobile():
+    try:
+        locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+    except locale.Error:
+        pass
+
+    mois_disponible = (date.today() + relativedelta(months=1)).strftime("%B").capitalize()
+
+    return render_template("/offres/appmobile.html",
+
+
+        hero_title="Applications mobiles professionnelles",
+        hero_subtitle="Une application mobile claire et fiable pour répondre à un usage précis.",
+
+        cta_title="Besoin d'aide pour choisir ?",
+        cta_url="book",
+        cta_button="📅 Réserver un appel conseil de 15 min",
+        mois_disponible=mois_disponible
+    )
+
 
 @app.route('/robots.txt')
 def robots():

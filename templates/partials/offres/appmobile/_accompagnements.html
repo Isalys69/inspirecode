@@ -1,0 +1,145 @@
+<!-- ================= ACCOMPAGNEMENTS ================= -->
+<section 
+  id="accompagnements"
+  class="ic-section ic-accompagnements">
+
+  <div class="container">
+
+    <h2 class="text-center fw-bold mb-3">
+      Choisissez votre accompagnement
+    </h2>
+
+    <p class="section-intro text-center mb-5">
+      Des accompagnements adaptés à chaque étape de votre projet mobile, de la première version fonctionnelle à une évolution plus avancée.
+    </p>
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- ================= ESSENTIELLE ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm p-4">
+
+          <h3 class="fw-bold mb-4 text-center">
+            Essentielle
+          </h3>
+
+          <p class="text-muted mb-5 text-center">
+            Une première version mobile simple pour valider l’usage.
+          </p>
+
+          <p class="display-6 fw-bold mb-3 text-center">
+            690 €
+          </p>
+
+          <ul class="list-styled mb-offer">
+            <li>Web app mobile</li>
+            <li>Modèle éprouvé</li>
+            <li>Jusqu’à 3 écrans / pages</li>
+            <li>Usage principal défini</li>
+            <li>Interface mobile responsive</li>
+            <li>Mise en ligne</li>
+            <li>Garantie 7 jours</li>
+          </ul>
+
+          <div class="text-center mt-4">
+            <a href="{{ url_for('commander_appmobile_essentielle') }}"
+               class="btn btn-outline-primary fw-semibold">
+              Commander
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= ATELIER MOBILE ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow p-4 border-primary">
+
+          <div class="mb-2 text-center">
+            <span class="badge bg-primary">
+              Offre signature
+            </span>
+          </div>
+
+          <h3 class="fw-bold mb-2 text-center">
+            Atelier Mobile
+          </h3>
+
+          <p class="text-muted mb-3 text-center">
+            Un usage mobile pensé, structuré et prêt à évoluer.
+          </p>
+
+          <p class="display-6 fw-bold mb-3 text-center">
+            2490 €
+          </p>
+
+          <ul class="list-unstyled mb-4">
+            <li>✓ L’offre Essentielle incluse</li>
+            <li>✓ Atelier de cadrage mobile</li>
+            <li>✓ Analyse des usages réels</li>
+            <li>✓ Périmètre fonctionnel priorisé</li>
+            <li>✓ Conception mobile sur mesure</li>
+            <li>✓ Expérience utilisateur travaillée</li>
+            <li>✓ Tests et ajustements</li>
+            <li>✓ Accompagnement personnalisé</li>
+            <li>✓ 1 projet accompagné à la fois</li>
+          </ul>
+
+          <p class="small text-muted mb-3">
+            Prochaine disponibilité :
+            <strong>Dès {{ mois_disponible }}</strong>
+            <br>
+            <span class="small text-muted">
+              * J’accompagne volontairement un nombre limité de projets afin de préserver la qualité du suivi.
+            </span>
+          </p>
+
+          <div class="text-center">
+            <a href="{{ url_for('contact') }}"
+               class="btn btn-primary fw-semibold">
+              Entretien d’éligibilité
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= ÉVOLUTION ================= -->
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm p-4">
+
+          <h3 class="fw-bold mb-2 text-center">
+            Évolution
+          </h3>
+
+          <p class="text-muted mb-3 text-center">
+            Pour les projets mobiles spécifiques ou déjà en place.
+          </p>
+
+          <p class="display-6 fw-bold mb-3 text-center">
+            Sur devis
+          </p>
+
+          <ul class="list-styled mb-4">
+            <li>Évolutions fonctionnelles ciblées</li>
+            <li>Ajout de nouveaux usages</li>
+            <li>Passage en store (iOS / Android)</li>
+            <li>Un ou plusieurs stores</li>
+            <li>Intégrations spécifiques</li>
+            <li>Accompagnement dans la durée</li>
+          </ul>
+
+          <div class="text-center mt-4">
+            <a href="{{ url_for('contact') }}"
+               class="btn btn-outline-primary fw-semibold">
+              Diagnostic gratuit
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

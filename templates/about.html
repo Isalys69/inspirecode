@@ -5,65 +5,142 @@
 {% endblock %}
 
 {% block content %}
-<!-- HERO INTRO -->
-<section id="about-hero" class="d-flex align-items-center text-white text-center">
+
+<!-- HERO -->
+<section class="ic-hero-offre d-flex align-items-center text-white">
+  <div class="container py-4">
+    <div class="row align-items-center">
+
+      <!-- TEXTE -->
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-5 fw-bold">
+          À propos d’Isalys,<br> développeuse indépendante.
+        </h1>
+        <p class="lead mt-3">
+          Inspire Code est un projet porté par une développeuse indépendante.
+          <br>
+          Il s’adresse à celles et ceux qui souhaitent construire ou faire évoluer
+          un projet numérique avec clarté, méthode et décisions assumées.
+        </p>
+      </div>
+
+      <!-- PHOTO -->
+      <div class="col-lg-5 text-center mt-4 ">
+        <img
+          src="/static/images/isalys.jpg"
+          alt="Portrait d’Isalys, fondatrice de Inspire Code"
+          class=" img-fluid rounded"
+          style="max-width: 300px;"
+        >
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION DEMARCHE -->
+<section id="demarche" class="text-center">
   <div class="container py-5">
-    <h1 class="fw-bold mb-4 display-5">À propos d’<span class="text-light">Inspire Code</span></h1>
-    <p class="lead mx-auto" style="max-width: 850px; text-align: justify;">
-      Créativité, performance et écoute sont au cœur de notre démarche.  
-      Nous accompagnons indépendants et petites entreprises dans leur transformation digitale,
-      avec des solutions web, e-commerce, mobiles et automatisées, conçues sur mesure.  
-      Chaque projet est une collaboration authentique, où technologie et sensibilité se rencontrent pour donner vie à vos idées.
-    </p>
-  </div>
-</section>
-
-
-<!-- SECTION MISSION -->
-<section id="mission" class="text-center">
-  <div class="container">
-    <h2 class="fw-bold text-primary mb-1">Notre mission</h2>
+    <h2 class="text-center fw-bold mb-5">Une posture avant une solution</h2>
     <p class="mission-lead mx-auto mb-4">
-      Grâce à notre expertise en développement et en design, nous vous aidons à atteindre vos objectifs
-      tout en vous démarquant de la concurrence.
+      Avant de parler d’outils, Inspire Code commence par cadrer.
     </p>
+
     <p class="mission-text mx-auto">
-      Chaque projet est une rencontre entre vos idées et notre savoir-faire&nbsp;: un site, une application ou un outil
-      qui reflète votre identité, votre singularité et votre professionnalisme.
+      Beaucoup de projets numériques échouent non pas par manque de compétences,
+      mais par manque de clarté au moment de décider.
+      <br><br>
+      Comprendre le besoin réel, identifier les priorités,
+      définir un périmètre cohérent et éviter la surenchère technique
+      sont des étapes essentielles.
+      <br><br>
+      L’objectif n’est pas de faire plus,
+      mais de faire juste, avec des choix compréhensibles,
+      adaptés au contexte et durables dans le temps.
     </p>
   </div>
 </section>
 
-<!-- SECTION VALEURS -->
+<!-- SECTION MANIERE DE TRAVAILLER -->
 <section id="valeurs" class="py-5 text-center">
-  <div class="container">
-    <h2 class="fw-bold mb-5 text-primary">Pourquoi nous choisir ?</h2>
+  <div class="container py-5">
+    <h2 class="text-center fw-bold mb-5">Une manière de travailler</h2>
+
     <div class="row justify-content-center text-start">
 
       <div class="col-md-4">
-        <h5 class="fw-semibold text-center mb-3">Créativité & Sur-mesure</h5>
-        <p class="text-muted text-justify mx-auto" style="max-width: 320px;">
-          Chaque projet est pensé à partir de votre univers, sans template générique.
-          Un design unique, cohérent et élégant, à votre image.
+        <h5 class="fw-semibold text-center mb-3">
+          Clarté avant complexité
+        </h5>
+        <p class="text-muted mx-auto" style="max-width: 320px;">
+          Chaque projet est abordé avec un cadre clair.
+          Ce qui est réellement utile est priorisé.
+          Ce qui complique inutilement est volontairement écarté.
         </p>
       </div>
 
       <div class="col-md-4">
-        <h5 class="fw-semibold text-center mb-3">Performance & SEO</h5>
-        <p class="text-muted text-justify mx-auto" style="max-width: 320px;">
-          Des sites et applications rapides, optimisés et adaptés à tous les écrans —
-          parce qu’un beau projet doit aussi être efficace.
+        <h5 class="fw-semibold text-center mb-3">
+          Usage réel avant effet vitrine
+        </h5>
+        <p class="text-muted mx-auto" style="max-width: 320px;">
+          Les choix techniques servent d’abord l’usage,
+          la lisibilité et la maintenabilité du projet,
+          avant toute recherche d’effet ou de performance abstraite.
         </p>
       </div>
 
       <div class="col-md-4">
-        <h5 class="fw-semibold text-center mb-3">Accompagnement humain</h5>
-        <p class="text-muted text-justify mx-auto" style="max-width: 320px;">
-          Un contact direct avec la développeuse, de la première idée à la mise en ligne.
-          Pas d’intermédiaire : une collaboration sincère et claire.
+        <h5 class="fw-semibold text-center mb-3">
+          Relation directe
+        </h5>
+        <p class="text-muted mx-auto" style="max-width: 320px;">
+          Un seul interlocuteur, de bout en bout.
+          Les échanges sont directs, les décisions expliquées,
+          sans intermédiaires ni discours commercial.
         </p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- SECTION POUR QUI -->
+<section id="pour-qui" class="text-center">
+  <div class="container py-5">
+    <h2 class="text-center fw-bold mb-5">Pour quels projets ?</h2>
+
+    <p class="mx-auto" style="max-width: 720px;">
+      Inspire Code s’adresse principalement aux indépendants,
+      petites et moyennes structures, ainsi qu’aux porteurs de projets
+      ayant déjà une intention claire ou un besoin identifié.
+      <br><br>
+      Lorsque l’objectif est de poser un cadre solide,
+      d’éviter les choix précipités et de construire sur des bases saines,
+      l’accompagnement prend tout son sens.
+      <br><br>
+      À l’inverse, Inspire Code n’est pas adapté aux projets
+      qui recherchent une exécution rapide sans réflexion préalable
+      ou une promesse de performance déconnectée de la réalité.
+    </p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="ic-cta-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+    <h2 class="fw-bold mb-3">
+      Si cette approche vous parle,
+    </h2>
+    <p class="mb-4">
+      la suite se construit simplement par l’échange.
+    </p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a 
+        href="{{ url_for('contact') }}" 
+        class="btn btn-light btn-lg">
+        Me contacter
+      </a>
     </div>
   </div>
 </section>

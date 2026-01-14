@@ -379,11 +379,16 @@ def robots():
 
 @app.route('/mentions-legales')
 def mentionslegales():
-    return render_template('mentions-legales.html')
+    return render_template('/legales/mentions-legales.html')
 
 @app.route('/politique-confidentialite')
 def politiqueconfidentialite():
-    return render_template('politique-confidentialite.html')
+    return render_template('/legales/politique-de-confidentialite.html')
+
+@app.route('/cgv')
+def cgv():
+    return render_template('/legales/cgv.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

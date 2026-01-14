@@ -32,6 +32,28 @@
   z-index: 0;
 }
 
+.legal-page .hero-content {
+  max-width: 800px;
+}
+
+.hero-subtitle span {
+}
+
+.hero-subtitle {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-updated {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
 /* Contenu du hero */
 .hero-content {
   position: relative;
@@ -53,7 +75,7 @@
 
 /* Texte descriptif */
 .hero-content p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #f8f9fa;
   line-height: 1.6;
   margin-bottom: 1rem;
@@ -64,6 +86,7 @@
 /*****************************************************************/
 
 .ic-hero-offre {
+  position: relative;     /* AJOUT pour le positionnement de la date */
   padding-top: 5rem;      /* compense le header fixe */
   padding-bottom: 1.5rem;
 

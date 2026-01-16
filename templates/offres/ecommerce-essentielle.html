@@ -157,43 +157,76 @@
 
       <!-- RECAP -->
       <div class="col-lg-5">
-        <div class="card shadow-sm position-sticky" style="top: 110px;">
-          <div class="card-body p-4">
+        <div class="position-sticky" style="top: 110px;">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
 
-            <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
+              <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
 
-            <div class="d-flex justify-content-between mb-2">
-              <span class="text-muted">Base eCommerce Essentielle</span>
-              <span class="fw-semibold">890 €</span>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Base eCommerce Essentielle</span>
+                <span class="fw-semibold">890 €</span>
+              </div>
+
+              <div id="recapOptions" class="mb-3"></div>
+
+              <hr class="my-3">
+
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fw-bold">Total</span>
+                <span class="fw-bold fs-4"><span id="totalPrice">890</span> €</span>
+              </div>
+
+              <div class="small text-muted mb-4">
+                Paiement sécurisé via Stripe. Confirmation envoyée par email.
+              </div>
+
+              <!-- CTA -->
+              <a id="payBtn"
+                 href="{{ url_for('devis') }}"
+                 class="btn btn-primary btn-lg w-100 fw-semibold">
+                Payer <span id="payBtnPrice">890</span> €
+              </a>
+
+              <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100 mt-3">
+                J’ai une question avant de payer
+              </a>
+
             </div>
-
-            <div id="recapOptions" class="mb-3"></div>
-
-            <hr class="my-3">
-
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <span class="fw-bold">Total</span>
-              <span class="fw-bold fs-4"><span id="totalPrice">890</span> €</span>
-            </div>
-
-            <div class="small text-muted mb-4">
-              Paiement sécurisé via Stripe. Confirmation envoyée par email.
-            </div>
-
-            <!-- CTA -->
-            <a id="payBtn"
-               href="{{ url_for('devis') }}"
-               class="btn btn-primary btn-lg w-100 fw-semibold">
-              Payer <span id="payBtnPrice">890</span> €
-            </a>
-
-            <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100 mt-3">
-              J’ai une question avant de payer
-            </a>
-
           </div>
-        </div>
+
+          <div class="alert alert-light border mt-3">
+            <h2 class="h4 fw-bold mb-3">3) À savoir avant de valider</h2>
+            <div class="small text-muted">
+              <p class="mb-2">
+                L’offre <strong>E-commerce Essentielle</strong> est conçue pour des boutiques simples,
+                avec un catalogue limité et un parcours d’achat standard.
+              </p>
+
+              <p class="mb-2">Elle n’inclut pas :</p>
+              <ul class="mb-2">
+                <li>la rédaction complète des contenus (textes fournis par le client),</li>
+                <li>la création de logo ou d’identité visuelle complète,</li>
+                <li>les fonctionnalités e-commerce avancées (abonnements, marketplace, multi-vendeurs…),</li>
+                <li>les intégrations complexes (ERP, CRM, outils métier),</li>
+                <li>le référencement avancé ou la publicité en ligne,</li>
+                <li>les évolutions et la maintenance au-delà du mois inclus.</li>
+              </ul>
+
+              <p class="mb-0">
+                Si votre projet e-commerce est plus complexe ou évolutif,
+                un accompagnement personnalisé pourra être proposé après échange.
+              </p>
+            </div>
+          </div>
+        </div>    
+
       </div>
+
+
+
+
+
 
     </div>
 

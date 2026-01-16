@@ -118,48 +118,82 @@
 
       <!-- PANIER / RECAP -->
       <div class="col-lg-5">
-        <div class="card shadow-sm position-sticky" style="top: 110px;">
-          <div class="card-body p-4">
+        <div class="position-sticky" style="top: 110px;">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
 
-            <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
+              <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
 
-            <div class="d-flex justify-content-between mb-2">
-              <span class="text-muted">Base Essentielle</span>
-              <span class="fw-semibold">690 €</span>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Base Essentielle</span>
+                <span class="fw-semibold">690 €</span>
+              </div>
+
+              <div id="recapOptions" class="mb-3"></div>
+
+              <hr class="my-3">
+
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="fw-bold">Total</span>
+                <span class="fw-bold fs-4"><span id="totalPrice">690</span> €</span>
+              </div>
+
+              <div class="small text-muted mb-4">
+                Paiement sécurisé via Stripe. Vous recevrez une confirmation par email.
+              </div>
+
+              <!-- CTA paiement (placeholder pour l’instant) -->
+              <a id="payBtn"
+                href="{{ url_for('devis') }}"
+                class="btn btn-primary btn-lg w-100 fw-semibold">
+                Payer <span id="payBtnPrice">690</span> €
+              </a>
+
+              <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100 mt-3">
+                J’ai une question avant de payer
+              </a>
+
+              <div class="small text-muted mt-4">
+                <strong>Astuce :</strong> si votre besoin est flou (textes, positionnement, structure),
+                l’Atelier Libération est l’option la plus confortable.
+              </div>
             </div>
+          </div>
 
-            <div id="recapOptions" class="mb-3"></div>
+          <!-- N'INCLUS PAS -->
+          <div class="alert alert-light border mt-3">
+            <h2 class="h4 fw-bold mb-3">3) À savoir avant de valider</h2>
 
-            <hr class="my-3">
+            <div class="small text-muted">
+              <p class="mb-2">
+                L’offre <strong>Site vitrine Essentielle</strong> est conçue pour des projets simples et autonomes,
+                avec un périmètre clairement défini.
+              </p>
 
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <span class="fw-bold">Total</span>
-              <span class="fw-bold fs-4"><span id="totalPrice">690</span> €</span>
+              <p class="mb-2">
+                Elle n’inclut pas :
+              </p>
+
+              <ul class="mb-2">
+                <li>la rédaction complète des contenus (textes fournis par le client, avec aide à la structuration si besoin),</li>
+                <li>la création de logo ou d’identité visuelle complète,</li>
+                <li>les fonctionnalités spécifiques (réservation, e-commerce, espace membre…),</li>
+                <li>le référencement avancé ou les campagnes publicitaires,</li>
+                <li>les évolutions et la maintenance au-delà du mois inclus.</li>
+              </ul>
+
+              <p class="mb-0">
+                Si votre besoin dépasse ce cadre ou reste flou (contenus, structure, positionnement),
+                un accompagnement personnalisé pourra être proposé après échange.
+              </p>
             </div>
-
-            <div class="small text-muted mb-4">
-              Paiement sécurisé via Stripe. Vous recevrez une confirmation par email.
-            </div>
-
-            <!-- CTA paiement (placeholder pour l’instant) -->
-            <a id="payBtn"
-               href="{{ url_for('devis') }}"
-               class="btn btn-primary btn-lg w-100 fw-semibold">
-              Payer <span id="payBtnPrice">690</span> €
-            </a>
-
-            <a href="{{ url_for('contact') }}" class="btn btn-outline-secondary w-100 mt-3">
-              J’ai une question avant de payer
-            </a>
-
-            <div class="small text-muted mt-4">
-              <strong>Astuce :</strong> si votre besoin est flou (textes, positionnement, structure),
-              l’Atelier Libération est l’option la plus confortable.
-            </div>
-
           </div>
         </div>
       </div>
+
+
+
+
     </div>
 
   </div>

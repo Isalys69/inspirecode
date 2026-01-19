@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="py-5 text-center">
+  <div class="container">
+    <h1>Paiement confirmé</h1>
+    <p>Merci pour votre commande. Le paiement a bien été enregistré.</p>
+    <p class="text-muted small">Référence Stripe : {{ session_id }}</p>
+  </div>
+</section>
+{% endblock %}

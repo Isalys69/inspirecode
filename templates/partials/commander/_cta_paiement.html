@@ -1,0 +1,39 @@
+{# partials/commander/_cta_paiement.html #}
+
+<section class="ic-cta-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+
+    <input type="hidden"
+           name="amount_expected"
+           value="{{ order.pricing.amount_total }}">
+
+    <button
+      type="submit"
+      id="payButton"
+      class="btn btn-primary btn-lg w-50 fw-semibold"
+      disabled
+    >
+      Payer {{ order.pricing.display }}
+    </button>
+
+    <p class="text-light small">
+      Paiement sécurisé via Stripe.
+    </p>
+
+  </div>
+
+  <script>
+    (function () {
+      const checkbox = document.getElementById("acceptRenonciation");
+      const payButton = document.getElementById("payButton");
+
+      if (!checkbox || !payButton) return;
+
+      payButton.disabled = !checkbox.checked;
+
+      checkbox.addEventListener("change", function () {
+        payButton.disabled = !this.checked;
+      });
+    })();
+  </script>
+</section>

@@ -1,0 +1,29 @@
+<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+
+    <h1 class="display-5 fw-bold">
+      {{ hero_title }}
+    </h1>
+
+    <p class="lead mt-3">
+      {{ hero_subtitle }}
+    </p>
+
+    {% if hero_list %}
+      <ul class="mt-3">
+        {% for item in hero_list %}
+          <li::before>{{ item }}<br></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if hero_accroche %}
+      <p class="lead mt-3">
+        {{ hero_accroche }}
+      </p>
+    {% endif %}
+
+
+
+  </div>
+</section>

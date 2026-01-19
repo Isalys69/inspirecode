@@ -110,6 +110,9 @@ a {
 #offres {
   scroll-margin-top: var(--header-height);
 }
+#retractation {
+  scroll-margin-top: var(--header-height);;
+}
 
 
 /*****************************************************************/

@@ -142,12 +142,16 @@
                 Paiement sécurisé via Stripe. Vous recevrez une confirmation par email.
               </div>
 
-              <!-- CTA paiement (placeholder pour l’instant) -->
-              <a id="payBtn"
-                href="{{ url_for('devis') }}"
-                class="btn btn-primary btn-lg w-100 fw-semibold">
-                Payer <span id="payBtnPrice">690</span> €
-              </a>
+              <form id="orderForm" method="POST" action="{{ url_for('commander_vitrine_essentielle') }}">
+                <input type="hidden" name="options" id="selectedOptions">
+                <button 
+                  type="submit" 
+                  class="btn btn-primary btn-lg w-100 fw-semibold">
+                  Payer 
+                  <span id="payBtnPrice">690</span> €
+                </button>
+              </form>
+
 
               <a href="{{ url_for('contact') }}" class="d-block text-center text-muted mt-3 small">
                 Une question avant de payer ?
@@ -200,57 +204,68 @@
 </section>
 
 <script>
-  (function () {
-    const BASE_PRICE = 690;
+(function () {
+  const BASE_PRICE = 690;
 
-    const optionInputs = Array.from(document.querySelectorAll(".js-option"));
-    const recapOptions = document.getElementById("recapOptions");
-    const totalPriceEl = document.getElementById("totalPrice");
-    const payBtnPriceEl = document.getElementById("payBtnPrice");
+  const optionInputs = Array.from(document.querySelectorAll(".js-option"));
+  const recapOptions = document.getElementById("recapOptions");
+  const totalPriceEl = document.getElementById("totalPrice");
+  const payBtnPriceEl = document.getElementById("payBtnPrice");
+  const form = document.getElementById("orderForm");
+  const hiddenOptionsInput = document.getElementById("selectedOptions");
 
-    function formatEUR(value) {
-      return `${value} €`;
+  function formatEUR(value) {
+    return `${value} €`;
+  }
+
+  function getSelectedOptions() {
+    return optionInputs
+      .filter(i => i.checked)
+      .map(i => i.id);
+  }
+
+  function updateRecap() {
+    let total = BASE_PRICE;
+    recapOptions.innerHTML = "";
+
+    const selected = optionInputs.filter(i => i.checked);
+
+    if (selected.length === 0) {
+      const empty = document.createElement("div");
+      empty.className = "text-muted small";
+      empty.textContent = "Aucune option sélectionnée.";
+      recapOptions.appendChild(empty);
+    } else {
+      selected.forEach(input => {
+        const price = parseInt(input.value, 10) || 0;
+        total += price;
+
+        const label = document.querySelector(`label[for="${input.id}"]`);
+        const titleEl = label ? label.querySelector(".fw-semibold") : null;
+        const title = titleEl ? titleEl.textContent.trim() : "Option";
+
+        const row = document.createElement("div");
+        row.className = "d-flex justify-content-between mb-2";
+        row.innerHTML = `
+          <span class="text-muted">${title}</span>
+          <span class="fw-semibold">+${formatEUR(price)}</span>
+        `;
+        recapOptions.appendChild(row);
+      });
     }
 
-    function updateRecap() {
-      let total = BASE_PRICE;
+    totalPriceEl.textContent = total;
+    payBtnPriceEl.textContent = total;
+  }
 
-      // Reset recap
-      recapOptions.innerHTML = "";
+  optionInputs.forEach(i => i.addEventListener("change", updateRecap));
 
-      const selected = optionInputs.filter(i => i.checked);
+  form.addEventListener("submit", () => {
+    hiddenOptionsInput.value = JSON.stringify(getSelectedOptions());
+  });
 
-      if (selected.length === 0) {
-        const empty = document.createElement("div");
-        empty.className = "text-muted small";
-        empty.textContent = "Aucune option sélectionnée.";
-        recapOptions.appendChild(empty);
-      } else {
-        selected.forEach(input => {
-          const price = parseInt(input.value, 10) || 0;
-          total += price;
-
-          const label = document.querySelector(`label[for="${input.id}"]`);
-          const titleEl = label ? label.querySelector(".fw-semibold") : null;
-          const title = titleEl ? titleEl.textContent.trim() : "Option";
-
-          const row = document.createElement("div");
-          row.className = "d-flex justify-content-between mb-2";
-          row.innerHTML = `
-            <span class="text-muted">${title}</span>
-            <span class="fw-semibold">+${formatEUR(price)}</span>
-          `;
-          recapOptions.appendChild(row);
-        });
-      }
-
-      totalPriceEl.textContent = total;
-      payBtnPriceEl.textContent = total;
-    }
-
-    optionInputs.forEach(i => i.addEventListener("change", updateRecap));
-    updateRecap();
-  })();
+  updateRecap();
+})();
 </script>
 
 {% endblock %}

@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, abort
+from payments import create_checkout_session
+
 from flask import send_from_directory
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
@@ -10,7 +12,9 @@ import locale
 
 from calendly import register_calendly_routes
 
-import re
+import json
+from utils.build_cart import build_cart_vitrine_essentielle
+
 
 
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
@@ -315,8 +319,23 @@ def offre_site_ecommerce():
 
 
 
-@app.route("/commander/site-vitrine-essentielle")
+@app.route("/commander/site-vitrine-essentielle", methods=["GET", "POST"])
 def commander_vitrine_essentielle():
+
+    if request.method == "POST":
+        # 1. Récupérer les options cochées
+        options = json.loads(request.form["options"])
+
+        # 2. Construire / mettre à jour le cart
+        cart = build_cart_vitrine_essentielle(options)
+
+        # 3. Stocker le cart (normalisé)
+        session["cart"] = cart
+
+        # 4. Redirection vers confirmation
+        return redirect(url_for("commander_confirmation"))
+
+    # GET : affichage de la page offre
     return render_template("offres/vitrine-essentielle.html")
 
 
@@ -327,6 +346,97 @@ def commander_ecommerce_essentielle():
 @app.route("/commander/appmobile-essentielle")
 def commander_appmobile_essentielle():
     return render_template("offres/appmobile-essentielle.html")
+
+
+@app.route("/commander/confirmation", methods=["GET", "POST"])
+def commander_confirmation():
+
+    cart = session.get("cart")
+    if not cart:
+        return redirect(url_for("commander_vitrine_essentielle"))
+
+    order = {
+        "label": cart["label"],
+        "summary": cart.get("summary"),
+        "included": cart["included"],
+        "excluded": cart.get("excluded"),
+        "options": cart["options_display"],
+        "pricing": cart["pricing"],
+        "meta": {
+            "offre_code": cart["offre_code"],
+            "renonciation_required": True
+        }
+    }
+
+    return render_template(
+        "commander/confirmation.html",
+        order=order,
+        hero_title="Confirmation de votre commande",
+        hero_subtitle="Merci de vérifier les éléments ci-dessous avant de procéder au paiement."
+
+    )
+
+
+
+
+@app.route("/paiement/checkout", methods=["POST"])
+def checkout():
+    """
+    Crée une session Stripe après validation finale
+    """
+
+    # 1. Vérifier la renonciation
+    if request.form.get("accept_renonciation") != "1":
+        abort(400, "Renonciation au droit de rétractation non acceptée.")
+
+    # 2. Vérifier l'existence du cart
+    cart = session.get("cart")
+    if not cart:
+        abort(400, "Commande introuvable ou expirée.")
+
+    # 3. Reconstruire l'order (source unique)
+    order = {
+        "label": cart["label"],
+        "pricing": cart["pricing"],
+        "metadata": {
+            "offre_code": cart["offre_code"],
+            "renonciation": "accepted",
+        }
+    }
+
+    # 4. Vérifier le montant attendu (anti-tampering)
+    try:
+        amount_expected = int(request.form.get("amount_expected", 0))
+    except ValueError:
+        abort(400, "Montant invalide.")
+
+    if amount_expected != order["pricing"]["amount_total"]:
+        abort(400, "Incohérence de montant détectée.")
+
+    # 5. Créer la session Stripe
+    try:
+        checkout_url = create_checkout_session(
+            order=order,
+            base_url=request.host_url.rstrip("/")
+        )
+    except Exception as e:
+        abort(500, str(e))
+
+    # 6. Redirection vers Stripe Checkout
+    return redirect(checkout_url)
+
+@app.route("/paiement/succes")
+def paiement_succes():
+    session_id = request.args.get("session_id")
+
+    if not session_id:
+        abort(400, "Session Stripe manquante.")
+
+    return render_template(
+        "paiement/succes.html",
+        session_id=session_id
+    )
+
 
 
 @app.route("/offres/automatisations")

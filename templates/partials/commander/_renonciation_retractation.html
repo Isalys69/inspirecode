@@ -1,0 +1,47 @@
+{# partials/commander/_renonciation_retractation.html #}
+
+<section class="bloc-renonciation" aria-labelledby="renonciation-title">
+  <h2 id="renonciation-title">Démarrage immédiat et droit de rétractation</h2>
+
+  <p>
+    Cette commande concerne une prestation de service dont l’exécution peut débuter immédiatement après paiement, à la demande du client.  
+  </p>
+
+  <p class="text-muted small">
+    Conformément à la réglementation applicable, les prestations de service bénéficient en principe
+    d’un droit de rétractation de 14 jours.<br>
+    En demandant le démarrage immédiat de la prestation après paiement, vous reconnaissez
+    renoncer à l’exercice de ce droit de rétractation à compter du début de l’exécution.
+  </p>
+
+  <p class="text-muted small">
+    Les conditions d’exercice du droit de rétractation, selon la situation du client,
+    sont précisées dans les
+    <a 
+      href="{{ url_for('cgv') }}#retractation" 
+      style="text-decoration: 
+      underline;">
+      Conditions Générales de Vente
+    </a>
+  </p>
+
+
+  <div class="form-check mt-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="acceptRenonciation"
+      name="accept_renonciation"
+      value="1"
+      required
+    >
+    <label class="form-check-label" for="acceptRenonciation">
+      <strong>Je demande le démarrage immédiat de la prestation</strong> après paiement et
+      <strong>je reconnais renoncer à mon droit de rétractation</strong>.
+    </label>
+  </div>
+
+  <p class="text-muted small mt-2 mb-0">
+    En cochant cette case, vous confirmez votre demande de démarrage immédiat de la prestation.
+  </p>
+</section>

@@ -1,71 +1,94 @@
 {# partials/commander/_recap_offre.html #}
 
 <section class="bloc-recap-offre" aria-labelledby="recap-offre-title">
-  <h2 id="recap-offre-title">Récapitulatif de l’offre</h2>
+  <div class="container py-3">
 
-  <div class="recap-offre__header">
-    <p class="recap-offre__name">
-      <strong>{{ order.label }}</strong>
-    </p>
+    <h2 id="recap-offre-title">
+      Récapitulatif de l’offre "{{ order.label }}"
+    </h2>
 
     {% if order.reference %}
       <p class="recap-offre__ref">
         Référence commande : <strong>{{ order.reference }}</strong>
       </p>
     {% endif %}
-  </div>
 
-  {% if order.summary %}
-    <p class="recap-offre__summary">
-      {{ order.summary }}
-    </p>
-  {% endif %}
+    {% if order.summary %}
+      <p class="recap-offre__summary">
+        {{ order.summary }}
+      </p>
+    {% endif %}
 
-  <div class="recap-offre__grid">
-    <div class="recap-offre__col">
-      <h3>Inclus</h3>
-      {% if order.included and order.included|length > 0 %}
-        <ul>
-          {% for item in order.included %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>—</p>
-      {% endif %}
-    </div>
+    <div class="recap-offre__grid">
 
-    <div class="recap-offre__col">
-      <h3>Non inclus</h3>
-      {% if order.excluded and order.excluded|length > 0 %}
-        <ul>
-          {% for item in order.excluded %}
-            <li>{{ item }}</li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        <p>—</p>
-      {% endif %}
-    </div>
-  </div>
+      {# --- Inclus --- #}
+      <div class="recap-offre__col">
+        <h3>Inclus :</h3>
+        {% if order.included and order.included|length > 0 %}
+          <ul>
+            {% for item in order.included %}
+              <li>{{ item }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>—</p>
+        {% endif %}
+      </div>
 
-  {% if order.options and order.options|length > 0 %}
-    <div class="recap-offre__options">
-      <h3>Options sélectionnées</h3>
-      <ul>
-        {% for opt in order.options %}
-          <li>
-            {{ opt.label }}
-            {% if opt.price_label %}
-              — <strong>{{ opt.price_label }}</strong>
+      <div class="recap-offre__col recap-offre__options">
+        <h3>Les options sélectionnées :</h3>
+        {% if order.options and order.options|length > 0 %}
+          <ul>
+
+            {# Cas 1 : order.options est une liste #}
+            {% if order.options is iterable and order.options is not mapping %}
+              {% for opt in order.options %}
+                <li>
+                  {{ opt.label }}
+                  {% if opt.price_label %}
+                    — <strong>{{ opt.price_label }}</strong>
+                  {% endif %}
+                </li>
+              {% endfor %}
+
+            {# Cas 2 : order.options est un dict #}
+            {% else %}
+              {% for key, opt in order.options.items() %}
+                <li>
+                  {{ opt.label }}
+                  {% if opt.price_label %}
+                    — <strong>{{ opt.price_label }}</strong>
+                  {% endif %}
+                </li>
+              {% endfor %}
             {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  {% endif %}
+          </ul>
+        {% else %}
+          <p class="recap-offre__empty">
+            Aucune option sélectionnée.
+          </p>
+        {% endif %}
+      </div>
 
-  <p class="recap-offre__note">
-    Cette commande concerne une prestation de service. Le détail du démarrage et du cadre (dont la renonciation au droit de rétractation) est confirmé avant le paiement.
-  </p>
+      {# --- Non inclus --- #}
+      <div class="recap-offre__col">
+        <h3>Non inclus :</h3>
+        {% if order.excluded and order.excluded|length > 0 %}
+          <ul>
+            {% for item in order.excluded %}
+              <li>{{ item.replace('\n', '<br>') | safe }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>—</p>
+        {% endif %}
+      </div>
+
+    </div>
+<!--
+    <p class="recap-offre__note">
+      Cette commande concerne une prestation de service personnalisée.
+    </p>
+-->
+  </div>
 </section>

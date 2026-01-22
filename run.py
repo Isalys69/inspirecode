@@ -13,7 +13,7 @@ import locale
 from calendly import register_calendly_routes
 
 import json
-from utils.build_cart import build_cart_vitrine_essentielle
+from utils.build_cart import build_essentielle
 
 
 
@@ -323,12 +323,12 @@ def offre_site_ecommerce():
 def commander_vitrine_essentielle():
 
     if request.method == "POST":
-        # 1. Récupérer les options cochées
-        options = json.loads(request.form["options"])
-
+        print("FORM DATA :", request.form)
         # 2. Construire / mettre à jour le cart
-        cart = build_cart_vitrine_essentielle(options)
-
+        cart = build_essentielle(
+            request.form,
+            "vitrine-essentielle"
+            )
         # 3. Stocker le cart (normalisé)
         session["cart"] = cart
 
@@ -339,21 +339,55 @@ def commander_vitrine_essentielle():
     return render_template("offres/vitrine-essentielle.html")
 
 
-@app.route("/commander/site-ecommerce-essentielle")
+@app.route("/commander/site-ecommerce-essentielle", methods=["GET", "POST"])
 def commander_ecommerce_essentielle():
+
+    if request.method == "POST":
+        print("FORM DATA :", request.form)
+
+        # 2. Construire / mettre à jour le cart
+        cart = build_essentielle(
+            request.form,
+            "ecommerce-essentielle"
+            )
+        # 3. Stocker le cart (normalisé)
+        session["cart"] = cart
+
+        # 4. Redirection vers confirmation
+        return redirect(url_for("commander_confirmation"))
+
+    # GET : affichage de la page offre
     return render_template("offres/ecommerce-essentielle.html")
 
-@app.route("/commander/appmobile-essentielle")
+
+@app.route("/commander/appmobile-essentielle", methods=["GET", "POST"])
 def commander_appmobile_essentielle():
+
+    if request.method == "POST":
+        print("FORM DATA :", request.form)
+        # 2. Construire / mettre à jour le cart
+        cart = build_essentielle(
+            request.form,
+            "appmobile-essentielle"
+            )
+        # 3. Stocker le cart (normalisé)
+        session["cart"] = cart
+
+        # 4. Redirection vers confirmation
+        return redirect(url_for("commander_confirmation"))
+
+    # GET : affichage de la page offre
     return render_template("offres/appmobile-essentielle.html")
+
 
 
 @app.route("/commander/confirmation", methods=["GET", "POST"])
 def commander_confirmation():
 
+
     cart = session.get("cart")
     if not cart:
-        return redirect(url_for("commander_vitrine_essentielle"))
+        abort(400, "Commande expirée ou invalide.")
 
     order = {
         "label": cart["label"],
@@ -372,7 +406,7 @@ def commander_confirmation():
         "commander/confirmation.html",
         order=order,
         hero_title="Confirmation de votre commande",
-        hero_subtitle="Merci de vérifier les éléments ci-dessous avant de procéder au paiement."
+        hero_subtitle="Merci de vérifier les éléments ci-dessous.\n Le paiement vous permettra de lancer immédiatement votre projet."
 
     )
 

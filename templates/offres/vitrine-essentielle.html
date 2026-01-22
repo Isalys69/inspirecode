@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}Commander - Site vitrine Essentielle | Inspire Code{% endblock %}
+{% block title %}
+Commander – Site vitrine Essentielle | Inspire Code
+{% endblock %}
 
 {% block content %}
 
-
-
+<!-- HERO -->
 <section class="ic-hero-offre d-flex align-items-center text-white text-center">
   <div class="container py-4">
-    <h1 class="display-6 fw-bold mb-2">Commander : Site vitrine Essentielle</h1>
-    <p class="lead mt-2 mb-0">
-      Base à partir de <strong>690 €</strong>. Ajoutez uniquement les options utiles à votre activité.
+    <h1 class="display-6 fw-bold mb-2">
+      Commander : Site vitrine Essentielle
+    </h1>
+    <p class="lead mb-0">
+      Base à partir de <strong>690 €</strong>.  
+      Ajoutez uniquement les options utiles à votre activité.
     </p>
   </div>
 </section>
@@ -18,187 +22,198 @@
 <section class="py-5">
   <div class="container">
 
-    <div class="row g-4">
-      <!-- CONFIG OPTIONS -->
-      <div class="col-lg-7">
-        <div class="card shadow-sm">
-          <div class="card-body p-4">
+    <!-- FORM GLOBAL : OPTIONS + RECAP + CTA -->
+    <form method="POST" action="{{ url_for('commander_vitrine_essentielle') }}">
 
-            <h2 class="h4 fw-bold mb-3">1) Configurez votre site</h2>
-            <p class="text-muted mb-4">
-              Ce parcours est conçu pour les prospects autonomes : vous sélectionnez vos options, vous voyez le prix final, puis vous validez.
-            </p>
+      <div class="row g-4">
 
-            <!-- Base -->
-            <div class="d-flex align-items-start justify-content-between border rounded p-3 mb-3">
-              <div>
-                <div class="fw-semibold">Pack Essentielle</div>
-                <div class="small text-muted">
-                  Site vitrine simple, propre et responsive (structure essentielle).
-                </div>
-              </div>
-              <div class="fw-bold">690 €</div>
-            </div>
-
-            <!-- Options -->
-            <h3 class="h5 fw-bold mt-4 mb-3">Options</h3>
-
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="150" id="opt-devis">
-              <label class="form-check-label w-100" for="opt-devis">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Formulaire de devis avancé</div>
-                    <div class="small text-muted">
-                      Champs structurés (budget, délais, type de projet…), envoi email propre, meilleure qualification.
-                    </div>
-                  </div>
-                  <div class="fw-bold">+150 €</div>
-                </div>
-              </label>
-            </div>
-
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="100" id="opt-carte">
-              <label class="form-check-label w-100" for="opt-carte">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Carte + zone d’intervention</div>
-                    <div class="small text-muted">
-                      Carte intégrée + zone desservie clairement présentée (rassure et augmente les demandes).
-                    </div>
-                  </div>
-                  <div class="fw-bold">+100 €</div>
-                </div>
-              </label>
-            </div>
-
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="90" id="opt-page">
-              <label class="form-check-label w-100" for="opt-page">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Page supplémentaire</div>
-                    <div class="small text-muted">
-                      Ajout d’une page (ex: Services détaillés, Tarifs, Réalisations…).
-                    </div>
-                  </div>
-                  <div class="fw-bold">+90 €</div>
-                </div>
-              </label>
-            </div>
-
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="120" id="opt-seo">
-              <label class="form-check-label w-100" for="opt-seo">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">SEO de base</div>
-                    <div class="small text-muted">
-                      Balises essentielles, titres, description, bonnes pratiques, structure propre.
-                    </div>
-                  </div>
-                  <div class="fw-bold">+120 €</div>
-                </div>
-              </label>
-            </div>
-
-            <!-- Notes -->
-            <div class="alert alert-light border mt-4 mb-0">
-              <div class="fw-semibold mb-1">Bon à savoir</div>
-              <div class="small text-muted">
-                Après paiement, je vous contacte pour récupérer les contenus (logo, textes, photos) et valider les détails.
-                Si vous n’avez pas vos textes, l’Atelier Libération est souvent plus adapté.
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- PANIER / RECAP -->
-      <div class="col-lg-5">
-        <div class="position-sticky" style="top: 110px;">
+        <!-- CONFIGURATION -->
+        <div class="col-lg-7">
           <div class="card shadow-sm">
             <div class="card-body p-4">
 
-              <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
-
-              <div class="d-flex justify-content-between mb-2">
-                <span class="text-muted">Base Essentielle</span>
-                <span class="fw-semibold">690 €</span>
-              </div>
-
-              <div id="recapOptions" class="mb-3"></div>
-
-              <hr class="my-3">
-
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="fw-bold">Total</span>
-                <span class="fw-bold fs-4"><span id="totalPrice">690</span> €</span>
-              </div>
-
-              <div class="small text-muted mb-4">
-                Paiement sécurisé via Stripe. Vous recevrez une confirmation par email.
-              </div>
-
-              <form id="orderForm" method="POST" action="{{ url_for('commander_vitrine_essentielle') }}">
-                <input type="hidden" name="options" id="selectedOptions">
-                <button 
-                  type="submit" 
-                  class="btn btn-primary btn-lg w-100 fw-semibold">
-                  Payer 
-                  <span id="payBtnPrice">690</span> €
-                </button>
-              </form>
-
-
-              <a href="{{ url_for('contact') }}" class="d-block text-center text-muted mt-3 small">
-                Une question avant de payer ?
-              </a>
-
-              <div class="small text-muted mt-4">
-                <strong>Astuce :</strong> si votre besoin est flou (textes, positionnement, structure),
-                l’Atelier Libération est l’option la plus confortable.
-              </div>
-            </div>
-          </div>
-
-          <!-- N'INCLUS PAS -->
-          <div class="alert alert-light border mt-3">
-            <h2 class="h4 fw-bold mb-3">3) À savoir avant de valider</h2>
-
-            <div class="small text-muted">
-              <p class="mb-2">
-                L’offre <strong>Site vitrine Essentielle</strong> est conçue pour des projets simples et autonomes,
-                avec un périmètre clairement défini.
+              <h2 class="h4 fw-bold mb-3">1) Configurez votre site</h2>
+              <p class="text-muted mb-4">
+                Vous sélectionnez vos options, vous voyez le prix final,
+                puis vous validez.
               </p>
 
-              <p class="mb-2">
-                Elle n’inclut pas :
-              </p>
+              <!-- BASE -->
+              <div class="d-flex justify-content-between border rounded p-3 mb-4">
+                <div>
+                  <div class="fw-semibold">Pack Essentielle</div>
+                  <div class="small text-muted">
+                    Site vitrine simple, propre et responsive.
+                  </div>
+                </div>
+                <div class="fw-bold">690 €</div>
+              </div>
 
-              <ul class="mb-2">
-                <li>la rédaction complète des contenus (textes fournis par le client, avec aide à la structuration si besoin),</li>
-                <li>la création de logo ou d’identité visuelle complète,</li>
-                <li>les fonctionnalités spécifiques (réservation, e-commerce, espace membre…),</li>
-                <li>le référencement avancé ou les campagnes publicitaires,</li>
-                <li>les évolutions et la maintenance au-delà du mois inclus.</li>
-              </ul>
+              <!-- OPTIONS -->
+              <h3 class="h5 fw-bold mb-3">Options</h3>
 
-              <p class="mb-0">
-                Si votre besoin dépasse ce cadre ou reste flou (contenus, structure, positionnement),
-                un accompagnement personnalisé pourra être proposé après échange.
-              </p>
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-devis"
+                  data-price="150"
+                  id="opt-devis"
+                >
+                <label class="form-check-label w-100" for="opt-devis">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Formulaire de devis avancé</div>
+                      <div class="small text-muted">
+                        Champs structurés, meilleure qualification.
+                      </div>
+                    </div>
+                    <div class="fw-bold">+150 €</div>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-carte"
+                  data-price="100"
+                  id="opt-carte"
+                >
+                <label class="form-check-label w-100" for="opt-carte">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Carte + zone d’intervention</div>
+                      <div class="small text-muted">
+                        Rassure et augmente les demandes.
+                      </div>
+                    </div>
+                    <div class="fw-bold">+100 €</div>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-page"
+                  data-price="90"
+                  id="opt-page"
+                >
+                <label class="form-check-label w-100" for="opt-page">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Page supplémentaire</div>
+                      <div class="small text-muted">
+                        Services, tarifs, réalisations…
+                      </div>
+                    </div>
+                    <div class="fw-bold">+90 €</div>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-seo"
+                  data-price="120"
+                  id="opt-seo"
+                >
+                <label class="form-check-label w-100" for="opt-seo">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">SEO de base</div>
+                      <div class="small text-muted">
+                        Structure propre et balises essentielles.
+                      </div>
+                    </div>
+                    <div class="fw-bold">+120 €</div>
+                  </div>
+                </label>
+              </div>
+
             </div>
           </div>
         </div>
+
+        <!-- RECAP / CTA -->
+        <div class="col-lg-5">
+          <div class="position-sticky" style="top:110px;">
+            <div class="card shadow-sm">
+              <div class="card-body p-4">
+
+                <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted">Base Essentielle</span>
+                  <span class="fw-semibold">690 €</span>
+                </div>
+
+                <div id="recapOptions" class="mb-3"></div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="fw-bold">Total</span>
+                  <span class="fw-bold fs-4">
+                    <span id="totalPrice">690</span> €
+                  </span>
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg w-100 fw-semibold"
+                >
+                  Payer <span id="payBtnPrice">690</span> €
+                </button>
+                <a href="{{ url_for('contact') }}" class="d-block text-center text-muted mt-3 small">
+                  Une question avant de payer ?
+                </a>
+
+              </div>
+            </div>
+            <div class="alert alert-light border mt-3">
+              <h2 class="h4 fw-bold mb-3">3) À savoir avant de valider</h2>
+              <div class="small text-muted">
+                <p class="mb-2">
+                  L’offre <strong>Site vitrine Essentielle</strong> est conçue pour des projets simples et autonomes,
+                  avec un périmètre clairement défini.
+                </p>
+
+                <p class="mb-2">Elle n’inclut pas :</p>
+                <ul class="mb-2">
+                  <li>la rédaction complète des contenus (textes fournis par le client, avec aide à la structuration si besoin),</li>
+                  <li>la création de logo ou d’identité visuelle complète,</li>
+                  <li>les fonctionnalités spécifiques (réservation, e-commerce, espace membre…),</li>
+                  <li>le référencement avancé ou les campagnes publicitaires,</li>
+                  <li>les évolutions et la maintenance au-delà du mois inclus.</li>                
+                </ul>
+
+                <p class="mb-0">
+                  Si votre besoin dépasse ce cadre ou reste flou (contenus, structure, positionnement),
+                  un accompagnement personnalisé pourra être proposé après échange.
+                </p>
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+
       </div>
 
-
-
-
-    </div>
+    </form>
+    <!-- FIN FORM -->
 
   </div>
 </section>
@@ -206,64 +221,40 @@
 <script>
 (function () {
   const BASE_PRICE = 690;
-
-  const optionInputs = Array.from(document.querySelectorAll(".js-option"));
-  const recapOptions = document.getElementById("recapOptions");
-  const totalPriceEl = document.getElementById("totalPrice");
-  const payBtnPriceEl = document.getElementById("payBtnPrice");
-  const form = document.getElementById("orderForm");
-  const hiddenOptionsInput = document.getElementById("selectedOptions");
-
-  function formatEUR(value) {
-    return `${value} €`;
-  }
-
-  function getSelectedOptions() {
-    return optionInputs
-      .filter(i => i.checked)
-      .map(i => i.id);
-  }
+  const options = document.querySelectorAll(".js-option");
+  const recap = document.getElementById("recapOptions");
+  const totalEl = document.getElementById("totalPrice");
+  const btnPriceEl = document.getElementById("payBtnPrice");
 
   function updateRecap() {
     let total = BASE_PRICE;
-    recapOptions.innerHTML = "";
+    recap.innerHTML = "";
 
-    const selected = optionInputs.filter(i => i.checked);
+    const checked = Array.from(options).filter(o => o.checked);
 
-    if (selected.length === 0) {
-      const empty = document.createElement("div");
-      empty.className = "text-muted small";
-      empty.textContent = "Aucune option sélectionnée.";
-      recapOptions.appendChild(empty);
-    } else {
-      selected.forEach(input => {
-        const price = parseInt(input.value, 10) || 0;
-        total += price;
-
-        const label = document.querySelector(`label[for="${input.id}"]`);
-        const titleEl = label ? label.querySelector(".fw-semibold") : null;
-        const title = titleEl ? titleEl.textContent.trim() : "Option";
-
-        const row = document.createElement("div");
-        row.className = "d-flex justify-content-between mb-2";
-        row.innerHTML = `
-          <span class="text-muted">${title}</span>
-          <span class="fw-semibold">+${formatEUR(price)}</span>
-        `;
-        recapOptions.appendChild(row);
-      });
+    if (checked.length === 0) {
+      recap.innerHTML = '<div class="text-muted small">Aucune option sélectionnée.</div>';
     }
 
-    totalPriceEl.textContent = total;
-    payBtnPriceEl.textContent = total;
+    checked.forEach(opt => {
+      const price = parseInt(opt.dataset.price, 10);
+      total += price;
+
+      const label = document.querySelector(`label[for="${opt.id}"] .fw-semibold`).textContent;
+
+      recap.innerHTML += `
+        <div class="d-flex justify-content-between mb-2">
+          <span class="text-muted">${label}</span>
+          <span class="fw-semibold">+${price} €</span>
+        </div>
+      `;
+    });
+
+    totalEl.textContent = total;
+    btnPriceEl.textContent = total;
   }
 
-  optionInputs.forEach(i => i.addEventListener("change", updateRecap));
-
-  form.addEventListener("submit", () => {
-    hiddenOptionsInput.value = JSON.stringify(getSelectedOptions());
-  });
-
+  options.forEach(o => o.addEventListener("change", updateRecap));
   updateRecap();
 })();
 </script>

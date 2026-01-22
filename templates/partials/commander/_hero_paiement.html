@@ -6,7 +6,7 @@
     </h1>
 
     <p class="lead mt-3">
-      {{ hero_subtitle }}
+      {{ hero_subtitle.replace('\n', '<br>') | safe }}</li>
     </p>
 
     {% if hero_list %}

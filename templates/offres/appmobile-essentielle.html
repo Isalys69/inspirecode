@@ -15,242 +15,263 @@
 
 <section class="py-5">
   <div class="container">
+    <!-- FORM GLOBAL : OPTIONS + RECAP + CTA -->
+    <form method="POST" action="{{ url_for('commander_appmobile_essentielle') }}">
 
-    <div class="row g-4">
-      <!-- CONFIG OPTIONS -->
-      <div class="col-lg-7">
-        <div class="card shadow-sm">
-          <div class="card-body p-4">
-
-            <h2 class="h4 fw-bold mb-3">1) Configurez votre application</h2>
-            <p class="text-muted mb-4">
-              Ce parcours est conçu pour les prospects autonomes : vous sélectionnez vos options, vous voyez le prix final, puis vous validez.
-            </p>
-
-            <!-- Base -->
-            <div class="d-flex align-items-start justify-content-between border rounded p-3 mb-3">
-              <div>
-                <div class="fw-semibold">Pack Essentielle</div>
-                <div class="small text-muted">
-                  Web app mobile simple, pensée pour un usage précis (mobile-first).
-                </div>
-              </div>
-              <div class="fw-bold">490 €</div>
-            </div>
-
-            <!-- Options -->
-            <h3 class="h5 fw-bold mt-4 mb-3">Options</h3>
-
-            <!-- Desktop (outil) -->
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="400" id="opt-desktop">
-              <label class="form-check-label w-100" for="opt-desktop">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Adaptation pour usage desktop (outil)</div>
-                    <div class="small text-muted">
-                      Permet d’utiliser l’application sur ordinateur avec une interface adaptée à l’écran.
-                      <strong>Ce n’est pas un site vitrine</strong> : pas de pages publiques, pas de SEO, pas de contenu “présence web”.
-                    </div>
-                  </div>
-                  <div class="fw-bold">+400 €</div>
-                </div>
-              </label>
-            </div>
-
-            <!-- Google Play -->
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="250" id="opt-google">
-              <label class="form-check-label w-100" for="opt-google">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Publication sur Google Play</div>
-                    <div class="small text-muted">
-                      Préparation des éléments et accompagnement à la publication.
-                      <strong>Frais Google non inclus</strong> (compte développeur requis).
-                    </div>
-                  </div>
-                  <div class="fw-bold">+250 €</div>
-                </div>
-              </label>
-            </div>
-
-            <!-- Apple App Store -->
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="350" id="opt-apple">
-              <label class="form-check-label w-100" for="opt-apple">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Publication sur l’Apple App Store</div>
-                    <div class="small text-muted">
-                      Préparation des éléments et accompagnement à la publication.
-                      <strong>Frais Apple non inclus</strong> (abonnement développeur annuel requis).
-                    </div>
-                  </div>
-                  <div class="fw-bold">+350 €</div>
-                </div>
-              </label>
-            </div>
-
-            <!-- Two stores -->
-            <div class="form-check border rounded p-3 mb-3">
-              <input class="form-check-input js-option" type="checkbox" value="500" id="opt-stores">
-              <label class="form-check-label w-100" for="opt-stores">
-                <div class="d-flex justify-content-between">
-                  <div>
-                    <div class="fw-semibold">Publication sur deux stores (Google + Apple)</div>
-                    <div class="small text-muted">
-                      Préparation complète pour iOS et Android.
-                      <strong>Frais Apple/Google non inclus</strong> (comptes développeur requis).
-                    </div>
-                  </div>
-                  <div class="fw-bold">+500 €</div>
-                </div>
-              </label>
-            </div>
-
-            <!-- Notes -->
-            <div class="alert alert-light border mt-4 mb-0">
-              <div class="fw-semibold mb-1">Bon à savoir</div>
-              <div class="small text-muted">
-                Après paiement, je vous contacte pour confirmer l’usage principal, récupérer les contenus nécessaires (logo, textes, éléments) et valider les options choisies.
-                <br>
-                Cette offre couvre exclusivement les éléments décrits ci-dessus. Toute extension du périmètre initial pourra entraîner un ajustement tarifaire.
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      <!-- PANIER / RECAP -->
-      <div class="col-lg-5">
-        <div class="position-sticky" style="top: 110px;">
+      <div class="row g-4">
+        <!-- CONFIG OPTIONS -->
+        <div class="col-lg-7">
           <div class="card shadow-sm">
             <div class="card-body p-4">
 
-              <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
+              <h2 class="h4 fw-bold mb-3">1) Configurez votre application</h2>
+              <p class="text-muted mb-4">
+                Ce parcours est conçu pour les prospects autonomes : vous sélectionnez vos options, vous voyez le prix final, puis vous validez.
+              </p>
 
-              <div class="d-flex justify-content-between mb-2">
-                <span class="text-muted">Base Essentielle</span>
-                <span class="fw-semibold">490 €</span>
+              <!-- Base -->
+              <div class="d-flex align-items-start justify-content-between border rounded p-3 mb-3">
+                <div>
+                  <div class="fw-semibold">Pack Essentielle</div>
+                  <div class="small text-muted">
+                    Web app mobile simple, pensée pour un usage précis (mobile-first).
+                  </div>
+                </div>
+                <div class="fw-bold">490 €</div>
               </div>
 
-              <div id="recapOptions" class="mb-3"></div>
+              <!-- Options -->
+              <h3 class="h5 fw-bold mt-4 mb-3">Options</h3>
 
-              <hr class="my-3">
-
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="fw-bold">Total</span>
-                <span class="fw-bold fs-4"><span id="totalPrice">490</span> €</span>
+              <!-- Desktop (outil) -->
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-desktop"
+                  data-price="400"
+                  id="opt-desktop"
+                >
+                <label class="form-check-label w-100" for="opt-desktop">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Adaptation pour usage desktop (outil)</div>
+                      <div class="small text-muted">
+                        Permet d’utiliser l’application sur ordinateur avec une interface adaptée à l’écran.
+                        <strong>Ce n’est pas un site vitrine</strong> : pas de pages publiques, pas de SEO, pas de contenu “présence web”.
+                      </div>
+                    </div>
+                    <div class="fw-bold">+400 €</div>
+                  </div>
+                </label>
               </div>
 
-              <div class="small text-muted mb-4">
-                Paiement sécurisé via Stripe. Vous recevrez une confirmation par email.
+              <!-- Google Play -->
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-google"
+                  data-price="250"
+                  id="opt-google"
+                >
+                <label class="form-check-label w-100" for="opt-google">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Publication sur Google Play</div>
+                      <div class="small text-muted">
+                        Préparation des éléments et accompagnement à la publication.
+                        <strong>Frais Google non inclus</strong> (compte développeur requis).
+                      </div>
+                    </div>
+                    <div class="fw-bold">+250 €</div>
+                  </div>
+                </label>
               </div>
 
-              <!-- CTA paiement (placeholder pour l’instant) -->
-              <a id="payBtn"
-                href="{{ url_for('devis') }}"
-                class="btn btn-primary btn-lg w-100 fw-semibold">
-                Payer <span id="payBtnPrice">490</span> €
-              </a>
+              <!-- Apple App Store -->
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-apple"
+                  data-price="350"
+                  id="opt-apple"
+                >
+                <label class="form-check-label w-100" for="opt-apple">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Publication sur l’Apple App Store</div>
+                      <div class="small text-muted">
+                        Préparation des éléments et accompagnement à la publication.
+                        <strong>Frais Apple non inclus</strong> (abonnement développeur annuel requis).
+                      </div>
+                    </div>
+                    <div class="fw-bold">+350 €</div>
+                  </div>
+                </label>
+              </div>
 
-              <a href="{{ url_for('contact') }}" class="d-block text-center text-muted mt-3 small">
-                Une question avant de payer ?
-              </a>
+              <!-- Two stores -->
+              <div class="form-check border rounded p-3 mb-3">
+                <input
+                  class="form-check-input js-option"
+                  type="checkbox"
+                  name="options"
+                  value="opt-stores"
+                  data-price="500"
+                  id="opt-stores"
+                >
+                <label class="form-check-label w-100" for="opt-stores">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <div class="fw-semibold">Publication sur deux stores (Google + Apple)</div>
+                      <div class="small text-muted">
+                        Préparation complète pour iOS et Android.
+                        <strong>Frais Apple/Google non inclus</strong> (comptes développeur requis).
+                      </div>
+                    </div>
+                    <div class="fw-bold">+500 €</div>
+                  </div>
+                </label>
+              </div>
 
-              <div class="small text-muted mt-4">
-                <strong>Astuce :</strong> si vous hésitez sur le périmètre, les priorités ou la suite (stores, évolutions),
-                l’Atelier Mobile est l’option la plus confortable.
+              <!-- Notes -->
+              <div class="alert alert-light border mt-4 mb-0">
+                <div class="fw-semibold mb-1">Bon à savoir</div>
+                <div class="small text-muted">
+                  Après paiement, je vous contacte pour confirmer l’usage principal, récupérer les contenus nécessaires (logo, textes, éléments) et valider les options choisies.
+                  <br>
+                  Cette offre couvre exclusivement les éléments décrits ci-dessus. Toute extension du périmètre initial pourra entraîner un ajustement tarifaire.
+                </div>
               </div>
 
             </div>
           </div>
+        </div>
+
+        <!-- PANIER / RECAP -->
+        <div class="col-lg-5">
+          <div class="position-sticky" style="top: 110px;">
+            <div class="card shadow-sm">
+              <div class="card-body p-4">
+
+                <h2 class="h4 fw-bold mb-3">2) Récapitulatif</h2>
+
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted">Base Essentielle</span>
+                  <span class="fw-semibold">490 €</span>
+                </div>
+
+                <div id="recapOptions" class="mb-3"></div>
+
+                <hr class="my-3">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="fw-bold">Total</span>
+                  <span class="fw-bold fs-4"><span id="totalPrice">490</span> €</span>
+                </div>
+
+                <div class="small text-muted mb-4">
+                  Paiement sécurisé via Stripe. Vous recevrez une confirmation par email.
+                </div>
+
+                <!-- CTA paiement (placeholder pour l’instant) -->
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-lg w-100 fw-semibold"
+                >
+                  Payer <span id="payBtnPrice">490</span> €
+                </button>
 
 
-          <div class="alert alert-light border mt-3">
-            <h2 class="h4 fw-bold mb-3">3) À savoir avant de valider</h2>
-            <div class="small text-muted">
-              <p class="mb-2">
-                L’offre <strong>Application mobile Essentielle</strong> est pensée pour des projets simples,
-                avec des fonctionnalités clairement définies dès le départ.
-              </p>
+                <a href="{{ url_for('contact') }}" class="d-block text-center text-muted mt-3 small">
+                  Une question avant de payer ?
+                </a>
 
-              <p class="mb-2">Elle n’inclut pas :</p>
-              <ul class="mb-2">
-                <li>la conception UX/UI avancée ou les tests utilisateurs approfondis,</li>
-                <li>les fonctionnalités complexes (temps réel, géolocalisation avancée, IA, paiements intégrés…),</li>
-                <li>les connexions à des systèmes externes complexes (API métier, ERP…),</li>
-                <li>la publication sur les stores (si non prévue dans l’offre),</li>
-                <li>la maintenance et les évolutions après le mois inclus.</li>
-              </ul>
+                <div class="small text-muted mt-4">
+                  <strong>Astuce :</strong> si vous hésitez sur le périmètre, les priorités ou la suite (stores, évolutions),
+                  l’Atelier Mobile est l’option la plus confortable.
+                </div>
 
-              <p class="mb-0">
-                Si votre application nécessite un périmètre plus large ou évolutif,
-                un cadrage personnalisé sera proposé avant toute mise en œuvre.
-              </p>
+              </div>
             </div>
-          </div>
-        </div>  
+
+
+            <div class="alert alert-light border mt-3">
+              <h2 class="h4 fw-bold mb-3">3) À savoir avant de valider</h2>
+              <div class="small text-muted">
+                <p class="mb-2">
+                  L’offre <strong>Application mobile Essentielle</strong> est pensée pour des projets simples,
+                  avec des fonctionnalités clairement définies dès le départ.
+                </p>
+
+                <p class="mb-2">Elle n’inclut pas :</p>
+                <ul class="mb-2">
+                  <li>la conception UX/UI avancée ou les tests utilisateurs approfondis,</li>
+                  <li>les fonctionnalités complexes (temps réel, géolocalisation avancée, IA, paiements intégrés…),</li>
+                  <li>les connexions à des systèmes externes complexes (API métier, ERP…),</li>
+                  <li>la publication sur les stores (si non prévue dans l’offre),</li>
+                  <li>la maintenance et les évolutions après le mois inclus.</li>
+                </ul>
+
+                <p class="mb-0">
+                  Si votre application nécessite un périmètre plus large ou évolutif,
+                  un cadrage personnalisé sera proposé avant toute mise en œuvre.
+                </p>
+              </div>
+            </div>
+          </div>  
+        </div>
       </div>
-    </div>
+    </form>
+    <!-- FIN FORM -->
 
   </div>
 </section>
 
 <script>
-  (function () {
-    const BASE_PRICE = 490;
+(function () {
+  const BASE_PRICE = 490;
+  const options = document.querySelectorAll(".js-option");
+  const recap = document.getElementById("recapOptions");
+  const totalEl = document.getElementById("totalPrice");
+  const btnPriceEl = document.getElementById("payBtnPrice");
 
-    const optionInputs = Array.from(document.querySelectorAll(".js-option"));
-    const recapOptions = document.getElementById("recapOptions");
-    const totalPriceEl = document.getElementById("totalPrice");
-    const payBtnPriceEl = document.getElementById("payBtnPrice");
+  function updateRecap() {
+    let total = BASE_PRICE;
+    recap.innerHTML = "";
 
-    function formatEUR(value) {
-      return `${value} €`;
+    const checked = Array.from(options).filter(o => o.checked);
+
+    if (checked.length === 0) {
+      recap.innerHTML = '<div class="text-muted small">Aucune option sélectionnée.</div>';
     }
 
-    function updateRecap() {
-      let total = BASE_PRICE;
+    checked.forEach(opt => {
+      const price = parseInt(opt.dataset.price, 10);
+      total += price;
 
-      // Reset recap
-      recapOptions.innerHTML = "";
+      const label = document.querySelector(`label[for="${opt.id}"] .fw-semibold`).textContent;
 
-      const selected = optionInputs.filter(i => i.checked);
+      recap.innerHTML += `
+        <div class="d-flex justify-content-between mb-2">
+          <span class="text-muted">${label}</span>
+          <span class="fw-semibold">+${price} €</span>
+        </div>
+      `;
+    });
 
-      if (selected.length === 0) {
-        const empty = document.createElement("div");
-        empty.className = "text-muted small";
-        empty.textContent = "Aucune option sélectionnée.";
-        recapOptions.appendChild(empty);
-      } else {
-        selected.forEach(input => {
-          const price = parseInt(input.value, 10) || 0;
-          total += price;
+    totalEl.textContent = total;
+    btnPriceEl.textContent = total;
+  }
 
-          const label = document.querySelector(`label[for="${input.id}"]`);
-          const titleEl = label ? label.querySelector(".fw-semibold") : null;
-          const title = titleEl ? titleEl.textContent.trim() : "Option";
-
-          const row = document.createElement("div");
-          row.className = "d-flex justify-content-between mb-2";
-          row.innerHTML = `
-            <span class="text-muted">${title}</span>
-            <span class="fw-semibold">+${formatEUR(price)}</span>
-          `;
-          recapOptions.appendChild(row);
-        });
-      }
-
-      totalPriceEl.textContent = total;
-      payBtnPriceEl.textContent = total;
-    }
-
-    optionInputs.forEach(i => i.addEventListener("change", updateRecap));
-    updateRecap();
-  })();
+  options.forEach(o => o.addEventListener("change", updateRecap));
+  updateRecap();
+})();
 </script>
 
 {% endblock %}

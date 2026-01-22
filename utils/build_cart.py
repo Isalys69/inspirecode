@@ -1,43 +1,38 @@
 # utils/build_cart.py
 
-def build_cart_vitrine_essentielle(selected_options):
-    BASE_PRICE = 69000  # centimes
 
-    OPTIONS_CONFIG = {
-        "opt-devis": {
-            "label": "Formulaire de devis avancé",
-            "price": 15000,
+ESSENTIELLES_CONFIG = {
+    "vitrine-essentielle": {
+        "label": "Essentielle – Site vitrine",
+        "summary": "Création d’un site vitrine simple, professionnel et responsive, conçu pour présenter votre activité efficacement.",
+        "base_price": 69000,
+        "included": [
+            "Modèle de site vitrine personnalisé",
+            "Site vitrine de 3 pages",
+            "Mise en ligne du site",
+            "7 jours de support post-livraison (corrections mineures)"
+        ],
+        "excluded": [
+            "Rédaction complète des contenus\n(les textes sont fournis par le client. Un accompagnement est possible pour la structuration)",
+            "Création de logo ou d’identité visuelle complète,",
+            "Maintenance évolutive",
+            "Fonctionnalités spécifiques (réservation, e-commerce, espace membre…),",
+            "Référencement avancé ou les campagnes publicitaires,",
+            "Évolutions et la maintenance au-delà de la période incluse."
+        ],
+        "options": {
+            "opt-devis": {"label": "Formulaire de devis avancé", "price": 15000},
+            "opt-carte": {"label": "Carte interactive avec zone d’intervention", "price": 10000},
+            "opt-page": {"label": "Page supplémentaire", "price": 9000},
+            "opt-seo": {"label": "SEO de base", "price": 12000},
         },
-        "opt-carte": {
-            "label": "Carte + zone d’intervention",
-            "price": 10000,
-        },
-        "opt-page": {
-            "label": "Page supplémentaire",
-            "price": 9000,
-        },
-        "opt-seo": {
-            "label": "SEO de base",
-            "price": 12000,
-        },
-    }
+    },
 
-    total = BASE_PRICE
-    options_display = []
-
-    for opt_id in selected_options:
-        if opt_id in OPTIONS_CONFIG:
-            opt = OPTIONS_CONFIG[opt_id]
-            total += opt["price"]
-            options_display.append({
-                "label": opt["label"],
-                "price_label": f"+{opt['price'] // 100} €",
-            })
-
-    return {
-        "offre_code": "vitrine-essentielle",
-        "label": "Pack Essentielle – Site vitrine",
-        "summary": "Création d’un site vitrine professionnel, responsive et prêt à être mis en ligne.",
+    "ecommerce-essentielle": 
+        {
+        "label": "Offre Essentielle – Site eCommerce",
+        "base_price": 89000,
+        "summary": "Site eCommerce simple, propre et responsive",
         "included": [
             "Structure du site",
             "Design responsive",
@@ -48,10 +43,73 @@ def build_cart_vitrine_essentielle(selected_options):
             "Hébergement",
             "Maintenance évolutive",
         ],
-        "options_display": options_display,
-        "pricing": {
-            "amount_total": total,
-            "currency": "eur",
-            "display": f"{total // 100} € TTC",
+        "options": {
+            "opt-produits": {"label": "Produits supplémentaires (jusqu’à 40)", "price": 12000},
+            "opt-variables": {"label": "Produits variables", "price": 18000},
+            "opt-livraison":{"label": "Livraison avancée", "price": 15000},
+            "opt-emails":{"label": "Courriels transactionnels personalisés", "price": 12000},
+            "opt-seo":{"label": "SEO eCommerce de base", "price": 15000},
+            "opt-legale":{"label": "Pages légales eCommerce", "price": 9000}
         },
+    },
+
+    
+    "appmobile-essentielle": 
+        {
+        "label": "Offre Essentielle – Application mobile",
+        "base_price": 49000,
+        "summary": "Web app simple",
+        "included": [
+            "Structure du site",
+            "Design responsive",
+            "Mise en ligne",
+        ],
+        "excluded": [
+            "Rédaction des contenus",
+            "Hébergement",
+            "Maintenance évolutive",
+        ],
+        "options": {
+            "opt-desktop": {"label": "Adaptation pour usage desktop (outil)", "price": 40000},
+            "opt-google": {"label": "Publication sur Google Play", "price": 25000},
+            "opt-apple": {"label": "Publication sur Apple Store", "price": 35000},
+            "opt-stores": {"label": "Publication sur deux stores (Google + Apple)", "price": 5000},
+        }
+    }
+}
+
+def build_essentielle(form_data, offre_code):
+    config = ESSENTIELLES_CONFIG.get(offre_code)
+
+    if not config:
+        raise ValueError("Offre Essentielle inconnue")
+
+    total = config["base_price"]
+    options_display = []
+
+    selected_options = form_data.getlist("options")
+
+    for opt_id in selected_options:
+        option = config["options"].get(opt_id)
+        if option:
+            total += option["price"]
+            options_display.append({
+                "label": option["label"],
+                "price": option["price"],
+            })
+
+    pricing = {
+        "amount_total": total,
+        "currency": "eur",
+        "display": f"{total // 100} € TTC",
+    }
+
+    return {
+        "offre_code": offre_code,
+        "label": config["label"],
+        "summary": config["summary"],
+        "included": config["included"],
+        "excluded": config["excluded"],
+        "options_display": options_display,
+        "pricing": pricing,
     }

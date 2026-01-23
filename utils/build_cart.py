@@ -30,18 +30,26 @@ ESSENTIELLES_CONFIG = {
 
     "ecommerce-essentielle": 
         {
-        "label": "Offre Essentielle – Site eCommerce",
+        "label": "Essentielle – Site eCommerce",
         "base_price": 89000,
-        "summary": "Site eCommerce simple, propre et responsive",
+        "summary": "Une solution eCommerce clé en main pour vendre en ligne simplement et efficacement.",
         "included": [
-            "Structure du site",
+            "Boutique prête à vendre",
             "Design responsive",
+            "Pages du parcours client",
+            "Jusqu'à 20 produits",
+            "Paiement sécurisé",
+            "Livraison simple",
+            "Interface administrative",
             "Mise en ligne",
         ],
         "excluded": [
-            "Rédaction des contenus",
-            "Hébergement",
-            "Maintenance évolutive",
+            "Rédaction complète des contenus\n(les textes sont fournis par le client. Un accompagnement est possible pour la structuration)",
+            "Création de logo ou d’identité visuelle complète,",
+            "Fonctionnalités e-commerce avancées (abonnements, marketplace, multi-vendeurs…),",
+            "Intégrations complexes (ERP, CRM, outils métier),",
+            "Référencement avancé ou la publicité en ligne,",
+            "Évolutions et la maintenance au-delà de la période incluse."
         ],
         "options": {
             "opt-produits": {"label": "Produits supplémentaires (jusqu’à 40)", "price": 12000},
@@ -56,24 +64,29 @@ ESSENTIELLES_CONFIG = {
     
     "appmobile-essentielle": 
         {
-        "label": "Offre Essentielle – Application mobile",
+        "label": "Essentielle – Application mobile",
         "base_price": 49000,
-        "summary": "Web app simple",
+        "summary": "Application mobile simple, responsive et prête à être publiée.",
         "included": [
-            "Structure du site",
-            "Design responsive",
+            "Web app mobile",
+            "Modèle éprouvé",
+            "Jusqu'à 3 écrans / pages",
+            "Usage principal défini",
             "Mise en ligne",
+            "7 jours de support post-livraison (corrections mineures)"
         ],
         "excluded": [
-            "Rédaction des contenus",
-            "Hébergement",
-            "Maintenance évolutive",
+            "Conception UX/UI avancée ou les tests utilisateurs approfondis,",
+            "Fonctionnalités complexes (temps réel, géolocalisation avancée, IA, paiements intégrés…),",
+            "Connexions à des systèmes externes complexes (API métier, ERP…),",
+            "Publication sur les stores (si non prévue dans l’offre),",
+            "Évolutions et la maintenance au-delà de la période incluse."
         ],
         "options": {
             "opt-desktop": {"label": "Adaptation pour usage desktop (outil)", "price": 40000},
             "opt-google": {"label": "Publication sur Google Play", "price": 25000},
             "opt-apple": {"label": "Publication sur Apple Store", "price": 35000},
-            "opt-stores": {"label": "Publication sur deux stores (Google + Apple)", "price": 5000},
+            "opt-stores": {"label": "Publication sur deux stores (Google + Apple)", "price": 50000},
         }
     }
 }

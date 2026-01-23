@@ -1,9 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+<section class="ic-hero-offre d-flex align-items-center text-white text-center">
+  <div class="container py-4">
+    <h1 class="display-6 fw-bold mb-2">Transaction financière</h1>
+    <p class="lead mt-2 mb-0">
+      .....
+    </p>
+  </div>
+</section>
+
+
+
+
 <section class="py-5 text-center">
   <div class="container">
-    <h1>Paiement confirmé</h1>
+    <h1>Paiement confirmé </h1>
+    <p>Date : {{ date.strftime('%A %d %B %Y - %-H:%M') }} <!-- Output format "Month DD, YYYY" --></p>
     <p>Merci pour votre commande. Le paiement a bien été enregistré.</p>
     <p class="text-muted small">Référence Stripe : {{ session_id }}</p>
   </div>

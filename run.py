@@ -6,7 +6,7 @@ from flask_mail import Mail, Message
 from dotenv import load_dotenv
 import os
 
-from datetime import date
+from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 import locale
 
@@ -468,7 +468,8 @@ def paiement_succes():
 
     return render_template(
         "paiement/succes.html",
-        session_id=session_id
+        session_id=session_id,
+        date=datetime.datetime.now()
     )
 
 

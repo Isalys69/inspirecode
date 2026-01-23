@@ -448,7 +448,10 @@ def checkout():
         abort(400, "Incohérence de montant détectée.")
 
     # 5. Créer la session Stripe
+
     try:
+        print("HOST_URL =", request.host_url)
+
         checkout_url = create_checkout_session(
             order=order,
             base_url=request.host_url.rstrip("/")

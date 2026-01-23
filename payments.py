@@ -29,7 +29,7 @@ def create_checkout_session(*, order, base_url):
                 "quantity": 1,
             }],
             mode="payment",
-            success_url=f"{base_url}/paiement/succes?session_id={{CHECKOUT_SESSION_ID}}",
+            success_url=f"{base_url}/paiement/success?session_id={{CHECKOUT_SESSION_ID}}",
             cancel_url=f"{base_url}/commander/confirmation",
             locale="fr",
             metadata=order.get("metadata", {})

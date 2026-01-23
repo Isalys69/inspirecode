@@ -8,7 +8,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Configuration Stripe
-stripe.api_key = os.environ.get('STRIPE_SECRET_KEY', 'sk_test_...')
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+if not stripe.api_key:
+    raise RuntimeError("STRIPE_SECRET_KEY is not set")
 STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET', 'whsec_...')
 
 

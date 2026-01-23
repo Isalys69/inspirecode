@@ -469,8 +469,8 @@ def checkout():
     # 6. Redirection vers Stripe Checkout
     return redirect(checkout_url)
 
-@app.route("/paiement/succes")
-def paiement_succes():
+@app.route("/paiement/success")
+def paiement_success():
     session_id = request.args.get("session_id")
 
     if not session_id:
@@ -479,7 +479,7 @@ def paiement_succes():
     return render_template(
         "paiement/succes.html",
         session_id=session_id,
-        date=datetime.datetime.now()
+        date=datetime.now()
     )
 
 

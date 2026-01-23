@@ -1,3 +1,5 @@
+
+
 from flask import Flask, render_template, request, redirect, url_for, flash, session, abort
 from payments import create_checkout_session
 
@@ -23,7 +25,12 @@ locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 load_dotenv("config/.env")
 
+
+
+
 app = Flask(__name__)
+from werkzeug.middleware.proxy_fix import ProxyFix
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 app.config["SECRET_KEY"] = os.getenv("FLASK_SECRET_KEY")
 

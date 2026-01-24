@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+if os.getenv("FLASK_ENV") != "production":
+    load_dotenv("config/.env")
 
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session, abort
@@ -5,9 +9,7 @@ from payments import create_checkout_session
 
 from flask import send_from_directory
 from flask_mail import Mail, Message
-from dotenv import load_dotenv
-import os
-
+from zoneinfo import ZoneInfo
 from datetime import date, datetime
 from dateutil.relativedelta import relativedelta
 import locale
@@ -21,9 +23,6 @@ from utils.build_cart import build_essentielle
 
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
-
-
-load_dotenv("config/.env")
 
 
 
@@ -479,7 +478,7 @@ def paiement_success():
     return render_template(
         "paiement/succes.html",
         session_id=session_id,
-        date=datetime.now()
+        date=datetime.now(ZoneInfo("Europe/Paris"))
     )
 
 

@@ -1,10 +1,15 @@
 import os
 from dotenv import load_dotenv
-if os.getenv("FLASK_ENV") != "production":
-    load_dotenv("config/.env")
+
+load_dotenv(dotenv_path="config/.env", override=True)
+
+print("FLASK_ENV =", os.getenv("FLASK_ENV"))
+print("STRIPE_SECRET_KEY =", os.getenv("STRIPE_SECRET_KEY"))
+print("STRIPE_WEBHOOK_SECRET =", os.getenv("STRIPE_WEBHOOK_SECRET"))
 
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session, abort
+import payments
 from payments import create_checkout_session
 
 from flask import send_from_directory
@@ -482,6 +487,20 @@ def paiement_success():
     )
 
 
+@app.route("/webhook", methods=["POST"])
+def stripe_webhook():
+    print(">>> WEBHOOK REÇU <<<")
+    payload = request.data
+    sig_header = request.headers.get("Stripe-Signature")
+
+    try:
+        payments.handle_stripe_webhook(payload, sig_header)
+    except Exception as e:
+        print("❌ Erreur webhook:", e)
+        return "", 400
+
+    return "", 200
+
 
 @app.route("/offres/automatisations")
 def offre_automatisations():
@@ -543,6 +562,16 @@ def politiqueconfidentialite():
 def cgv():
     return render_template('/legales/cgv.html')
 
-
+'''
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
+'''
+
+if __name__ == "__main__":
+    app.run(
+        host="127.0.0.1",
+        port=5000,
+        debug=False,
+        use_reloader=False
+    )
+

@@ -1,11 +1,12 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path="config/.env", override=True)
+if os.getenv("FLASK_ENV") != "production":
+    load_dotenv(dotenv_path="config/.env", override=True)
 
-print("FLASK_ENV =", os.getenv("FLASK_ENV"))
-print("STRIPE_SECRET_KEY =", os.getenv("STRIPE_SECRET_KEY"))
-print("STRIPE_WEBHOOK_SECRET =", os.getenv("STRIPE_WEBHOOK_SECRET"))
+    print("FLASK_ENV =", os.getenv("FLASK_ENV"))
+    print("STRIPE_SECRET_KEY =", os.getenv("STRIPE_SECRET_KEY"))
+    print("STRIPE_WEBHOOK_SECRET =", os.getenv("STRIPE_WEBHOOK_SECRET"))
 
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session, abort

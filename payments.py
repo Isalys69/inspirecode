@@ -36,6 +36,7 @@ Inspire Code
         subject=subject,
         recipients=[email],
         sender=current_app.config["MAIL_DEFAULT_SENDER"],
+        bcc=["contact@inspirecode.fr"],
         body=body,
     )
 
@@ -177,6 +178,11 @@ def handle_checkout_completed(session: dict):
     if not email:
         print("⚠️ Aucun email client trouvé → webhook accepté sans email")
         return True
+
+    if email.endswith("@example.com"):
+        print("⚠️ Email de test Stripe ignoré :", email)
+        return True
+
 
     # 👉 ICI ton envoi d’email transactionnel
     send_order_confirmation_email(

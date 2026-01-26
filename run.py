@@ -496,7 +496,9 @@ def stripe_webhook():
     try:
         payments.handle_stripe_webhook(payload, sig_header)
     except Exception as e:
-        print("❌ Erreur webhook:", e)
+        import traceback
+        print("❌ ERREUR WEBHOOK DÉTAILLÉE")
+        traceback.print_exc()
         return "", 400
 
     return "", 200

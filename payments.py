@@ -42,8 +42,13 @@ Inspire Code
     print("📨 Tentative envoi email vers :", email)
     print("📨 Expéditeur :", current_app.config["MAIL_DEFAULT_SENDER"])
 
+    try:
+        mail.send(msg)
+        print("📧 Email transactionnel envoyé à", email)
+    except Exception as e:
+        print("❌ ERREUR ENVOI EMAIL :", repr(e))
 
-    mail.send(msg)
+
 
 
 # -------------------------------------------------------------------

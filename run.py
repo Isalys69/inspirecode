@@ -98,6 +98,16 @@ def devis():
     form_data = {}
 
     if request.method == "POST":
+
+
+        # 🔒 HONEYPOT ANTI-SPAM (TOUT EN HAUT)
+        honeypot = request.form.get("website", "").strip()
+        if honeypot:
+            flash("Votre message a bien été envoyé.", "success")
+            return redirect(url_for("contact"))
+
+        # Seulement ensuite, on traite le vrai formulaire
+
         form_data = request.form
 
         # Récupération sécurisée
@@ -231,6 +241,16 @@ def contact():
     erreurs = []
 
     if request.method == "POST":
+
+
+        # 🔒 HONEYPOT ANTI-SPAM (TOUT EN HAUT)
+        honeypot = request.form.get("website", "").strip()
+        if honeypot:
+            flash("Votre message a bien été envoyé.", "success")
+            return redirect(url_for("contact"))
+
+
+        # Seulement ensuite, on traite le vrai formulaire
         prenom = request.form.get("prenom", "").strip()
         nom = request.form.get("nom", "").strip()
         email = request.form.get("email", "").strip()

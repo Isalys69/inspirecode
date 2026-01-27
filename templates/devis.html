@@ -52,6 +52,20 @@ Demande de devis – Inspire Code
             <form action="{{ url_for('devis') }}" method="POST"
                   class="p-4 shadow-sm bg-white rounded-4" novalidate>
 
+                <!-- Honeypot anti-spam -->
+                <div style="display:none;">
+                    <label for="website">Website</label>
+                    <input
+                        type="text"
+                        name="website"
+                        id="website"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+                </div>
+
+
+
                 <input type="hidden" name="form_type" value="devis">
 
                 <div class="row g-3">

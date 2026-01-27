@@ -50,7 +50,7 @@
 
     <h2 class="fw-bold mb-4 text-center">Formulaire de contact</h2>
 
-    <form action="{{ url_for('contact') }}" method="POST" class="needs-validation" novalidate>
+    <form action="{{ url_for('contact') }}" method="POST" novalidate>
 
       <!-- PRENOM + NOM -->
       <div class="row">
@@ -82,8 +82,9 @@
       <div class="mb-3">
         <label for="email" class="form-label fw-semibold">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
+            required
             class="form-control {% if 'email' in invalid_fields %}is-invalid{% endif %}"
             value="{{ form_data.get('email','') if form_data else '' }}"
           />
@@ -140,13 +141,31 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.is-invalid').forEach(function (field) {
-    field.addEventListener('change', function () {
-      field.classList.remove('is-invalid');
-    });
+
+  const form = document.querySelector('form[action="{{ url_for('contact') }}"]');
+  const emailInput = form.querySelector('input[name="email"]');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener('submit', function (e) {
+    const email = emailInput.value.trim();
+
+    // reset état
+    emailInput.classList.remove('is-invalid');
+
+    if (!emailRegex.test(email)) {
+      e.preventDefault();          // ⛔ STOP POST
+      e.stopPropagation();         // ⛔ STOP tout le reste
+      emailInput.classList.add('is-invalid');
+      return false;
+    }
   });
+
+  // nettoyage à la modification
+  emailInput.addEventListener('input', function () {
+    emailInput.classList.remove('is-invalid');
+  });
+
 });
 </script>
-
 
 {% endblock %}

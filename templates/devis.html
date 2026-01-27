@@ -286,6 +286,34 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const form = document.querySelector('form[action="{{ url_for('devis') }}"]');
+  if (!form) return;
+
+  const emailInput = form.querySelector('input[name="email"]');
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  form.addEventListener('submit', function (e) {
+    const email = emailInput.value.trim();
+
+    emailInput.classList.remove('is-invalid');
+
+    if (!emailRegex.test(email)) {
+      e.preventDefault();
+      e.stopPropagation();
+      emailInput.classList.add('is-invalid');
+      return false;
+    }
+  });
+
+  emailInput.addEventListener('input', function () {
+    emailInput.classList.remove('is-invalid');
+  });
+
+});
+</script>
 
 
 {% endblock %}

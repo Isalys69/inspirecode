@@ -3,11 +3,11 @@ from dotenv import load_dotenv
 
 if os.getenv("FLASK_ENV") != "production":
     load_dotenv(dotenv_path="config/.env", override=True)
-
+    '''
     print("FLASK_ENV =", os.getenv("FLASK_ENV"))
     print("STRIPE_SECRET_KEY =", os.getenv("STRIPE_SECRET_KEY"))
     print("STRIPE_WEBHOOK_SECRET =", os.getenv("STRIPE_WEBHOOK_SECRET"))
-
+    '''
 
 from flask import Flask, render_template, request, redirect, url_for, flash, session, abort
 import payments
@@ -24,6 +24,7 @@ from calendly import register_calendly_routes
 
 import json
 from utils.build_cart import build_essentielle
+import re
 
 
 
@@ -117,7 +118,8 @@ def devis():
         if not nom:
             invalid_fields.append("nom")
 
-        if not email:
+        email_regex = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
+        if not email or not re.match(email_regex, email):
             invalid_fields.append("email")
 
         if not type_projet:
@@ -223,6 +225,7 @@ def realisations_appmobiles():
 
 
 
+
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     erreurs = []
@@ -238,8 +241,12 @@ def contact():
             erreurs.append("prenom")
         if not nom:
             erreurs.append("nom")
-        if not email:
+
+        # ✅ contrôle email (vide + format simple)
+        email_regex = r"^[^\s@]+@[^\s@]+\.[^\s@]+$"
+        if not email or not re.match(email_regex, email):
             erreurs.append("email")
+
         if not sujet:
             erreurs.append("sujet")
         if not message:
@@ -270,7 +277,6 @@ Message :
 """
         try:
             mail.send(msg)
-
             flash("Votre message a bien été envoyé. Je vous répondrai rapidement.", "success")
             return redirect(url_for("contact"))
 
